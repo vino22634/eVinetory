@@ -12,7 +12,7 @@ Projet web consistant en un cellier...
 
 
 
-## Déploiement
+## Déploiement DEMO
 
 - composer install
 - env à ajuster
@@ -20,6 +20,8 @@ Projet web consistant en un cellier...
 - update database manuellement
 - php artisan serve
 
+
+## COUCOU TOUT LE MONDE
 
 
 
