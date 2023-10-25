@@ -42,4 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /**
+     * Get celliers for the user.
+     *
+     * @var array<string, string>
+     */
+    public function celliers()
+    {
+        return $this->hasMany(Cellier::class);
+    }
 }
