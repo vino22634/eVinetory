@@ -20,7 +20,7 @@
             <h2>Collectionnez les saveurs</h2>
         </div>
         <div class="login_action">
-            <img src="" alt="">
+            <img src="/img/cellier.png" alt="Icône cellier">
             <h3>Remplissez votre cellier dès maintenant !</h3>
             <button><a href="{{ route('login') }}" class="button">Se connecter</a></button>
             <div>

@@ -132,6 +132,11 @@ img {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
+    border-bottom-left-radius: 100% 350px;
+    border-bottom-right-radius: 100% 350px;
+    width: calc(100% + 100px) ;
+    margin-left: -50px;
+    overflow: hidden;
 }
 
 .login_logo img {
@@ -139,9 +144,18 @@ img {
 }
 
 .login_action {
-    padding: 2rem 7rem;
+    padding: 3rem 7rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     text-align: center;
+    position: relative
+}
+
+.login_action img {
+    width: 50px;
+    position: absolute;
+    top: -5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
