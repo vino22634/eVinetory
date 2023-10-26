@@ -12,21 +12,13 @@ Projet web consistant en un cellier...
 
 
 
-## Déploiement fgfjgv
+## Déploiement
 
 - composer install
 - env à ajuster
 - php artisan migrate
 - update database manuellement
 - php artisan serve
-
-
-## COUCOU TOUT LE MONDE
-
-
-
-
-
 
 
 
