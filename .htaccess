@@ -2,11 +2,11 @@ RewriteEngine On
 RewriteBase /
 
 # Protéger le fichier .env
-
+<!-- 
 <Files .env>
 Order allow,deny
 Deny from all
-</Files>
+</Files> -->
 
 # Serve files from the root directory
 
