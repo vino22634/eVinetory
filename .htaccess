@@ -1,6 +1,14 @@
 RewriteEngine On
 RewriteBase /
 
+# Protéger le fichier .env
+
+<Files .env>
+Order allow,deny
+Deny from all
+</Files>
+
 # Serve files from the root directory
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ public/$1 [L]
+RewriteRule ^(.\*)$ public/$1 [L]
