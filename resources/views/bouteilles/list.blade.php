@@ -37,7 +37,7 @@
                 <td>{{ $bouteille->code_saq }}</td>
                 <td>{{ $bouteille->pays }}</td>
                 <td>{{ $bouteille->description }}</td>
-                <td>{{ $bouteille->prix_saq }} €</td>
+                <td>{{ $bouteille->prix_saq }} $</td>
             </tr>
             @endforeach
         </tbody>
