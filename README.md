@@ -5,7 +5,7 @@
 
 Projet web consistant en un cellier...
 
-- Listes de vins.
+- Listes de vins
 - Gestion usagers
 - Cellier personalisés
 - Favoris, notes de dégustatins, etc
