@@ -30,7 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list');
+Route::get('/bouteillesraw', [BouteilleController::class, 'indexRaw'])->name('bouteilles.listRaw');
 
+Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list');
 
 require __DIR__ . '/auth.php';
