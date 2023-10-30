@@ -54,6 +54,18 @@ html {
 }
 
 /* LAYOUT */
+header {
+    height: 100px;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    position: relative;
+    background-color: var(--color-dark-red);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: var(--normal-font-size);
