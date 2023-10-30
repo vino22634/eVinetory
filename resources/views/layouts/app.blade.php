@@ -29,10 +29,24 @@
         <!-- Nav Bas -->
         <nav>
             <a href="">
-                <div>
-                    <img src="" alt="">
-                    <p>Accueil</p>
-                </div>
+                <img src="/img/icons/menu_bottles.svg" alt="Icône bouteilles">
+                <p>Bouteilles</p>
+            </a>
+            <a href="">
+                <img src="/img/icons/menu_cellar.svg" alt="Icône celliers">
+                <p>Celliers</p>
+            </a>
+            <a href="">
+                <img src="/img/icons/menu_favorite.svg" alt="Icône favoris">
+                <p>Favoris</p>
+            </a>
+            <a href="">
+                <img src="/img/icons/menu_cart.svg" alt="Icône liste d'achats">
+                <p>Achats</p>
+            </a>
+            <a href="">
+                <img src="/img/icons/menu_profile.svg" alt="Icône profil">
+                <p>Profil</p>
             </a>
         </nav>
     </div>
