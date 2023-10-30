@@ -16,7 +16,7 @@
 <body>
     <div class="container">
 
-        <!-- Composant Nav haut -->
+        <!-- Nav haut -->
         <header>
             <h1>eVinetory</h1>
         </header>
@@ -26,8 +26,15 @@
             @yield('content')
         </main>
 
-        <!-- Composant Nav Bas -->
-
+        <!-- Nav Bas -->
+        <nav>
+            <a href="">
+                <div>
+                    <img src="" alt="">
+                    <p>Accueil</p>
+                </div>
+            </a>
+        </nav>
     </div>
 </body>
 
