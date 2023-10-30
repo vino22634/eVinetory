@@ -12,7 +12,7 @@ class CellierController extends Controller
      */
     public function index()
     {
-        $celliers = Cellier::all();
+        $celliers = Cellier::all()->orderBy('nom');
         return view('celliers.index', ['celliers' => $celliers]);
     }
 
