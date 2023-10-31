@@ -54,6 +54,18 @@ html {
 }
 
 /* LAYOUT */
+header {
+    height: 100px;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    position: relative;
+    background-color: var(--color-dark-red);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: var(--normal-font-size);
@@ -64,6 +76,44 @@ body {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+}
+
+/* NAVIGATION */
+nav {
+    width: max-content;
+    display: block;
+    padding: 0.7rem 1.5rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1rem;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
+}
+  
+nav a {
+    background: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    display: flex;
+    color: var(--color-text70);
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-small);
+}
+
+nav a img {
+    width: 35px;
+}
+
+nav a:hover, nav a.active {
+    color: var(--color-dark-red);
 }
 
 /* HEADINGS */
