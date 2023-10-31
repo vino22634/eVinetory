@@ -20,9 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,3 +31,7 @@ Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteill
 
 
 require __DIR__ . '/auth.php';
+
+// CELLIERS
+Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
+Route::get('/cellier-create', [CellierController::class, 'create'])->name('cellier.create');

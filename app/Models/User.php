@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cellier::class);
     }
+
+    public function bouteilles()
+    {
+        return $this->belongsToMany(Bouteille::class, 'bouteille_user')->withPivot('favoris', 'listeDachat')->withTimestamps();
+    }
 }

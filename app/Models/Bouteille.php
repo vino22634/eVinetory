@@ -24,4 +24,6 @@ class Bouteille extends Model
     {
         return $this->hasMany(BouteilleCellier::class, 'id_bouteille');
     }
+
+    
 }
