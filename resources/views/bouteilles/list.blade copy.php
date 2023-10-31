@@ -1,64 +1,14 @@
-@extends('layouts/app')
-@section('title', 'Celliers')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Bouteilles</title>
+    <link href="/css/app.css" rel="stylesheet">
 
-    <!-- Créer un nouveau cellier -->
-    <div>
-        <h3>Liste des Bouteilles</h3>
-    </div>
-
-
-
-
-
-
-
-    @foreach($bouteilles as $bouteille)
-        <div class="bouteille bouteillecontainer" data-bouteille-id="{{ $bouteille->id }}">
-
-            <div>
-                <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="100">
-            </div>
-            <div width="100%">
-                <div class="titre">{{ $bouteille->nom }}</div>
-                <div class="description">{{ $bouteille->description }}</div>
-
-
-                <div class="bouteillefooter">
-
-                    <div class="prix">{{ $bouteille->prix_saq }} $</div>
-                    <div class="icon-container">
-
-                        <img class="bouteilleIcon toggle-icon"
-                            src="{{ true ? '/img/icons/bouteilles/favON@2x.png' : '/img/icons/bouteilles/fav@2x.png' }}"
-                            alt="Favorite" data-action="toggle-favorite">
-                        <img class="bouteilleIcon toggle-icon"
-                            src="{{ true ? '/img/icons/bouteilles/purchaseON@2x.png' : '/img/icons/bouteilles/purchase@2x.png' }}"
-                            alt="Favorite" width="20" ç data-action="toggle-favorite">
-                        <img class="bouteilleIcon toggle-icon"
-                            src="{{ true ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                            alt="Favorite" width="20" data-action="toggle-favorite">
-
-
-
-
-
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-    @endforeach
-
-
-
-
-
-</div>
+</head>
 
 <style>
     .bouteille.bouteillecontainer {
@@ -119,13 +69,61 @@
         letter-spacing: 0.25px;
     }
 
-    .bouteillecontainer .prix {
-        font-weight: 700;
-        font-family: 'Lora', serif;
-        fontw-size: var(--h1-font-size);
-    }
+     .bouteillecontainer .prix {
+       font-weight: 700;
+       font-family: 'Lora', serif;
+       fontw-size: var(--h1-font-size);
+     }
+
+
 </style>
 
+<body class="container ">
+    <h1>Liste des Bouteilles</h1>
+
+    @foreach($bouteilles as $bouteille)
+        <div class="bouteille bouteillecontainer" data-bouteille-id="{{ $bouteille->id }}">
+
+            <div>
+                <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="100">
+            </div>
+            <div width="100%">
+                <div class="titre">{{ $bouteille->nom }}</div>
+                <div class="description">{{ $bouteille->description }}</div>
+
+
+                <div class="bouteillefooter">
+
+                    <div class="prix">{{ $bouteille->prix_saq }} $</div>
+                    <div class="icon-container">
+
+                        <img class="bouteilleIcon toggle-icon"
+                            src="{{ true ? '/img/icons/bouteilles/favON@2x.png' : '/img/icons/bouteilles/fav@2x.png' }}"
+                            alt="Favorite" data-action="toggle-favorite">
+                        <img class="bouteilleIcon toggle-icon"
+                            src="{{ true ? '/img/icons/bouteilles/purchaseON@2x.png' : '/img/icons/bouteilles/purchase@2x.png' }}"
+                            alt="Favorite" width="20" ç data-action="toggle-favorite">
+                        <img class="bouteilleIcon toggle-icon"
+                            src="{{ true ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
+                            alt="Favorite" width="20" data-action="toggle-favorite">
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    @endforeach
+
+
+</body>
+
+</html>
 
 
 
@@ -196,8 +194,5 @@
         const bouteilleId = event.detail;
         toggleAction(bouteilleId, 'purchase');
     });
+
 </script>
-
-@endsection
-
-
