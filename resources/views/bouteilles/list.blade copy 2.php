@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Bouteilles')
+@section('title', 'Bouteilles.')
 @section('content')
 
 
@@ -12,13 +12,12 @@
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
-        border: 1px solid #ccc; // Vous pouvez ajuster la couleur et l'épaisseur selon vos préférences
+        border: 1px solid #ccc; 
         box-shadow: 10px 10px 5px #B8B8B8;
     }
 
     .bouteillecontainer>div:last-child {
-        flex: 1;
-        /* Le deuxième div prend le reste de la largeur disponible */
+        flex: 1; /* le reste de la largeur disponible */
     }
 
     .bouteille .bouteillefooter {
@@ -58,13 +57,10 @@
         justify-content: flex-start;
     }
 
-
-
     .bouteillecontainer .titre {
         font-weight: 500;
         font-size: var(--normal-font-size);
     }
-
 
     .bouteillecontainer .description {
         fownt-weight: 500;
@@ -89,16 +85,18 @@
     @foreach($bouteilles as $bouteille)
         <div class="bouteille bouteillecontainer" data-bouteille-id="{{ $bouteille->id }}">
 
+         <!-- image (partie gauche)-->
             <div class='bouteilleImg_container'>
                 <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="n\a">
             </div>
+
+             <!-- contenu (partie droite)-->
             <div class='bouteilledescriptions_container' width="100%">
                 <div class="titre">{{ $bouteille->nom }}</div>
                 <div class="description">{{ $bouteille->description }}</div>
 
-
+                 <!-- footer -->
                 <div class="bouteillefooter">
-
                     <div class="prix">{{ $bouteille->prix_saq }} $</div>
                     <div class="bouteilleIcons-container">
 
@@ -114,20 +112,9 @@
                     </div>
                 </div>
 
-
-            </div>
         </div>
     @endforeach
-
-
-
-
-
 </div>
-
-
-
-
 
 
 
@@ -143,9 +130,6 @@
             const bouteilleId = this.closest('.bouteillecontainer').getAttribute(
                 'data-bouteille-id');
             const action = this.getAttribute('data-action-param');
-
-
-
             if (this.getAttribute('src') === `/img/icons/bouteilles/${action}@2x.png`) {
                 this.setAttribute('src', `/img/icons/bouteilles/${action}ON@2x.png`);
             } else {
@@ -153,8 +137,6 @@
             }
         });
     });
-
-
 
 
     function toggleAction(bouteilleId, action) {
