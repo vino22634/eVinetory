@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Liste des Bouteilles</h1>
+    <h1>Liste des Bouteilles RAW</h1>
 
     <table border="1">
         <thead>
