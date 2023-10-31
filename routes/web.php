@@ -32,3 +32,7 @@ Route::get('/bouteillesraw', [BouteilleController::class, 'indexRaw'])->name('bo
 Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list');
 
 require __DIR__ . '/auth.php';
+
+// CELLIERS
+Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
+Route::get('/cellier-create', [CellierController::class, 'create'])->name('cellier.create');
