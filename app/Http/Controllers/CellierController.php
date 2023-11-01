@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cellier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CellierController extends Controller
 {
@@ -12,7 +13,7 @@ class CellierController extends Controller
      */
     public function index()
     {
-        $celliers = Cellier::select()->orderBy('nom');
+        $celliers = Cellier::all();
         return view('celliers.index', ['celliers' => $celliers]);
     }
 
@@ -29,7 +30,21 @@ class CellierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valider les données
+        $request->validate([
+            'name'             => 'required|min:2|max:50',
+            'description'      => 'nullable|min:2|max:500'
+        ]);
+
+
+        // Créer le post
+        $newCellar = Cellier::create([
+            'name'              => $request->name,
+            'description'       => $request->description,
+            'user_id'           => Auth::user()->id
+        ]);
+
+        return redirect('/celliers')->withSuccess("Votre cellier a été créé avec succès!");
     }
 
     /**

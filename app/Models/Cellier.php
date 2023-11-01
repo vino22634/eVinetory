@@ -13,7 +13,7 @@ class Cellier extends Model
 
     protected $fillable = [
         'id',
-        'location',
+        'name',
         'description',
         'user_id',
     ];

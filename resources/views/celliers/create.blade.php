@@ -30,7 +30,10 @@
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 0.5rem;
+    }
 
+    .text_error {
+        color: var(--color-light-red);
     }
 </style>
 <section>
@@ -43,12 +46,22 @@
     <form method="post">
         @csrf
         <div class="form_element">
-            <label for="location">Localisation</label>
-            <input type="text" id="location" name="location" value="{{old('location')}}" required>
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" value="{{old('name')}}" required>
+            @if($errors->has('name'))
+            <div class="text_error">
+                {{$errors->first('name')}}
+            </div>
+            @endif
         </div>
         <div class="form_element">
             <label for="description">Description</label>
             <input type="text" id="description" name="description" value="{{old('description')}}">
+            @if($errors->has('description'))
+            <div class="text_error">
+                {{$errors->first('description')}}
+            </div>
+            @endif
         </div>
         <input type="submit" class="button" value="Ajouter">
     </form>

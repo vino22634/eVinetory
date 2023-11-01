@@ -17,7 +17,7 @@
     <div>
         <ul>
             @forelse($celliers as $cellier)
-            <li><a href="" class="">{{ucfirst($cellier->nom)}}</a></li>
+            <li><a href="" class="">{{ucfirst($cellier->name)}}</a></li>
             @empty
             <li>Vous n'avez pas encore de cellier</li>
             @endforelse
