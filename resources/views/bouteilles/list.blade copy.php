@@ -5,7 +5,7 @@
 <link href="/css/bouteille.css" rel="stylesheet">
 
 <style>
-
+   
 
 </style>
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,7 +17,7 @@
     </div>
     <!-- Liste des bouteilles -->
     @foreach($bouteilles as $bouteille)
-        <x-bouteilles.BouteilleLayout :bouteille="$bouteille" />
+        <x-bouteilles.bouteille-layout :bouteille="$bouteille" />
     @endforeach
 </div>
 
