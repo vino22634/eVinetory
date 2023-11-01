@@ -10,6 +10,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <!-- Script JS -->
+    <script src="/js/app.js" defer></script>
 
 </head>
 
@@ -27,12 +29,12 @@
         </main>
 
         <!-- Nav Bas -->
-        <nav>
+        <nav id="navbar">
             <a href="">
                 <img src="/img/icons/menu_bottles.svg" alt="Icône bouteilles">
                 <p>Bouteilles</p>
             </a>
-            <a href="">
+            <a href="{{route('celliers.index')}}">
                 <img src="/img/icons/menu_cellar.svg" alt="Icône celliers">
                 <p>Celliers</p>
             </a>

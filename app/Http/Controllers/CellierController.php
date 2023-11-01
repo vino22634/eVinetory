@@ -36,8 +36,8 @@ class CellierController extends Controller
             'description'      => 'nullable|min:2|max:500'
         ]);
 
-        // Créer le post
-        $newCellar = Cellier::create([
+        // Créer le cellier
+        Cellier::create([
             'name'              => $request->name,
             'description'       => $request->description,
             'user_id'           => Auth::user()->id
