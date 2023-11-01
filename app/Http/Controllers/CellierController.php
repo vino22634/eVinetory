@@ -36,7 +36,6 @@ class CellierController extends Controller
             'description'      => 'nullable|min:2|max:500'
         ]);
 
-
         // Créer le post
         $newCellar = Cellier::create([
             'name'              => $request->name,
@@ -52,7 +51,7 @@ class CellierController extends Controller
      */
     public function show(Cellier $cellier)
     {
-        //
+        return view('celliers.show', ['cellier' => $cellier]);
     }
 
     /**
