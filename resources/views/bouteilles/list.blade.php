@@ -13,7 +13,7 @@
 <div class="container">
 
     <div>
-        <!-- <h3>Liste des Bouteilles</h3> -->
+        <h3>Liste des Bouteilles</h3> 
     </div>
     <!-- Liste des bouteilles -->
     @foreach($bouteilles as $bouteille)
