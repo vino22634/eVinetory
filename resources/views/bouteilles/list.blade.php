@@ -17,7 +17,7 @@
     </div>
     <!-- Liste des bouteilles -->
     @foreach($bouteilles as $bouteille)
-        <x-bouteilles.BouteilleLayout :bouteille="$bouteille" />
+        <x-bouteilles.bouteille-component :bouteille="$bouteille" />
     @endforeach
 </div>
 
