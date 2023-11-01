@@ -11,13 +11,13 @@
     }
 </style>
 <section>
-    <h2>Mon cellier</h2>
+    <!-- Retour -->
+    <a href="{{route('celliers.index')}}" class="">← Retour</a>
+
+    <h2>{{ucfirst($cellier->name)}}</h2>
 
     <!-- Détail cellier -->
-    <ul>
-        <li>{{ucfirst($cellier->name)}}</li>
-        <li>{{ucfirst($cellier->description)}}</li>
-    </ul>
+    <p>{{ucfirst($cellier->description)}}</p>
 
     <!-- Détail bouteilles -->
     <ul>
