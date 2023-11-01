@@ -2,13 +2,16 @@
 @section('title', 'Celliers')
 @section('content')
 
-<div class="container">
-
-    <!-- Créer un nouveau cellier -->
-    <div>
-        <h3>Mes celliers</h3>
-        <a href="{{route('cellier.create')}}" class="btn">Créer un cellier</a>
-    </div>
+<style>
+    section {
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
+<section>
+    <h2>Mes celliers</h2>
 
     <!-- Liste de mes cellier -->
     <div>
@@ -20,6 +23,10 @@
             @endforelse
         </ul>
     </div>
-</div>
+
+    <!-- Créer un nouveau cellier -->
+    <a href="{{route('cellier.create')}}" class="button">Créer un cellier</a>
+
+</section>
 
 @endsection
