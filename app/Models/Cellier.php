@@ -23,7 +23,7 @@ class Cellier extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function bouteilleCelliers()
+    public function bouteillesCellier()
     {
         return $this->hasMany(BouteilleCellier::class, 'id_cellier');
     }

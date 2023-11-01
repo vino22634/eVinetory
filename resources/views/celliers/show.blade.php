@@ -21,7 +21,7 @@
 
     <!-- Détail bouteilles -->
     <ul>
-        @forelse($cellier->bouteilleCelliers as $bouteilleCellier)
+        @forelse($cellier->bouteillesCellier as $bouteilleCellier)
         <li>
             <a href="" class="">{{ucfirst($bouteilleCellier->bouteille->nom)}}</a>
         </li>
