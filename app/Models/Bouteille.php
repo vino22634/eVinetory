@@ -25,5 +25,10 @@ class Bouteille extends Model
         return $this->hasMany(BouteilleCellier::class, 'id_bouteille');
     }
 
-    
+
+    public function userPreferences()
+    {
+    return $this->hasOne(BouteillePreferences::class)->where('user_id', auth()->id());
+    }
+
 }

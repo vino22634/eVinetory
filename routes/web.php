@@ -27,7 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list');
+
+// BOUTEILLES
+Route::get('/bouteillesraw', [BouteilleController::class, 'indexRaw'])->name('bouteilles.listRaw');
+Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list')->middleware('auth');
+Route::post('/bouteilles_toggleFavorite/{bouteilleId}', [BouteilleController::class,
+'toggleFavorite'])->name('bouteilles.toggleFavorite')->middleware('auth');
 
 
 require __DIR__ . '/auth.php';
