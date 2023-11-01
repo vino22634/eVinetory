@@ -11,7 +11,12 @@ class Cellier extends Model
 {
     use HasFactory;
 
-    protected $table = 'cellier';
+    protected $fillable = [
+        'id',
+        'location',
+        'description',
+        'user_id',
+    ];
 
     public function user()
     {
@@ -23,8 +28,3 @@ class Cellier extends Model
         return $this->hasMany(BouteilleCellier::class, 'id_cellier');
     }
 }
-
-
-
-
-
