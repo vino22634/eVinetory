@@ -10,9 +10,6 @@ use Illuminate\View\Component;
 
 class BouteilleComponent extends Component
 {
-    /**
-     * Create a new component instance.
-     */
     public $bouteille;
 
     public function __construct($bouteille)
