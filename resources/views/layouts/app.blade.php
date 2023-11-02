@@ -30,7 +30,7 @@
 
         <!-- Nav Bas -->
         <nav id="navbar">
-            <a href="">
+            <a href="{{route('bouteilles.list')}}">
                 <img src="/img/icons/menu_bottles.svg" alt="Icône bouteilles">
                 <p>Bouteilles</p>
             </a>

@@ -50,7 +50,7 @@
             <li class="cellier__card">
                 <a href="{{route('cellier.show', $cellier->id)}}">
                     <h3>{{ucfirst($cellier->name)}}</h3>
-                    <span><img src="img/icons/menu_bottles.svg" alt="">x {{$cellier->bouteillesCellier->count()}}</span>
+                    <span><img src="img/icons/menu_bottles.svg" alt="">x {{$cellier->bouteillesCellier->sum('quantite')}}</span>
                 </a>
             </li>
             @empty
