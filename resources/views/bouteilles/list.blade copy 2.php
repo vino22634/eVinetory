@@ -14,8 +14,6 @@
 
     <div>
         <h3>Liste des Bouteilles</h3> 
-                <x-tri-component  />
-
     </div>
     <!-- Liste des bouteilles -->
     @foreach($bouteilles as $bouteille)
