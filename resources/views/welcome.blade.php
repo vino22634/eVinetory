@@ -22,7 +22,7 @@
         <div class="login_action">
             <img src="/img/icons/menu_bottles.svg" alt="Icône cellier">
             <h3>Remplissez votre cellier dès maintenant !</h3>
-            <button><a href="{{ route('login') }}" class="button">Se connecter</a></button>
+            <a href="{{ route('login') }}" class="button">Se connecter</a>
             <div>
                 <p>Pas encore inscrit ?</p>
                 <a href="{{ route('register') }}" class="link">S'enregistrer</a>
