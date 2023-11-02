@@ -32,11 +32,10 @@ Route::middleware('auth')->group(function () {
 // BOUTEILLES
 Route::get('/bouteillesraw', [BouteilleController::class, 'indexRaw'])->name('bouteilles.listRaw');
 Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list')->middleware('auth');
-Route::post('/bouteilles_toggleFavorite/{bouteilleId}', [
-    BouteilleController::class,
-    'toggleFavorite'
-])->name('bouteilles.toggleFavorite')->middleware('auth');
-
+Route::post('/bouteilles_toggleFavoris/{bouteilleId}', [BouteilleController::class,'toggleFavorite'
+])->name('bouteilles.toggleFavoris')->middleware('auth');
+Route::post('/bouteilles_togglePurchase/{bouteilleId}', [BouteilleController::class,'togglePurchase'
+])->name('bouteilles.togglePurchase')->middleware('auth');
 
 // CELLIERS
 Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
