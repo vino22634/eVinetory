@@ -8,16 +8,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class BouteilleLayout extends Component
+class BouteilleComponent extends Component
 {
-    /**
-     * Create a new component instance.
-     */
     public $bouteille;
 
     public function __construct($bouteille)
     {
         $this->bouteille = $bouteille;
+        //$this->bouteille->nom = 'test';
     }
     /**
      * Get the view / contents that represent the component.
@@ -25,5 +23,6 @@ class BouteilleLayout extends Component
     public function render(): View|Closure|string
     {
         return view('components.bouteilles.bouteille-component');
+
     }
 }
