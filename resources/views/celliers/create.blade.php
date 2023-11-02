@@ -26,7 +26,8 @@
         font-weight: bold;
     }
 
-    input {
+    input,
+    textarea {
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 0.5rem;
@@ -56,7 +57,7 @@
         </div>
         <div class="form_element">
             <label for="description">Description</label>
-            <input type="text" id="description" name="description" value="{{old('description')}}">
+            <textarea name="description" id="description" cols="30" rows="10">{{old('description')}}</textarea>
             @if($errors->has('description'))
             <div class="text_error">
                 {{$errors->first('description')}}
