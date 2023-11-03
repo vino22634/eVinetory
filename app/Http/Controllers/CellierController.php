@@ -55,20 +55,35 @@ class CellierController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Affichage du formulaire pour modifier un cellier
      */
     public function edit(Cellier $cellier)
     {
-        //
-    }
+        return view('celliers.edit', ['cellier' => $cellier]);
+      }
+
 
     /**
-     * Update the specified resource in storage.
+     * Enregistrer les modifications de la table de la bd
      */
     public function update(Request $request, Cellier $cellier)
     {
-        //
-    }
+
+        // Valider les données
+         $request->validate([
+        'name'             => 'required|min:2|max:50',
+        'description'      => 'nullable|min:2|max:500'
+                ]);
+
+        $cellier->update([
+          'name' => $request->name,
+          'description' => $request->description
+        ]);
+
+        // return redirect(route('celliers.show', ['cellier' => $cellier]));
+        return redirect("cellier-show/" . $cellier->id);
+      }
+
 
     /**
      * Remove the specified resource from storage.
