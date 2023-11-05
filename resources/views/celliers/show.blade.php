@@ -108,8 +108,8 @@
         @endif
         <!-- CTA -->
         <div class="cellier__detail-cta">
-            <a href="" class="">Modifier le cellier</a>
-            <a href="" class="">Supprimer le cellier</a>
+            <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
+            <a href="#" class="">Supprimer le cellier</a>
         </div>
     </div>
 
