@@ -47,6 +47,7 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -70,14 +71,18 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: var(--normal-font-size);
     letter-spacing: 1px;
+    margin: 0;
+    height: 100%;
 }
 
 .container {
-    min-height: 100vh;
     width: 100%;
     max-width: 600px;
+    height: 100vh;
     margin: 0 auto;
 }
+
+
 
 /* HEADINGS */
 h1 {
@@ -140,20 +145,20 @@ LOGIN
 
 .login_logo {
     background-color: var(--color-light-pink);
-    padding: 4rem 0;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
     border-bottom-left-radius: 100% 350px;
     border-bottom-right-radius: 100% 350px;
-    width: calc(100% + 100px) ;
-    margin-left: -50px;
+    width: 100%;
+    margin: auto;
     overflow: hidden;
 }
 
 .login_logo img {
-    width: 50%;
+    width: 30%;
 }
 
 .login_action {
@@ -181,7 +186,6 @@ LOGIN
 }
 
 .registered {
-    text-decoration: underline;
     color: var( --color-dark-red);
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -200,6 +204,17 @@ button:hover {
 
 @media screen and (max-width: 992px) {
     .container {
-      width: 60%;
+      width: 70%;
+    }
+    .login_logo h1{
+        font-size: 24px;  
+        font-weight: 1200;
+    }
+    .login_logo h2{
+        font-size: 16px;
+    }
+    .login_logo {
+        border-bottom-left-radius: 100% 150px;
+        border-bottom-right-radius: 100% 150px;
     }
   }
