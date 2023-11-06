@@ -73,10 +73,13 @@ class BouteilleController extends Controller
     // récupérer les bouteilles en ajax
     public function ajaxLoadMoreBouteilles(Request $request)
     {
+       // $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
+        //return 'hello';
+        //return view('partials.bouteilles', compact('bouteilles'))->render();
         if ($request->ajax()) {
             // TODO:  FH: OrderBY = ajouter une route pour l'ordre
             $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
-            return view('partials.bouteilles', compact('bouteilles'))->render();
+            return view('bouteilles.partials-bouteilleslist', compact('bouteilles'))->render();
         }
     }
 
