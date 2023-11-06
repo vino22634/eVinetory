@@ -37,6 +37,9 @@ Route::post('/bouteilles_toggleFavoris/{bouteilleId}', [BouteilleController::cla
 Route::post('/bouteilles_togglePurchase/{bouteilleId}', [BouteilleController::class,'togglePurchase'
 ])->name('bouteilles.togglePurchase')->middleware('auth');
 
+Route::get('/ajax/bouteilles', [BouteilleController::class, 'ajaxLoadMoreBouteilles'])->name('bouteilles.ajax');
+
+
 // CELLIERS
 Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
 Route::get('/cellier-create', [CellierController::class, 'create'])->name('cellier.create');

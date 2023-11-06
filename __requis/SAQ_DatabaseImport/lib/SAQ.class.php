@@ -126,14 +126,17 @@ class SAQ extends Modele
 		$info->url = $a_titre->getAttribute('href');
 		//		fh: update sur le code de Jonathan(récupérant a l'occasion l'image de la pastille plutot que l'image de la bouteille)
 		$xpath = new DOMXPath($noeud->ownerDocument);
-		$bottleImageQuery = "//a[contains(@class, 'product-item-photo')]/span/span/img";
-		$bottleImages = $xpath->query($bottleImageQuery);
-		if ($bottleImages->length > 0) {
-			$info->img = $bottleImages->item(0)->getAttribute('src');
-		} else {
-			$info->img = "Image de la bouteille non disponible";
-		}
-		var_dump('image:' . $info->img);
+		 // Modifiez la requête pour cibler la classe 'product-image-photo'
+		 $imageQuery = ".//img[contains(@class, 'product-image-photo')]";
+
+		 $images = $xpath->query($imageQuery, $noeud);
+
+		 if ($images->length > 0) {
+		 $info->img = $images->item(0)->getAttribute('src');
+		 } else {
+		 $info->img = "Image de la bouteille non disponible";
+		 }
+		 var_dump('image:' . $info->img);
 		//lien_fournisseur
 		$query = ".//a[contains(@class, 'product-item-link')]";
 		$productLinks = $xpath->query($query, $noeud);

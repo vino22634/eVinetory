@@ -1,4 +1,4 @@
-    <script src="{{ asset('js/shared/tri-component.js') }}"></script>
+    <script src="{{ asset('js/sheared/tri-component.js') }}"></script>
 
     
     <!-- Trier les bouteilles -->
