@@ -3,20 +3,9 @@
 @section('content')
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
+<link href="{{ asset('css/components/bouteilleCellierCard.css') }}" rel="stylesheet">
 
 <style>
-    section {
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .icons {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
     .cellier__detail {
         border-radius: 10px;
         padding: 1rem;
@@ -40,60 +29,8 @@
         margin-top: 1rem;
         margin-left: auto;
     }
-
-    .bouteilleCellier__card-container {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .bouteilleCellier__card {
-        padding: 1rem 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem;
-        height: 150px;
-    }
-
-    .bouteilleCellier__card div:nth-child(2) {
-        flex: 1;
-    }
-
-    .bouteille {
-        flex-basis: 80px;
-    }
-
-    .bouteilleCellier__card>img {
-        max-height: 100%;
-
-        display: inline;
-        text-align: center;
-        object-fit: contain;
-    }
-
-    .bouteilleCellier__card-details {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .bouteilleCellier__card-quantity {
-        display: flex;
-        gap: 1rem;
-        background-color: var(--color-light-pink);
-        border-radius: 10px;
-        padding: 0.5rem 1rem;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .bouteilleCellier__card-details div:nth-child(1),
-    .bouteilleCellier__card-quantity span:nth-child(2) {
-        font-weight: 600;
-    }
 </style>
+
 <section>
     <h2>Mes celliers</h2>
     <!-- Retour -->
