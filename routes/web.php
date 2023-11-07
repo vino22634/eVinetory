@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/bouteilles_togglePurchase/{bouteilleId}', [
         BouteilleController::class, 'togglePurchase'
     ])->name('bouteilles.togglePurchase');
+    Route::get('/ajax/bouteilles', [BouteilleController::class, 'ajaxLoadMoreBouteilles'])->name('bouteilles.ajax');
 
     // CELLIERS
     Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
@@ -46,9 +47,6 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
-
 
 
 
