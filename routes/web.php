@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +17,11 @@ use App\Http\Controllers\CellierController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect()->route('bouteilles.list');
+    } else {
+        return view('welcome');
+    }
 });
 
 
