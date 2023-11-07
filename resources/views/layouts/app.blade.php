@@ -32,11 +32,12 @@
 
         <!-- Nav Bas -->
         <nav id="navbar">
-            <a href="{{route('bouteilles.list')}}">
+            <a href="{{route('bouteilles.list')}}" class="{{ request()->is('bouteille*') ? 'active':'' }}">
                 <img src="/img/icons/menu_bottles.svg" alt="Icône bouteilles">
+                <!-- <x-svg.bottlesIcon /> -->
                 <p>Bouteilles</p>
             </a>
-            <a href="{{route('celliers.index')}}">
+            <a href="{{route('celliers.index')}}" class="{{ request()->is('cellier*') ? 'active':'' }}">
                 <img src="/img/icons/menu_cellar.svg" alt="Icône celliers">
                 <p>Celliers</p>
             </a>

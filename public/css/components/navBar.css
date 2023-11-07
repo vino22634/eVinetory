@@ -31,10 +31,16 @@ nav a {
     gap: var(--spacing-small);
 }
 
-nav a img {
-    width: 35px;
-}
-
 nav a:hover, nav a.active {
     color: var(--color-dark-red);
+}
+
+.svg, nav a img {
+    fill: var(--color-text70);
+    width: 35px;
+    display: inline-block;
+}
+
+.active svg {
+    fill: var(--color-dark-red);
 }
