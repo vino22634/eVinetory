@@ -17,7 +17,7 @@
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container>@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])</div>
     
-    <div id="loading" style="display: none;">Chargement...</div>
+    <div id="loading" style="display: none;">Chargement ...</div>
 </div> 
 
 
