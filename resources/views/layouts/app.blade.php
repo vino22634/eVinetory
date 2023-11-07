@@ -53,6 +53,7 @@
                 <p>Profil</p>
             </a>
         </nav>
+        <footer></footer>
     </div>
 </body>
 

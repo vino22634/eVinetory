@@ -80,6 +80,12 @@ body {
     margin-bottom: 2rem;
 }
 
+footer {
+    padding: var(--spacing-xlarge) 0;
+    text-align: center;
+    color: var(--color-text70);
+    font-size: var(--small-font-size);
+}
 
 /* HEADINGS */
 h1 {
