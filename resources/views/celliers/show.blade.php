@@ -75,6 +75,7 @@
         <!-- CTA -->
         <div class="cellier__detail-cta">
             <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
+            <a href="#" id="modaleSupp" class="">Supprimer le cellier</a>
         </div>
     </div>
 
@@ -150,7 +151,6 @@
 
 </section>
 
-@endsection
 
 <script>
     let myModal = document.getElementById('modaleSupp');
@@ -170,3 +170,4 @@
     });
  
 </script>
+@endsection
