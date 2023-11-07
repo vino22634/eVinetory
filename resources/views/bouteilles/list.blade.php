@@ -8,7 +8,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
     <div>
-        <h3>Liste des Bouteilles</h3>
+        <h2>Liste des Bouteilles</h2>
         <x-tri-component />
 
     </div> 
