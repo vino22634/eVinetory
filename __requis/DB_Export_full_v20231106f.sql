@@ -5502,29 +5502,25 @@ INSERT INTO `bouteille` (`id`, `nom`, `image`, `code_saq`, `pays`, `description`
 CREATE TABLE `bouteille_cellier` (
   `id` int(11) NOT NULL,
   `id_bouteille` int(11) DEFAULT NULL,
-  `date_achat` date DEFAULT NULL,
-  `notes` varchar(200) DEFAULT NULL,
-  `prix` float DEFAULT NULL,
   `quantite` int(11) DEFAULT NULL,
   `id_cellier` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `quantite_minimum` int(11) DEFAULT NULL
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `bouteille_cellier`
 --
 
-INSERT INTO `bouteille_cellier` (`id`, `id_bouteille`, `date_achat`, `notes`, `prix`, `quantite`, `id_cellier`, `created_at`, `updated_at`, `quantite_minimum`) VALUES
-(19, 10922, '0000-00-00', '', 0, 3, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:02', NULL),
-(20, 10929, '0000-00-00', '', 0, 3, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:02', NULL),
-(21, 10926, '0000-00-00', '', 0, 1, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:05', NULL),
-(22, 10925, '2019-01-16', '2019-01-16', 22, 5, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:22', NULL),
-(23, 10946, '0000-00-00', '', 0, 1, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:09', NULL),
-(24, 10976, '0000-00-00', '', 0, 2, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:25', NULL),
-(25, 10965, '0000-00-00', '', 0, 10, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:13', NULL),
-(26, 10956, '2019-01-26', '2019-01-26', 23.52, 1, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:15', NULL);
+INSERT INTO `bouteille_cellier` (`id`, `id_bouteille`, `quantite`, `id_cellier`, `created_at`, `updated_at`) VALUES
+(19, 10922, 3, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:02'),
+(20, 10929, 3, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:02'),
+(21, 10926, 1, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:05'),
+(22, 10925, 5, 1, '2023-10-27 01:54:51', '2023-11-02 11:58:22'),
+(23, 10946, 1, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:09'),
+(24, 10976, 2, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:25'),
+(25, 10965, 10, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:13'),
+(26, 10956, 1, 2, '2023-10-27 01:54:51', '2023-11-02 11:58:15');
 
 -- --------------------------------------------------------
 
