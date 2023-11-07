@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +17,11 @@ use App\Http\Controllers\CellierController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect()->route('bouteilles.list');
+    } else {
+        return view('welcome');
+    }
 });
 
 
@@ -33,6 +36,8 @@ Route::middleware('auth')->group(function () {
         BouteilleController::class, 'togglePurchase'
     ])->name('bouteilles.togglePurchase');
     Route::get('/ajax/bouteilles', [BouteilleController::class, 'ajaxLoadMoreBouteilles'])->name('bouteilles.ajax');
+
+    Route::get('/search/bouteilles', [BouteilleController::class, 'search'])->name('bouteilles.search');
 
     // CELLIERS
     Route::get('/celliers', [CellierController::class, 'index'])->name('celliers.index');
