@@ -63,26 +63,28 @@ class CellierController extends Controller
       }
 
 
-    /**
+
+      /**
      * Enregistrer les modifications de la table de la bd
      */
     public function update(Request $request, Cellier $cellier)
     {
-
+ 
         // Valider les données
          $request->validate([
         'name'             => 'required|min:2|max:50',
         'description'      => 'nullable|min:2|max:500'
                 ]);
-
+ 
         $cellier->update([
           'name' => $request->name,
           'description' => $request->description
         ]);
-
+ 
         // return redirect(route('celliers.show', ['cellier' => $cellier]));
-        return redirect("cellier-show/" . $cellier->id);
+        return redirect("celliers/" . $cellier->id);
       }
+
 
 
     /**
@@ -90,6 +92,9 @@ class CellierController extends Controller
      */
     public function destroy(Cellier $cellier)
     {
-        //
+        $cellier->delete();
+        return redirect('/celliers')->withSuccess("Votre cellier a été supprimé avec succès!");
     }
 }
+
+
