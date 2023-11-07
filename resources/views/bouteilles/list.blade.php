@@ -39,7 +39,9 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
+
         let lastPage = {{$bouteilles->lastPage()}};
+
         let currentPage = 1;
 
         function scrollLazyLoading() {
