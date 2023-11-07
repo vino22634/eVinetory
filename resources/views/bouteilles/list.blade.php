@@ -20,11 +20,10 @@
     <div id="loading" style="display: none;">Chargement ...</div>
 </div> 
 
-
 <script>
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
     favoriteAndPurchaseIcons.forEach(icon => {
-        icon.addEventListener('click', function () {
+        icon.addEventListener('click', function() {
             console.log('click')
             const bouteilleId = this.closest('.bouteillecontainer').getAttribute(
                 'data-bouteille-id');
@@ -42,8 +41,8 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         let lastPage = {{$bouteilles->lastPage()}};
         let currentPage = 1;
-        window.onscroll = function () {
-            //console.log('scroll')
+
+        function scrollLazyLoading() {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 // stop a la dernière page
                 if (currentPage < lastPage) {
@@ -53,6 +52,8 @@
                 }
             }
         }
+
+        window.addEventListener('scroll', scrollLazyLoading);
 
         function loadMoreBouteilles(page) {
             console.log("loadMoreBouteilles", page, "called")
@@ -64,14 +65,16 @@
                 'X-Requested-With': 'XMLHttpRequest' // optionnel mais selon stackoverflow améliore la réactivité(car spécifie  au serveur que c'est une requête ajax)
                 }
              })
+
                 .then(response => response.text())
                 .then(html => {
                     isLoading = false;
                     console.log("loadMoreBouteilles", page, "received")
 
-                    document.getElementById('loading').style.display ='none'; 
+                    document.getElementById('loading').style.display = 'none';
                     if (html.trim().length == 0) {
-                        window.onscroll = null; // Plus rien à charger, on désactive le scroll infini
+                        //  Plus rien à charger, on désactive le scroll infini
+                        window.removeEventListener('scroll', scrollLazyLoading)
                     } else {
                         document.getElementById('bouteilles-container').insertAdjacentHTML('beforeend',
                             html); // Ajouter le contenu à la page
@@ -154,3 +157,4 @@
 </script>
 
 @endsection
+
