@@ -10,12 +10,14 @@
     <div>
         <h2>Liste des Bouteilles</h2>
         <x-tri-component />
-
+<div>
+    <input type="text" id="searchField" placeholder="Recherche..." onkeyup="searchBouteilles()">
+</div>
     </div> 
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container>@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])</div>
     
-    <div id="loading" style="display: none;">Chargement...</div>
+    <div id="loading" style="display: none;">Chargement ...</div>
 </div> 
 
 
@@ -38,7 +40,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
-        let lastPage = {{ $bouteilles->lastPage() }};
+        let lastPage = {{$bouteilles->lastPage()}};
         let currentPage = 1;
         window.onscroll = function () {
             //console.log('scroll')
@@ -52,13 +54,12 @@
             }
         }
 
-
-
         function loadMoreBouteilles(page) {
             console.log("loadMoreBouteilles", page, "called")
-           
+            const query = document.getElementById('searchField').value;
+            const sort = document.getElementById('tri-component').value; 
             document.getElementById('loading').style.display = 'block';
-             fetch(`/ajax/bouteilles?page=${page}`, {
+             fetch(`/ajax/bouteilles?page=${page}&query=${query}&sort=${sort}`, {
                 headers: {
                 'X-Requested-With': 'XMLHttpRequest' // optionnel mais selon stackoverflow améliore la réactivité(car spécifie  au serveur que c'est une requête ajax)
                 }
@@ -82,7 +83,6 @@
                     document.getElementById('loading').style.display = 'none';
                 });
         }
-
 
     });
 
@@ -114,10 +114,43 @@
             });
     }
 
-    
+    const sort = document.getElementById('tri-component');
+    sort.addEventListener('change', function () {
+        searchBouteilles();
+    });
+
+    let searchTimeoutToken;
+
+    function searchBouteilles() {
+        const query = document.getElementById('searchField').value;
+        const sort = document.getElementById('tri-component').value; // Get the selected sorting value
+
+        // j'efface mon timer(UN SEUL TIMER A LA FOIS)
+        if (searchTimeoutToken) {
+            clearTimeout(searchTimeoutToken);
+        }
+
+        searchTimeoutToken = setTimeout(() => {
+            document.getElementById('loading').style.display = 'block';
+            // Include the sort parameter in the fetch URL
+            fetch(`/search/bouteilles?query=${query}&sort=${sort}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',  //identifie la requete comme ajax
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('loading').style.display ='none'; 
+                document.getElementById('bouteilles-container').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                document.getElementById('loading').style.display = 'none';
+            });
+        }, 500); // délais pour canceller
+    }
 
 </script>
-
-
 
 @endsection

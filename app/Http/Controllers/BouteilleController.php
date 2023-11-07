@@ -18,11 +18,7 @@ class BouteilleController extends Controller
 
     public function index()
     {
-        $test = "moi";
-        //$bouteilles = Bouteille::with('userPreferences')->get();
         $bouteilles = Bouteille::with('userPreferences')->paginate(20);
-        //$bouteilles = Bouteille::with('userPreferences')->get();
-
         return view('bouteilles.list', ['bouteilles' => $bouteilles]);
     }
 
@@ -73,15 +69,37 @@ class BouteilleController extends Controller
     // récupérer les bouteilles en ajax
     public function ajaxLoadMoreBouteilles(Request $request)
     {
-       // $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
-        //return 'hello';
-        //return view('partials.bouteilles', compact('bouteilles'))->render();
+    // Laravel connait la page grace au parametre 'page' de la requete
         if ($request->ajax()) {
-            // TODO:  FH: OrderBY = ajouter une route pour l'ordre
-            $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
+            $bouteilles = $this->getBouteillesQuery($request)->paginate(20);
             return view('bouteilles.partials-bouteilleslist', compact('bouteilles'))->render();
         }
     }
 
 
+    public function search(Request $request)
+    {
+        $bouteilles = $this->getBouteillesQuery($request)->paginate(20);
+        return view('bouteilles.partials-bouteilleslist', compact('bouteilles'));
+    }
+
+
+    protected function getBouteillesQuery(Request $request)
+    {
+        $query = $request->input('query');
+        $ordreFull = $request->input('sort');
+        //split mon item pour récupérer le champ et le sens
+        $arrayorder = explode("__", $ordreFull);
+        $ordreChamp = $arrayorder[0];
+        $ordreSens = $arrayorder[1];
+
+        $bouteillesQuery = Bouteille::query();
+
+        if ($query) {
+            $bouteillesQuery->where('nom', 'LIKE', '%' . $query . '%');
+        }
+
+        $bouteillesQuery->orderBy($ordreChamp, $ordreSens);
+        return $bouteillesQuery;
+    }
 }
