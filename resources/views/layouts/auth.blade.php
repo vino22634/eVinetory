@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="container login">
+    <div class="container">
 
         <!-- Logo haut -->
         <div class="login_logo">
