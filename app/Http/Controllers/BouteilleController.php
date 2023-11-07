@@ -19,7 +19,10 @@ class BouteilleController extends Controller
     public function index()
     {
         $test = "moi";
-        $bouteilles = Bouteille::with('userPreferences')->get();
+        //$bouteilles = Bouteille::with('userPreferences')->get();
+        $bouteilles = Bouteille::with('userPreferences')->paginate(20);
+        //$bouteilles = Bouteille::with('userPreferences')->get();
+
         return view('bouteilles.list', ['bouteilles' => $bouteilles]);
     }
 
@@ -66,4 +69,19 @@ class BouteilleController extends Controller
             return response()->json(['message' => "Bouteille ajoutée de liste d'achat"]);
         }
     }
+
+    // récupérer les bouteilles en ajax
+    public function ajaxLoadMoreBouteilles(Request $request)
+    {
+       // $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
+        //return 'hello';
+        //return view('partials.bouteilles', compact('bouteilles'))->render();
+        if ($request->ajax()) {
+            // TODO:  FH: OrderBY = ajouter une route pour l'ordre
+            $bouteilles = Bouteille::orderBy('created_at', 'desc')->paginate(20);
+            return view('bouteilles.partials-bouteilleslist', compact('bouteilles'))->render();
+        }
+    }
+
+
 }
