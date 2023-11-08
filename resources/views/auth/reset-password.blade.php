@@ -9,32 +9,32 @@
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
         <!-- Email Address -->
-        <div class="input-label mt-4">
+        <div class="input-label">
             <x-input-label for="email" :value="__('Courriel')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-text-input id="email" class="text_input" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" />
         </div>
 
         <!-- Password -->
-        <div class="input-label mt-4">
+        <div class="input-label">
             <x-input-label for="password" :value="__('Mot de passe')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-text-input id="password" class="text_input" type="password" name="password" required autocomplete="new-password" />
+            <x-input-error :messages="$errors->get('password')" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="input-label mt-4">
+        <div class="input-label">
             <x-input-label for="password_confirmation" :value="__('Retapez votre mot de passe')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+            <x-text-input id="password_confirmation" class="text_input"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password_confirmation')" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
+        <div class="button_form">
+            <x-primary-button class="button info">
                 {{ __('Confirmez votre mot de passe') }}
             </x-primary-button>
         </div>
