@@ -144,25 +144,34 @@ button, .button {
     font-size: var(--h3-font-size);
     text-align: center;
     color: var(--color-text70);
+    background-color: transparent;
 }
 
 .info {
-    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-blue);
 }
 
-.warning {
-    background-color: var(--color-yellow);
-}
-
-.danger {
-    background-color: var(--color-light-red);
-}
-
-button:hover, .button:hover {
-    background-color: transparent;
+.info:hover {
     border-color: #0074D9;
     color: #0074D9;
 }
+
+.warning {
+    border-color: var(--color-yellow);
+    color: var(--color-yellow);
+}
+
+.danger {
+    border-color: var(--color-light-red);
+    color: var(--color-light-red);
+}
+
+.danger:hover {
+    background-color: var(--color-light-red);
+    color: var(--color-white);
+}
+
   
 /* IMAGE */
 img {
