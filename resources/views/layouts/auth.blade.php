@@ -11,14 +11,15 @@
 
     <!-- Styles -->
     <link href="/css/auth.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <div class="container">
+    <div class="container_form">
 
         <!-- Logo haut -->
-        <div class="login_logo">
+        <div class="login_logo_form">
             <img src="/img/logo.png" alt="Logo eVinetory">
             <h1>eVinetory</h1>
             <h2>Collectionnez les saveurs</h2>
