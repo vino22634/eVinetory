@@ -7,41 +7,42 @@
         @csrf
 
         <!-- Email Address -->
-        <div class="input-label mt-4">
+        <div class="input-label ">
             <x-input-label for="email" :value="__('Courriel')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-text-input id="email" class="text_input" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')"  />
         </div>
 
         <!-- Password -->
-        <div class="input-label mt-4">
+        <div class="input-label ">
             <x-input-label for="password" :value="__('Mot de passe')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" 
                             type="password"
                             name="password"
+                            class="text_input"
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <!-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> -->
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="button_form">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                <a  href="{{ route('password.request') }}">
+                    {{ __(' Mot de passe oublié?') }}
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
+            <x-primary-button class="button info">
+                {{ __('Se connecter') }}
             </x-primary-button>
         </div>
     </form>
