@@ -143,23 +143,20 @@ button, .button {
     font-weight: 800;
     font-size: var(--h3-font-size);
     text-align: center;
+    color: var(--color-text70);
 }
 
 .info {
     background-color: var(--color-blue);
-    color: var(--color-text70);
 }
 
 .warning {
     background-color: var(--color-yellow);
-    color: var(--color-text70);
 }
 
 .danger {
-    background-color: var(--color-red);
-    color: var(--color-text70);
+    background-color: var(--color-light-red);
 }
-
 
 button:hover, .button:hover {
     background-color: transparent;
@@ -181,6 +178,46 @@ img {
     height: 1.5rem;
 }
 
+/* STRUCTURE CARDS CONTAINER */
+.cards-container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container > * {
+    padding: var(--spacing-large) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: inherit; 
+}
+
+.cards-container > * + * {
+    border-top: 1px solid black;
+}
+
+/* Vue Desktop */
+@media (min-width: 768px) {
+    .cards-container {
+        gap: var(--spacing-large);
+    }
+
+    .cards-container > * {
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+    }
+
+    .cards-container > * + * {
+        border-top: none;
+    }
+
+    .cards-container > *:hover {
+        -webkit-transform: scale(1.05, 1.05);
+        transform: scale(1.05, 1.05);
+    }
+}
 
 /* LOGIN */
 .login {

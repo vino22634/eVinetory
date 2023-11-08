@@ -3,7 +3,7 @@
 @section('content')
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
-<link href="{{ asset('css/components/bouteilleCellierCard.css') }}" rel="stylesheet">
+<link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 
 <style>
     .cellier__detail {
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Ajouter une bouteille au cellier -->
-    <a href="{{route('bouteilles.list')}}" class="button">Ajouter une bouteille</a>
+    <a href="{{route('bouteilles.list')}}" class="button info">Ajouter une bouteille</a>
 
     @if($cellier->bouteillesCellier->count() > 0)
     <!-- Trier les bouteilles -->
@@ -103,37 +103,36 @@
     @endif
 
     <!-- Détail bouteilles -->
-    <ul class="bouteilleCellier__card-container">
+    <div class="cards-container">
         @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-        <li class="bouteilleCellier__card">
-
+        <div class="cardBouteilleCellier">
             <!-- Image -->
-            <!-- if the img source doesn't contain the word 'http', then load this image : /img/icons/bottle.png -->
+            <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
             @if(!Str::contains($detailBouteilleCellier->image, 'http') || Str::contains($detailBouteilleCellier->image, 'pastille'))
-            <img src="/img/icons/bottle.png" alt="{{ $detailBouteilleCellier->nom }}" class="bouteille">
+            <img src="/img/icons/bottle.png" alt="{{ $detailBouteilleCellier->nom }}">
             @else
-            <img src="{{ $detailBouteilleCellier->image }}" alt="{{ $detailBouteilleCellier->nom }}" class="bouteille">
+            <img src="{{ $detailBouteilleCellier->image }}" alt="{{ $detailBouteilleCellier->nom }}">
             @endif
 
             <!-- Détails -->
-            <div class="bouteilleCellier__card-details">
+            <div class="cardBouteilleCellier-details">
                 <div id="bouteille-nom">{{ $detailBouteilleCellier->nom }}</div>
                 <div>{{ Str::before($detailBouteilleCellier->description, 'Code') }}</div>
                 <div id="bouteille-prix">{{ $detailBouteilleCellier->prix_saq }} $</div>
             </div>
 
             <!-- Quantité -->
-            <img src="/img/icons/delete.svg" alt="supprimer" class="icons">
-            <div class="bouteilleCellier__card-quantity">
+            <img src="/img/icons/delete.svg" alt="supprimer" class="icons" style="display: none;">
+            <div class="cardBouteilleCellier-quantity" class="icons" style="display: none;">
                 <span>-</span>
                 <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
                 <span>+</span>
             </div>
-        </li>
+        </div>
         @empty
         <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
         @endforelse
-    </ul>
+</div>
 
 </section>
 

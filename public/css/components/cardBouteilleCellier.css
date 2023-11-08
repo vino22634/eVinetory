@@ -1,0 +1,40 @@
+.cardBouteilleCellier {
+    gap: 0.5rem;
+    height: 150px;
+}
+
+.cardBouteilleCellier div:nth-child(2) {
+    flex: 1;
+}
+
+.cardBouteilleCellier img {
+    flex-basis: 80px;
+}
+
+.cardBouteilleCellier img {
+    max-height: 100%;
+    display: inline;
+    text-align: center;
+    object-fit: contain;
+}
+
+.cardBouteilleCellier-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cardBouteilleCellier-quantity {
+    display: flex;
+    gap: 1rem;
+    background-color: var(--color-light-pink);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardBouteilleCellier-details div:nth-child(1),
+.cardBouteilleCellier-quantity span:nth-child(2) {
+    font-weight: 600;
+}
