@@ -1,6 +1,6 @@
 /* NAVIGATION */
 nav {
-    width: max-content;
+    width: clamp(300px, calc(100vw - 2rem), 600px);
     display: block;
     padding: 0.2rem 1rem;
     z-index: 2;
@@ -18,9 +18,9 @@ nav {
 }
   
 nav a {
+    flex: 1;
     background: transparent;
     padding: 0.5rem 1rem;
-    border-radius: 50%;
     display: flex;
     color: var(--color-text70);
     font-size: 1.1rem;
@@ -35,12 +35,23 @@ nav a:hover, nav a.active {
     color: var(--color-dark-red);
 }
 
-.svg, nav a img {
-    fill: var(--color-text70);
-    width: 35px;
+svg {
+    height: 38px;
     display: inline-block;
 }
 
-.active svg {
+svg .fill {
+    fill: var(--color-text70);
+}
+
+svg .stroke {
+    stroke: var(--color-text70);
+}
+
+.active .fill {
     fill: var(--color-dark-red);
+}
+
+.active .stroke {
+    stroke: var(--color-text70);
 }
