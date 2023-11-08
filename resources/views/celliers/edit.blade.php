@@ -39,7 +39,7 @@
 </style>
 <section>
     <!-- Retour -->
-    <a href="{{route('celliers.index')}}" class="">← Retour</a>
+    <a href="{{route('cellier.show', $cellier->id)}})" class="">← Retour</a>
 
     <h2>Modifier le cellier « {{$cellier->name}} »</h2>
 

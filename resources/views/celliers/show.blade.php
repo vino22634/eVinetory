@@ -36,26 +36,34 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 100;
+        z-index: 2;
         width: 100%;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
  
     .modale-content {
-        background-color: white;
-        padding: 30px;
+        margin: auto;
+        margin-top: 30vh;
+        background-color: var(--color-white);
+        padding: 2rem;
         border-radius: 10px;
-        width: clamp(300px, 40%, 600px);
+        width: clamp(400px, 40%, 600px);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
         text-align: center;
-        }
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+    }
+
+    .modaleCTA {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
 </style>
 
 <section>
@@ -75,31 +83,9 @@
         <!-- CTA -->
         <div class="cellier__detail-cta">
             <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
-            <a href="#" id="modaleSupp" class="">Supprimer le cellier</a>
+            <a href="#" id="modaleTrigger" class="">Supprimer le cellier</a>
         </div>
     </div>
-
-    <!-- Modal confirmation suppression-->
-
-<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
-<div class="modale-content">
-
-        <h2 class="">Attention</h2>
-        <button type="button" class="closeButton" aria-label="Close"></button>
-    </div>
-    <div class="">Voulez-vous vraiment supprimer ce cellier ?</div>
-    <div class="modal-footer">
-        <button class="closeButton">Non</button>
-        <!-- From -->
-        <form method="post">
-            @method('DELETE')
-            @csrf
-            <input type="submit" value="supprimer" class="button">
-        </form>
-    </div>
-</div>
-
-
 
     <!-- Ajouter une bouteille au cellier -->
     <a href="{{route('bouteilles.list')}}" class="button">Ajouter une bouteille</a>
@@ -151,23 +137,41 @@
 
 </section>
 
+<!-- Modal confirmation suppression-->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
+    <div class="modale-content">
+        <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
+        <div class="modaleCTA">
+            <button class="closeButton">Non</button>
+            <!-- Form -->
+            <form method="post">
+                @method('DELETE')
+                @csrf
+                <input type="submit" value="Supprimer" class="button">
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
     let myModal = document.getElementById('modaleSupp');
     let triggerBttn = document.getElementById("modaleTrigger");
-    let closeButtons = document.querySelectorAll('.closeButton');
+    let closeButton = document.querySelector('.closeButton');
     
     // afficher modale quand on clique sur le lien modaleTrigger
     triggerBttn.addEventListener("click", function() {
         myModal.style.display = "block";
     });
  
-    // fermer la modale quand on clique sur le bouton close ou la croix
-    closeButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            myModal.style.display = "none";
-        });
+    // fermer la modale quand on clique sur Non
+    closeButton.addEventListener("click", function() {
+        myModal.style.display = "none";
     });
- 
+
+    // au chargement de la page la modale est à display none
+    window.addEventListener("load", function() {
+        myModal.style.display = "none";
+    });
 </script>
+
 @endsection

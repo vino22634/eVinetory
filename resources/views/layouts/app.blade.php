@@ -26,11 +26,6 @@
             <h1>eVinetory</h1>
         </header>
 
-        <!-- Page Content -->
-        <main>
-            @yield('content')
-        </main>
-
         <!-- Nav Bas -->
         <nav id="navbar">
             <a href="{{route('bouteilles.list')}}" class="{{ request()->is('bouteille*') ? 'active':'' }}">
@@ -55,6 +50,12 @@
                 <p>Profil</p>
             </a>
         </nav>
+
+        <!-- Page Content -->
+        <main>
+            @yield('content')
+        </main>
+
         <footer></footer>
     </div>
 </body>

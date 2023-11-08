@@ -1,5 +1,6 @@
 var prevScrollpos = window.scrollY;
-window.onscroll = function () {
+
+function scrollNavBar() {
     var currentScrollPos = window.scrollY;
     if (prevScrollpos > currentScrollPos) {
         // menu réapparait lorsqu'on scroll vers le haut
@@ -13,3 +14,5 @@ window.onscroll = function () {
     }
     prevScrollpos = currentScrollPos;
 }
+
+window.addEventListener('scroll', scrollNavBar);
