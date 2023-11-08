@@ -3,7 +3,9 @@
 @section('content')
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
+<script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
     .cellier__detail {
@@ -28,41 +30,6 @@
     .cellier__tri {
         margin-top: 1rem;
         margin-left: auto;
-    }
-
-    /* Pour le modal du supprimer */
-    .modale {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
- 
-    .modale-content {
-        margin: auto;
-        margin-top: 30vh;
-        background-color: var(--color-white);
-        padding: 2rem;
-        border-radius: 10px;
-        width: clamp(400px, 40%, 600px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        vertical-align: middle;
-    }
-
-    .modaleCTA {
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
     }
 </style>
 
@@ -141,36 +108,15 @@
     <div class="modale-content">
         <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
         <div class="modaleCTA">
-            <button class="closeButton">Non</button>
+            <button class="closeButton info">Non</button>
             <!-- Form -->
             <form method="post">
                 @method('DELETE')
                 @csrf
-                <input type="submit" value="Supprimer" class="button">
+                <input type="submit" value="Supprimer" class="button danger">
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    let myModal = document.getElementById('modaleSupp');
-    let triggerBttn = document.getElementById("modaleTrigger");
-    let closeButton = document.querySelector('.closeButton');
-    
-    // afficher modale quand on clique sur le lien modaleTrigger
-    triggerBttn.addEventListener("click", function() {
-        myModal.style.display = "block";
-    });
- 
-    // fermer la modale quand on clique sur Non
-    closeButton.addEventListener("click", function() {
-        myModal.style.display = "none";
-    });
-
-    // au chargement de la page la modale est à display none
-    window.addEventListener("load", function() {
-        myModal.style.display = "none";
-    });
-</script>
 
 @endsection
