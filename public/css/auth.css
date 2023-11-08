@@ -66,8 +66,8 @@ img {
 }
 
 .text_input {
-     font-size: 18px;
-     width: 70%;
+    font-size: 18px;
+    width: 80%;
 }
 
 .button_form {
@@ -80,20 +80,9 @@ img {
 .button_form a {
    display: flex;
 }
-/*
-button {
-    margin-top: 1rem;
-    background-color: #0074D9;
-}
-
-button:hover {
-    background-color: var(--color-white);
-    color: #0074D9;
-    border: 1px solid #0074D9;
-}*/
 
 @media screen and (max-width: 992px) {
-    .container {
+    .container_form {
       width: 70%;
     }
     .login_logo h1{
