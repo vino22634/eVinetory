@@ -189,7 +189,6 @@ img {
 
 /* STRUCTURE CARDS CONTAINER */
 .cards-container {
-    list-style: none;
     display: flex;
     flex-direction: column;
 }
@@ -203,7 +202,7 @@ img {
 }
 
 .cards-container > * + * {
-    border-top: 1px solid black;
+    border-top: 1px solid var(--color-grey);
 }
 
 /* Vue Desktop */
