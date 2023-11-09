@@ -94,7 +94,7 @@ section {
 }
 
 footer {
-    padding: var(--spacing-xlarge) 0;
+    padding: var(--spacing-xxlarge) 0;
     text-align: center;
     color: var(--color-text70);
     font-size: var(--small-font-size);
@@ -127,34 +127,6 @@ a {
   
 .link:hover {
     text-decoration: underline;
-}
-
-/* FORM */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form_element {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-label {
-    font-weight: bold;
-}
-
-input,
-textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-}
-
-.text_error {
-    color: var(--color-light-red);
 }
 
 /* BUTTONS */

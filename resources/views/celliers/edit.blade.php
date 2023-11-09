@@ -2,6 +2,9 @@
 @section('title', 'Créer un cellier')
 @section('content')
 
+<!-- Styles -->
+<link href="/css/components/form.css" rel="stylesheet">
+
 <section>
     <!-- Retour -->
     <a href="{{route('cellier.show', $cellier->id)}})" class="">← Retour</a>
