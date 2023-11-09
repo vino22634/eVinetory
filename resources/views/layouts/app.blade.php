@@ -14,7 +14,7 @@
     <link href="/css/components/navBar.css" rel="stylesheet">
 
     <!-- Script JS -->
-    <script src="/js/navBar.js" defer></script>
+    <!-- <script src="/js/navBar.js" defer></script> -->
 
 </head>
 
