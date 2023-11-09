@@ -28,7 +28,13 @@ class Bouteille extends Model
 
     public function userPreferences()
     {
-    return $this->hasOne(BouteillePreferences::class)->where('user_id', auth()->id());
+        return $this->hasOne(BouteillePreferences::class)->where('user_id', auth()->id());
     }
+
+     // récupérer les infos pastille pour une bouteille
+     public function pastilleType()
+     {
+        return $this->belongsTo(PastilleType::class, 'pastille_id');
+     }
 
 }

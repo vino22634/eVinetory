@@ -5,14 +5,33 @@
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<style>
+        .bouteilleSearch__tri {
+            display: flex;
+            margin-top: 1rem;
+            justify-content: space-between; 
+            align-items: center;       
+        }
+        .bouteilleSearch__tri input {
+            border-radius: 10px;
+            border: 1px solid gray;
+            flex:1;
+        }
+</style>
 <section>
-    <h2>Liste des Bouteilles</h2>
+    
 
-    <div>
-        <x-tri-component />
-        <input type="text" id="searchField" placeholder="Recherche..." onkeyup="searchBouteilles()">
-    <div>
+    <div class='bouteilleSearch__tri'>
+       <div class='cards-container'>
+            <input class='cards-container' type="search" id="searchField"
+               placeholder="Recherche...">
+        </div>
+        
+         <x-tri-component />
+    </div>
+    <h2 id="bouteilles_total">Liste des bouteilles </h2>
 
+    
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container class="cards-container">@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])
     </div>
@@ -26,7 +45,7 @@
     favoriteAndPurchaseIcons.forEach(icon => {
         icon.addEventListener('click', function() {
             console.log('click')
-            const bouteilleId = this.closest('.bouteillecontainer').getAttribute(
+            const bouteilleId = this.closest('.cardBouteilleSearch').getAttribute(
                 'data-bouteille-id');
 
             const action = this.getAttribute('data-action-param');
@@ -44,9 +63,12 @@
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;
+        let isLoading = false;
+
 
         function scrollLazyLoading() {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && !isLoading) {
+                console.log("scrollLazyLoading called");
                 // stop a la dernière page
                 if (currentPage < lastPage) {
                     currentPage++;
@@ -57,6 +79,12 @@
         }
 
         window.addEventListener('scroll', scrollLazyLoading);
+
+    let filterInput = document.getElementById('searchField');
+    filterInput.addEventListener('keyup', searchBouteilles);
+
+
+  
 
         function loadMoreBouteilles(page) {
             console.log("loadMoreBouteilles", page, "called")
@@ -81,6 +109,9 @@
                     } else {
                         document.getElementById('bouteilles-container').insertAdjacentHTML('beforeend',
                             html); // Ajouter le contenu à la page
+                           
+                        //TOdO FH:  get also number of results updated
+
                     }
                 })
                 .catch(error => {
@@ -149,6 +180,7 @@
             .then(html => {
                 document.getElementById('loading').style.display ='none'; 
                 document.getElementById('bouteilles-container').innerHTML = html;
+                //document.getElementById('bouteilles_total').innerHTML = " résultats";
             })
             .catch(error => {
                 console.error('Erreur:', error);

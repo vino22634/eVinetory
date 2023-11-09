@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bouteille;
 use App\Models\BouteillePreferences;
+use App\Models\PastilleType;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,7 +20,8 @@ class BouteilleController extends Controller
 
     public function index()
     {
-        $bouteilles = Bouteille::with('userPreferences')->paginate(20);
+        $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->paginate(20);
+        //return $bouteilles;
         return view('bouteilles.list', ['bouteilles' => $bouteilles]);
     }
 

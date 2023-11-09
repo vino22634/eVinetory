@@ -33,6 +33,13 @@
     max-width: 26px;
 }
 
+.pastilleIcon {
+    display: block;
+    max-width: 16px;
+    margin-right: 1rem;
+
+}
+
 .bouteilleIcons-container {
     display: flex;
     flex-direction: row;

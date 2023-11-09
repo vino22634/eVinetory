@@ -5,8 +5,22 @@
     </div>
     <div class='bouteilledescriptions_container' width="100%">
         <div class="titre">{{ $bouteille->nom }}</div>
-        <div class="description">{{ $bouteille->description }}</div>
+        <div class="bouteilleIcons-container">
+            
+            @if ($bouteille->pastilleType )
+                <img class="pastilleIcon " src="{{ $bouteille->pastilleType->imageURL }}"
+                    alt="Pastille" 
+                    title="{{ $bouteille->pastilleType->description }}"
+                    >
+            @endif
+                
+            <div class="description">
+                {{ ($bouteille->type ==1) ? 'Vin rouge' : 'Vin blanc' }}, {{ $bouteille->format }},
+                {{ $bouteille->pays }}
+            </div>
 
+        </div>
+ 
         <div class="bouteillefooter">
 
             <div class="prix">{{ $bouteille->prix_saq }} $</div>
@@ -20,9 +34,10 @@
                 <img class="bouteilleIcon toggle-icon"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
                     alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
-                <img class="bouteilleIcon toggle-icon"
-                    src="{{ true ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                    alt="cellier"  data-action="toggle" data-action-param='cellier'>
+                    <!-- FH: Removed for current sprint -->
+                <!-- <img class="bouteilleIcon toggle-icon"
+                    src="{{ false ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
+                    alt="cellier"  data-action="toggle" data-action-param='cellier'> -->
             </div>
         </div>
 
