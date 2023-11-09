@@ -94,7 +94,7 @@ section {
 }
 
 footer {
-    padding: var(--spacing-xlarge) 0;
+    padding: var(--spacing-xxlarge) 0;
     text-align: center;
     color: var(--color-text70);
     font-size: var(--small-font-size);
@@ -119,7 +119,6 @@ h3 {
     letter-spacing: 0.25px;
 }
 
-
 /* LINKS */
 a {
     color: var(--color-light-red);
@@ -129,7 +128,6 @@ a {
 .link:hover {
     text-decoration: underline;
 }
-
 
 /* BUTTONS */
 button, .button {
@@ -171,7 +169,6 @@ button, .button {
     background-color: var(--color-light-red);
     color: var(--color-white);
 }
-
   
 /* IMAGE */
 img {
@@ -221,6 +218,7 @@ img {
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         padding: 1rem;
+        transition: var(--transition);
     }
 
     .cards-container > * + * {
@@ -230,7 +228,6 @@ img {
     .cards-container > *:hover {
         -webkit-transform: scale(1.05, 1.05);
         transform: scale(1.05, 1.05);
-        transition: var(--transition);
     }
 }
 
