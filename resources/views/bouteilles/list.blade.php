@@ -2,23 +2,24 @@
 @section('title', 'Bouteilles')
 @section('content')
 
-<link href="/css/bouteille.css" rel="stylesheet">
-
-<style> </style>
+<link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<div class="container">
+
+<section>
+    <h2>Liste des Bouteilles</h2>
+
     <div>
-        <h2>Liste des Bouteilles</h2>
         <x-tri-component />
-<div>
-    <input type="text" id="searchField" placeholder="Recherche..." onkeyup="searchBouteilles()">
-</div>
-    </div> 
+        <input type="text" id="searchField" placeholder="Recherche..." onkeyup="searchBouteilles()">
+    <div>
+
     <!-- Liste des bouteilles -->
-    <div id=bouteilles-container>@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])</div>
+    <div id=bouteilles-container class="cards-container">@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])
+    </div>
     
-    <div id="loading" style="display: none;">Chargement ...</div>
-</div> 
+    <div id="loading" style="display: none;">Chargement ...
+    </div>
+</section> 
 
 <script>
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');

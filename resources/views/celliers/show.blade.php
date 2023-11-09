@@ -3,7 +3,9 @@
 @section('content')
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
-<link href="{{ asset('css/components/bouteilleCellierCard.css') }}" rel="stylesheet">
+<script src="{{ asset('js/modale.js') }}" defer></script>
+<link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
     .cellier__detail {
@@ -29,41 +31,6 @@
         margin-top: 1rem;
         margin-left: auto;
     }
-
-    /* Pour le modal du supprimer */
-    .modale {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
- 
-    .modale-content {
-        margin: auto;
-        margin-top: 30vh;
-        background-color: var(--color-white);
-        padding: 2rem;
-        border-radius: 10px;
-        width: clamp(400px, 40%, 600px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        vertical-align: middle;
-    }
-
-    .modaleCTA {
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
-    }
 </style>
 
 <section>
@@ -88,7 +55,7 @@
     </div>
 
     <!-- Ajouter une bouteille au cellier -->
-    <a href="{{route('bouteilles.list')}}" class="button">Ajouter une bouteille</a>
+    <a href="{{route('bouteilles.list')}}" class="button info">Ajouter une bouteille</a>
 
     @if($cellier->bouteillesCellier->count() > 0)
     <!-- Trier les bouteilles -->
@@ -103,37 +70,36 @@
     @endif
 
     <!-- Détail bouteilles -->
-    <ul class="bouteilleCellier__card-container">
+    <div class="cards-container">
         @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-        <li class="bouteilleCellier__card">
-
+        <div class="cardBouteilleCellier">
             <!-- Image -->
-            <!-- if the img source doesn't contain the word 'http', then load this image : /img/icons/bottle.png -->
+            <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
             @if(!Str::contains($detailBouteilleCellier->image, 'http') || Str::contains($detailBouteilleCellier->image, 'pastille'))
-            <img src="/img/icons/bottle.png" alt="{{ $detailBouteilleCellier->nom }}" class="bouteille">
+            <img src="/img/icons/bottle.png" alt="{{ $detailBouteilleCellier->nom }}">
             @else
-            <img src="{{ $detailBouteilleCellier->image }}" alt="{{ $detailBouteilleCellier->nom }}" class="bouteille">
+            <img src="{{ $detailBouteilleCellier->image }}" alt="{{ $detailBouteilleCellier->nom }}">
             @endif
 
             <!-- Détails -->
-            <div class="bouteilleCellier__card-details">
+            <div class="cardBouteilleCellier-details">
                 <div id="bouteille-nom">{{ $detailBouteilleCellier->nom }}</div>
                 <div>{{ Str::before($detailBouteilleCellier->description, 'Code') }}</div>
                 <div id="bouteille-prix">{{ $detailBouteilleCellier->prix_saq }} $</div>
             </div>
 
             <!-- Quantité -->
-            <img src="/img/icons/delete.svg" alt="supprimer" class="icons">
-            <div class="bouteilleCellier__card-quantity">
+            <img src="/img/icons/delete.svg" alt="supprimer" class="icons" style="display: none;">
+            <div class="cardBouteilleCellier-quantity" class="icons" style="display: none;">
                 <span>-</span>
                 <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
                 <span>+</span>
             </div>
-        </li>
+        </div>
         @empty
         <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
         @endforelse
-    </ul>
+</div>
 
 </section>
 
@@ -142,36 +108,15 @@
     <div class="modale-content">
         <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
         <div class="modaleCTA">
-            <button class="closeButton">Non</button>
+            <button class="closeButton info">Non</button>
             <!-- Form -->
             <form method="post">
                 @method('DELETE')
                 @csrf
-                <input type="submit" value="Supprimer" class="button">
+                <input type="submit" value="Supprimer" class="button danger">
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    let myModal = document.getElementById('modaleSupp');
-    let triggerBttn = document.getElementById("modaleTrigger");
-    let closeButton = document.querySelector('.closeButton');
-    
-    // afficher modale quand on clique sur le lien modaleTrigger
-    triggerBttn.addEventListener("click", function() {
-        myModal.style.display = "block";
-    });
- 
-    // fermer la modale quand on clique sur Non
-    closeButton.addEventListener("click", function() {
-        myModal.style.display = "none";
-    });
-
-    // au chargement de la page la modale est à display none
-    window.addEventListener("load", function() {
-        myModal.style.display = "none";
-    });
-</script>
 
 @endsection

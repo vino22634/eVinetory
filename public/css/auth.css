@@ -5,16 +5,6 @@
     margin: 0 auto;
 }
 
-  
-/* IMAGE */
-img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    object-fit: cover;
-}
-
-
 /* LOGIN */
 .login {
     display: flex;
