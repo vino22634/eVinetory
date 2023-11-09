@@ -5,8 +5,22 @@
     </div>
     <div class='bouteilledescriptions_container' width="100%">
         <div class="titre">{{ $bouteille->nom }}</div>
-        <div class="description">{{ $bouteille->description }}</div>
+        <div class="bouteilleIcons-container">
+            
+            @if ($bouteille->pastilleType )
+                <img class="pastilleIcon " src="{{ $bouteille->pastilleType->imageURL }}"
+                    alt="Pastille" 
+                    title="{{ $bouteille->pastilleType->description }}"
+                    >
+            @endif
+                
+            <div class="description">
+                {{ ($bouteille->type ==1) ? 'Vin rouge' : 'Vin blanc' }}, {{ $bouteille->format }},
+                {{ $bouteille->pays }}
+            </div>
 
+        </div>
+ 
         <div class="bouteillefooter">
 
             <div class="prix">{{ $bouteille->prix_saq }} $</div>
