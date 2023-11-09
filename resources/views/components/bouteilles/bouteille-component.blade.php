@@ -8,7 +8,7 @@
         <div class="bouteilleIcons-container">
             
             @if ($bouteille->pastilleType )
-                <img class="pastilleIcon " src="{{ $bouteille->pastilleType->imageURL }}"
+                <img class="pastilleIcon" src="{{ $bouteille->pastilleType->imageURL }}"
                     alt="Pastille" 
                     title="{{ $bouteille->pastilleType->description }}"
                     >
