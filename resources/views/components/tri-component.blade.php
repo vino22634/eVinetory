@@ -2,7 +2,7 @@
     
     <!-- Trier les bouteilles -->
     <div class="cellier__tri">
-        <label for="tri">Trier les bouteilles par : </label>
+        <label for="tri">Trier par : </label>
         <select name="tri" id="tri-component">
             <option value="nom__asc">Nom</option>
             <option value="nom__desc">Nom (Desc)</option>
