@@ -26,6 +26,7 @@
             border: 1px solid gray;
             flex:1;
             max-height: 10px;
+            font-size: 16px;
         }
 </style>
 <section>
