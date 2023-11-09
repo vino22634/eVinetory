@@ -64,7 +64,7 @@
             </div>
             @endif
         </div>
-        <input type="submit" class="button" value="Ajouter">
+        <input type="submit" class="button info" value="Ajouter">
     </form>
 
 </section>

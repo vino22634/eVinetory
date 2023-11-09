@@ -8,16 +8,16 @@
 <style>
         .bouteilleSearch__tri {
             display: flex;
+            
             margin-top: 1rem;
             justify-content: space-between; 
             align-items: center;       
         }
 
-        .bouteilleSearch__tri .cards-container {
-            width:100%;
+        .bouteilleSearch__tri > * {
+            
             flex:1;
             flex-wrap: nowrap;
-            margin-right: 1.5rem;
         }
 
         
@@ -25,8 +25,6 @@
             border-radius: 10px;
             border: 1px solid gray;
             flex:1;
-            max-height: 10px;
-            font-size: 16px;
         }
 </style>
 <section>
@@ -34,7 +32,7 @@
 
     <div class='bouteilleSearch__tri'>
        <div class='cards-container'>
-            <input class='cards-container' type="search" id="searchField"
+            <input class='car3ds-container' type="search" id="searchField"
                placeholder="Recherche...">
         </div>
         

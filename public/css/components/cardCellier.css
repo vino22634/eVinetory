@@ -1,0 +1,10 @@
+.cardCellier img {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    display: inline;
+}
+
+.cardsCellier:hover {
+    cursor: pointer;
+}

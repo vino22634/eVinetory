@@ -14,7 +14,7 @@
     <link href="/css/components/navBar.css" rel="stylesheet">
 
     <!-- Script JS -->
-    <script src="/js/navBar.js" defer></script>
+    <!-- <script src="/js/navBar.js" defer></script> -->
 
 </head>
 
@@ -26,27 +26,26 @@
             <h1>eVinetory</h1>
         </header>
 
-        <!-- Nav Bas -->
+        <!-- Nav Bar -->
         <nav id="navbar">
             <a href="{{route('bouteilles.list')}}" class="{{ request()->is('bouteille*') ? 'active':'' }}">
-                <img src="/img/icons/menu_bottles.svg" alt="Icône bouteilles">
-                <!-- <x-svg.bottlesIcon /> -->
+                <x-svg.bottlesIcon />
                 <p>Bouteilles</p>
             </a>
             <a href="{{route('celliers.index')}}" class="{{ request()->is('cellier*') ? 'active':'' }}">
-                <img src="/img/icons/menu_cellar.svg" alt="Icône celliers">
+                <x-svg.cellarIcon />
                 <p>Celliers</p>
             </a>
-            <a href="">
-                <img src="/img/icons/menu_favorite.svg" alt="Icône favoris">
+            <a href="" style="pointer-events: none">
+                <x-svg.heartIcon />
                 <p>Favoris</p>
             </a>
-            <a href="">
-                <img src="/img/icons/menu_cart.svg" alt="Icône liste d'achats">
+            <a href="" style="pointer-events: none">
+                <x-svg.cartIcon />
                 <p>Achats</p>
             </a>
-            <a href="">
-                <img src="/img/icons/menu_profile.svg" alt="Icône profil">
+            <a href="" style="pointer-events: none">
+                <x-svg.profilIcon />
                 <p>Profil</p>
             </a>
         </nav>

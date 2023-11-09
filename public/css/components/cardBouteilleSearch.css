@@ -1,0 +1,63 @@
+.cardBouteilleSearch > div:last-child {
+    flex: 1;
+    /* Le deuxième div prend le reste de la largeur disponible */
+}
+
+.bouteillefooter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wsrap;
+    justify-content: space-between;
+}
+
+.bouteilleImg_container {
+    width: 5rem;
+}
+
+.bouteilledescriptions_container>*+* {
+    margin-top: var(--spacing-small);
+}
+
+.bouteilleImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 96px;
+    max-width: 76px;
+    width: auto;
+    height: auto;
+}
+
+.bouteilleIcon {
+    display: block;
+    max-width: 26px;
+}
+
+.pastilleIcon {
+    display: block;
+    max-width: 16px; 
+    margin-right: 1rem;
+}
+
+.bouteilleIcons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cardBouteilleSearch .titre {
+    font-weight: 500;
+    font-size: var(--normal-font-size);
+}
+
+.cardBouteilleSearch .description {
+    color: var(--color-text70);
+    font-size: var(--small-font-size);
+    letter-spacing: 0.25px;
+}
+
+.cardBouteilleSearch .prix {
+    font-weight: 700;
+    font-family: 'Lora', serif;
+}
