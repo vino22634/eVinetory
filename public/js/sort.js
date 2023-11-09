@@ -1,7 +1,7 @@
 // Trier les bouteilles par ordre alphabétique, par quantité ou par prix
 const tri = document.querySelector('#tri');
-const cardContainer = document.querySelector('.bouteilleCellier__card-container');
-const card = document.querySelectorAll('.bouteilleCellier__card');
+const cardContainer = document.querySelector('.cards-container');
+const card = document.querySelectorAll('.cardBouteilleCellier');
 
 tri.addEventListener('change', () => {
     // Trier par nom

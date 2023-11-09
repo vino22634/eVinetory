@@ -21,7 +21,7 @@
     </div>
 
     <!-- Créer un nouveau cellier -->
-    <a href="{{route('cellier.create')}}" class="button">Ajouter un cellier</a>
+    <a href="{{route('cellier.create')}}" class="button info">Ajouter un cellier</a>
 
 </section>
 

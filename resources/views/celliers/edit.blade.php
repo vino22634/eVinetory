@@ -43,14 +43,6 @@
 
     <h2>Modifier le cellier « {{$cellier->name}} »</h2>
 
-
-    <div class="pb-6 text-center w-full">
-      <p class="text-gray-700 mb-4">Remplir ce formulaire pour modifier votre cellier</p>
-    </div>
- 
-
-
-
     <!-- Formulaire modifiant un cellier -->
     <form method="post">
                     @csrf
@@ -73,7 +65,7 @@
             </div>
             @endif
         </div>
-        <input type="submit" class="button" value="Modifier">
+        <input type="submit" class="button info" value="Modifier">
     </form>
 
 </section>
