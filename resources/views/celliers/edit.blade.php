@@ -2,41 +2,6 @@
 @section('title', 'Créer un cellier')
 @section('content')
 
-<style>
-    section {
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .form_element {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    label {
-        font-weight: bold;
-    }
-
-    input,
-    textarea {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 0.5rem;
-    }
-
-    .text_error {
-        color: var(--color-light-red);
-    }
-</style>
 <section>
     <!-- Retour -->
     <a href="{{route('cellier.show', $cellier->id)}})" class="">← Retour</a>
