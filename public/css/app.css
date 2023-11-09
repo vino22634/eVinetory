@@ -187,6 +187,12 @@ img {
     height: 1.5rem;
 }
 
+.icons_action {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-left : var(--spacing-small);
+}
+
 /* STRUCTURE CARDS CONTAINER */
 .cards-container {
     display: flex;

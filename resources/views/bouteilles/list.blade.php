@@ -22,11 +22,12 @@
 
         
         .bouteilleSearch__tri input {
-            border-radius: 10px;
-            border: 1px solid gray;
             flex:1;
             max-height: 10px;
             font-size: 16px;
+            /* paddwing: 0.5rem; */
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
         }
 </style>
 <section>
