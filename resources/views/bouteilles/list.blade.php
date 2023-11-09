@@ -26,7 +26,7 @@
     favoriteAndPurchaseIcons.forEach(icon => {
         icon.addEventListener('click', function() {
             console.log('click')
-            const bouteilleId = this.closest('.bouteillecontainer').getAttribute(
+            const bouteilleId = this.closest('.cardBouteilleSearch').getAttribute(
                 'data-bouteille-id');
 
             const action = this.getAttribute('data-action-param');
@@ -44,9 +44,15 @@
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;
+        let isLoading = false;
+
 
         function scrollLazyLoading() {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            
+            console.log(window.innerHeight, window.scrollY, document.body.scrollHeight);
+            if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && !isLoading) {
+                console.log("scrollLazyLoading called");
+                console.log(isLoading);
                 // stop a la dernière page
                 if (currentPage < lastPage) {
                     currentPage++;

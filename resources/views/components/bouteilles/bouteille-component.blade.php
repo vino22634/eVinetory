@@ -20,9 +20,10 @@
                 <img class="bouteilleIcon toggle-icon"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
                     alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
-                <img class="bouteilleIcon toggle-icon"
-                    src="{{ true ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                    alt="cellier"  data-action="toggle" data-action-param='cellier'>
+                    <!-- FH: Removed for current sprint -->
+                <!-- <img class="bouteilleIcon toggle-icon"
+                    src="{{ false ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
+                    alt="cellier"  data-action="toggle" data-action-param='cellier'> -->
             </div>
         </div>
 
