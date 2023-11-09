@@ -1,3 +1,6 @@
-@foreach($bouteilles as $bouteille)
+
+@forelse($bouteilles as $bouteille)
     <x-bouteilles.bouteille-component :bouteille="$bouteille" />
-@endforeach
+@empty
+<p>Aucune bouteille trouvée</p>
+@endforelse
