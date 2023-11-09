@@ -13,7 +13,7 @@
     @endif
 
     <div>
-        <form method="POST" action="{{ route('verification.send') }}">
+        <form method="POST" action="{{ route('verification.send') }}" class="container_auth_form">
             @csrf
 
             <div class="button_form">
@@ -23,11 +23,11 @@
             </div>
         </form>
 
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" class="container_auth_form">
             @csrf
 
-            <button type="submit">
-                {{ __('Log Out') }}
+            <button type="button info button_reset">
+                {{ __('Se déconnecter') }}
             </button>
         </form>
     </div>

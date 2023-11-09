@@ -1,7 +1,7 @@
 @extends('layouts/auth')
 @section('title', 'Inscription')
 @section('content')
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="container_auth_form">
             @csrf
 
             <!-- Name -->
@@ -45,7 +45,7 @@
 
             <div class="button_form">
                 <a href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Déjà inscrit?') }}
                 </a>
 
                 <x-primary-button class="button info">
