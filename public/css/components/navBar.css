@@ -14,10 +14,11 @@ nav {
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     transition: var(--transition);
+    justify-content: space-between;
 }
   
 nav a {
-    flex-basis: 85px;
+    flex-basis: 70px;
     flex-grow: 1;
     flex-shrink: 0;
     background: transparent;
