@@ -28,9 +28,10 @@
     height: auto;
 }
 
-.bouteilleIcon {
-    display: block;
-    max-width: 26px;
+.boueteilleIcon {
+    diesplay: block;
+    /* max-width: 26px; */
+    margin-left : var(--spacing-small);
 }
 
 .pastilleIcon {

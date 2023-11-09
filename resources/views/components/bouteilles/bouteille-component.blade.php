@@ -26,12 +26,12 @@
             <div class="prix">{{ $bouteille->prix_saq }} $</div>
             <div class="bouteilleIcons-container">
 
-                <img class="bouteilleIcon toggle-icon"
+                <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
                     alt="Favoris" data-action="toggle" data-action-param='Favoris'>
                     
                     <!-- todo -->
-                <img class="bouteilleIcon toggle-icon"
+                <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
                     alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
                     <!-- FH: Removed for current sprint -->
