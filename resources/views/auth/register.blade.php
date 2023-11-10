@@ -41,14 +41,11 @@
                 <x-input-error :messages="$errors->get('password_confirmation')"  />
             </div>
 
-            <div class="button_form">
-                <a href="{{ route('login') }}">
-                    {{ __('Déjà inscrit?') }}
-                </a>
-
+            <a href="{{ route('login') }}" class="link">
+                {{ __('Déjà inscrit?') }}
+            </a>
                 <x-primary-button class="button info">
                     {{ __("S'inscrire") }}
                 </x-primary-button>
-            </div>
     </form>
 @endsection
