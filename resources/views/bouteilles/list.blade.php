@@ -77,14 +77,13 @@
         let currentPage = 1;
         let isLoading = false;
 
-
         function scrollLazyLoading() {
-            if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && !isLoading) {
-                console.log("scrollLazyLoading called");
+            let offsetFooter=200;
+            if (((window.innerHeight + window.scrollY) + offsetFooter >= document.body.scrollHeight) && !isLoading) {
                 // stop a la dernière page
                 if (currentPage < lastPage) {
                     currentPage++;
-                    let isLoading = true;
+                    isLoading = true;
                     loadMoreBouteilles(currentPage);
                 }
             }
@@ -92,11 +91,8 @@
 
         window.addEventListener('scroll', scrollLazyLoading);
 
-    let filterInput = document.getElementById('searchField');
-    filterInput.addEventListener('keyup', searchBouteilles);
-
-
-  
+        let filterInput = document.getElementById('searchField');
+        filterInput.addEventListener('keyup', searchBouteilles);
 
         function loadMoreBouteilles(page) {
             console.log("loadMoreBouteilles", page, "called")
