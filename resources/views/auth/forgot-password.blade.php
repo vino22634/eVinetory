@@ -13,17 +13,14 @@
         @csrf
 
         <!-- Email Address -->
-        <div class="input-label">
+        <div class="form_element">
             <x-input-label for="email" :value="__('Courriel')" />
-            <x-text-input id="email" class="text_input" type="email" name="email" :value="old('email')" required autofocus />
+            <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="auth_error_msg" />
         </div>
-
-        <div class="button_reset_form">
-            <x-primary-button class="button info button_reset">
-                {{ __("M'envoyer un lien par courriel") }}
-            </x-primary-button>
-        </div>
+        <x-primary-button class="button info">
+            {{ __("M'envoyer un lien par courriel") }}
+        </x-primary-button>
     </form>
 </x-guest-layout>
 @endsection
