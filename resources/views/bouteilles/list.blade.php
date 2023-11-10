@@ -1,7 +1,6 @@
 @extends('layouts/app')
 @section('title', 'Bouteilles')
 @section('content')
-
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -18,6 +17,7 @@
             flex:1;
             flex-wrap: nowrap;
             margin-right: 1.5rem;
+            padding:1rem;
         }
 
         
