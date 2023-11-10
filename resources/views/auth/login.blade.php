@@ -7,20 +7,19 @@
         @csrf
 
         <!-- Email Address -->
-        <div class="input-label ">
+        <div class="form_element">
             <x-input-label for="email" :value="__('Courriel')" />
-            <x-text-input id="email" class="text_input" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')"  />
         </div>
 
         <!-- Password -->
-        <div class="input-label ">
+        <div class="form_element">
             <x-input-label for="password" :value="__('Mot de passe')" />
 
             <x-text-input id="password" 
                             type="password"
                             name="password"
-                            class="text_input"
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -34,17 +33,16 @@
             </label>
         </div> -->
 
-        <div class="button_form">
+        <div>
             @if (Route::has('password.request'))
                 <a  href="{{ route('password.request') }}">
                     {{ __(' Mot de passe oublié?') }}
                 </a>
             @endif
-
-            <x-primary-button class="button info">
-                {{ __('Se connecter') }}
-            </x-primary-button>
         </div>
+        <x-primary-button class="button info">
+            {{ __('Se connecter') }}
+        </x-primary-button>
     </form>
 
 @endsection
