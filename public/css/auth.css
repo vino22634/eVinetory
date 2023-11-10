@@ -1,11 +1,4 @@
-.container_auth_form {
-    width: 100%;
-    max-width: 600px;
-    height: 100vh;
-    margin: 0 auto;
-}
-
-/* LOGIN */
+/* LAYOUT */
 .login {
     display: flex;
     flex-direction: column;
@@ -13,7 +6,7 @@
 
 .login_logo_form {
     background-color: var(--color-light-pink);
-    padding: 2rem 0;
+    padding: 2rem 0 3rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -47,27 +40,17 @@
     transform: translate(-50%, -50%);
 }
 
-/* FORM */
-.input-label {
-    color: var( --color-text70);
-    border-bottom: 2px solid darkgray;
-    padding: 1rem 0 0.5rem 0;
-   
-}
-
-.text_input {
-    font-size: 18px;
-    width: 80%;
+/* FORM AUTH */
+.container_auth_form {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 2rem;
 }
 
 .button_form {
     color: var( --color-dark-red);
     text-align: center;
-}
-
-.button_form a {
-   display: flex;
-   padding-top: 2rem;
 }
 
 .button_reset_form {
@@ -82,11 +65,7 @@
     align-items: center;
 }
 
-.forgot_password_text {
-    padding: 1rem;
-    text-align: justify;
-}
-.auth_session_status, .auth_error_msg {
+.auth_session_status {
     text-align: center;
     padding: 1rem;
     color: var(--color-dark-red);
@@ -95,7 +74,7 @@
 
 @media screen and (max-width: 992px) {
     .container_auth_form {
-      width: 70%;
+      width: 80%;
     }
 
     .login_logo_form h1{
@@ -110,10 +89,6 @@
     .login_logo_form {
         border-bottom-left-radius: 100% 150px;
         border-bottom-right-radius: 100% 150px;
-    }
-
-    .button_form a {
-        padding-bottom: 1rem;
     }
 
     .button_reset {
