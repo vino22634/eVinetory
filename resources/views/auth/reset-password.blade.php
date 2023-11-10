@@ -12,14 +12,14 @@
         <div class="form_element">
             <x-input-label for="email" :value="__('Courriel')" />
             <x-text-input id="email" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="auth_error_msg"/>
+            <x-input-error :messages="$errors->get('email')" class="text_error"/>
         </div>
 
         <!-- Password -->
         <div class="form_element">
             <x-input-label for="password" :value="__('Mot de passe')" />
             <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="auth_error_msg" />
+            <x-input-error :messages="$errors->get('password')" class="text_error" />
         </div>
 
         <!-- Confirm Password -->
@@ -30,7 +30,7 @@
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="auth_error_msg"/>
+            <x-input-error :messages="$errors->get('password_confirmation')" class="text_error"/>
         </div>
 
         <div class="button_reset_form">
