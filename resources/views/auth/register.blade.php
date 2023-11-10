@@ -41,7 +41,7 @@
                 <x-input-error :messages="$errors->get('password_confirmation')"  />
             </div>
 
-            <a href="{{ route('login') }}">
+            <a href="{{ route('login') }}" class="link">
                 {{ __('Déjà inscrit?') }}
             </a>
                 <x-primary-button class="button info">
