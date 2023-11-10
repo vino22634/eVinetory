@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Créer un cellier')
+@section('title', 'Modifier cellier')
 @section('content')
 
 <section>
@@ -32,7 +32,6 @@
         </div>
         <input type="submit" class="button info" value="Modifier">
     </form>
-
 </section>
 
 @endsection
