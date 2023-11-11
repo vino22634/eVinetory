@@ -33,8 +33,8 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="text_error"/>
         </div>
 
-        <div class="button_reset_form">
-            <x-primary-button class="button info button_reset">
+        <div class="form_element">
+            <x-primary-button class="button info">
                 {{ __('Confirmez votre mot de passe') }}
             </x-primary-button>
         </div>
