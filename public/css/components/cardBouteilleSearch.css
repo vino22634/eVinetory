@@ -28,12 +28,6 @@
     height: auto;
 }
 
-.boueteilleIcon {
-    diesplay: block;
-    /* max-width: 26px; */
-    margin-left : var(--spacing-small);
-}
-
 .pastilleIcon {
     display: block;
     max-width: 16px; 

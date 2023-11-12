@@ -6,27 +6,10 @@
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
+<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
+
 
 <style>
-    .cellier__detail {
-        border-radius: 10px;
-        padding: 1rem;
-        background-color: var(--color-light-pink);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        color: black;
-    }
-
-    .cellier__detail-cta {
-        display: flex;
-        flex: 1;
-        gap: 1rem;
-        justify-content: space-between;
-    }
-
     .cellier__tri {
         margin-top: 1rem;
         margin-left: auto;
@@ -72,30 +55,7 @@
     <!-- Détail bouteilles -->
     <div class="cards-container">
         @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-        <div class="cardBouteilleCellier">
-            <!-- Image -->
-            <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
-            @if(!Str::contains($detailBouteilleCellier->image, 'http') || Str::contains($detailBouteilleCellier->image, 'pastille'))
-            <img src="/img/icons/bottle.png" alt="{{ $detailBouteilleCellier->nom }}">
-            @else
-            <img src="{{ $detailBouteilleCellier->image }}" alt="{{ $detailBouteilleCellier->nom }}">
-            @endif
-
-            <!-- Détails -->
-            <div class="cardBouteilleCellier-details">
-                <div id="bouteille-nom">{{ $detailBouteilleCellier->nom }}</div>
-                <div>{{ Str::before($detailBouteilleCellier->description, 'Code') }}</div>
-                <div id="bouteille-prix">{{ $detailBouteilleCellier->prix_saq }} $</div>
-            </div>
-
-            <!-- Quantité -->
-            <img src="/img/icons/delete.svg" alt="supprimer" class="icons" style="display: none;">
-            <div class="cardBouteilleCellier-quantity" class="icons" style="display: none;">
-                <span>-</span>
-                <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
-                <span>+</span>
-            </div>
-        </div>
+            <x-celliers.cardBouteilleCellier-component :detailBouteilleCellier="$detailBouteilleCellier" />
         @empty
         <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
         @endforelse

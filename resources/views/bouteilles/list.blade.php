@@ -2,7 +2,13 @@
 @section('title', 'Bouteilles')
 @section('content')
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
+<link href="/css/components/cardCellier.css" rel="stylesheet">
+<link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
+<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="{{ asset('js/modale.js') }}" defer></script>
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
         .bouteilleSearch__tri {
@@ -51,6 +57,46 @@
     <div id="loading" style="display: none;">Chargement ...
     </div>
 </section> 
+
+<!-- Modal confirmation suppression-->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
+    <seceetion>
+    <div class="modale-content-large">
+
+
+   
+    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
+
+    <!-- Détail cellier -->
+    <div class="cellier__detail">
+        <h2>Mon inventaire</h2>
+            
+            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
+            
+            <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
+         <!-- Retour -->
+    </div>
+
+        @forelse($celliers as $cellier)
+            <h3>{{$cellier->name}}</h3>
+            <!-- Détail bouteilles -->
+                <div class="cards-container">
+                        @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
+                            <x-celliers.cardBouteilleCellier-component :detailBouteilleCellier="$detailBouteilleCellier" />
+                        @empty
+                            <li>Vous n'avez pas cette bouteille dans votre cellier</li>
+                        @endforelse
+                </div>
+        @empty
+            <p>Vous n'avez pas encore de cellier</p>
+        @endforelse
+   
+        <div class="modaleCTA">
+            <button class="closeButton info">Fermer</button>
+        </div>
+    </div>
+    </seceetion>
+</div>
 
 <script>
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bouteille;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
+use App\Models\Cellier;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,8 +22,10 @@ class BouteilleController extends Controller
     public function index()
     {
         $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->paginate(20);
+
+         $celliers = Cellier::all();
         //return $bouteilles;
-        return view('bouteilles.list', ['bouteilles' => $bouteilles]);
+        return view('bouteilles.list', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
 
 

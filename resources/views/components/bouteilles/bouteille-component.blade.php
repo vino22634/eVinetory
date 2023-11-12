@@ -35,9 +35,9 @@
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
                     alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
                     <!-- FH: Removed for current sprint -->
-                <!-- <img class="bouteilleIcon toggle-icon"
+                <img class="bouteilleIcon icons_action" id='modaleTrigger'
                     src="{{ false ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                    alt="cellier"  data-action="toggle" data-action-param='cellier'> -->
+                    alt="cellier" da3ta-action="toggle" dat3a-action-param='cellier' onclick=showModale()>
             </div>
         </div>
 
