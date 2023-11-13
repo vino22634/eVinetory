@@ -151,4 +151,12 @@ class BouteilleController extends Controller
         $bouteillesQuery->orderBy($ordreChamp, $ordreSens);
         return $bouteillesQuery;
     }
+
+    /**
+    * Afficher les détails d'une bouteille
+    */
+    public function show(Bouteille $bouteille)
+    {
+        return view('bouteilles.show', ['bouteille' => $bouteille]);
+    }
 }
