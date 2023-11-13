@@ -30,14 +30,18 @@
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
                     alt="Favoris" data-action="toggle" data-action-param='Favoris'>
                     
-                    <!-- todo -->
                 <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
                     alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
-                    <!-- FH: Removed for current sprint -->
-                <img class="bouteilleIcon icons_action" id='modaleTrigger'
-                    src="{{ false ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                    alt="cellier" da3ta-action="toggle" dat3a-action-param='cellier' onclick=showModale()>
+
+                <!-- récupérer le nombre d'items pour ce user (état ON si  0)-->
+                @php
+                    $celliersDeBouteille = $bouteille->bouteilleCelliersForUser(auth()->id());
+                @endphp
+                <img class="bouteilleIcon icons_action" id='modalreTrigger'
+                    src="{{ count($celliersDeBouteille) > 0 ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
+                    alt="cellier" da3ta-action="toggle" data-action-param='$bouteille->id'
+                    onclick="manageCellierForBouteille({{ $bouteille->id }})">
             </div>
         </div>
 

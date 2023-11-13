@@ -61,7 +61,6 @@
 <!-- Modal confirmation suppression-->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
     <seceetion>
-    <div id='modaleContent'></div>
     <div class="modale-content-large">
 
 
@@ -244,20 +243,6 @@
         }, 500); // délais pour canceller
     }
 
-
-    function manageCellierForBouteille(bouteilleId) {
-        console.log("manageCellierForBouteille", bouteilleId)
-        fetch('/bouteilles_viewfor_managecellier/' + bouteilleId)
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('modaleContent').innerHTML = html;
-               
-            })
-            .catch(error => console.error('Error:', error));
-
-
-        showModale()
-    }
 </script>
 
 @endsection

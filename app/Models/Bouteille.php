@@ -25,6 +25,13 @@ class Bouteille extends Model
         return $this->hasMany(BouteilleCellier::class, 'id_bouteille');
     }
 
+    public function bouteilleCelliersForUser($userId)
+    {
+        return $this->bouteilleCelliers()->whereHas('cellier', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+        })->get();
+    }
+
 
     public function userPreferences()
     {
