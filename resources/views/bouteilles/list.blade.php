@@ -61,7 +61,7 @@
 <!-- Modal confirmation suppression-->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
     <seceetion>
-    <div id='modaleContent'></div>
+    
     <div class="modale-content-large">
 
 
@@ -78,19 +78,8 @@
          <!-- Retour -->
     </div>
 
-        @forelse($celliers as $cellier)
-            <h3>{{$cellier->name}}</h3>
-            <!-- Détail bouteilles -->
-                <div class="cards-container">
-                        @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-                            <x-celliers.cardBouteilleCellier-component :detailBouteilleCellier="$detailBouteilleCellier" />
-                        @empty
-                            <li>Vous n'avez pas cette bouteille dans votre cellier</li>
-                        @endforelse
-                </div>
-        @empty
-            <p>Vous n'avez pas encore de cellier</p>
-        @endforelse
+       <div id='modaleContent'>ee</div>
+       
    
         <div class="modaleCTA">
             <button class="closeButton info">Fermer</button>
@@ -247,9 +236,10 @@
 
     function manageCellierForBouteille(bouteilleId) {
         console.log("manageCellierForBouteille", bouteilleId)
-        fetch('/bouteilles_viewfor_managecellier/' + bouteilleId)
+        fetch('/ajax/bouteilles_viewfor_managecellier/' + bouteilleId)
             .then(response => response.text())
             .then(html => {
+                console.log("html", html)
                 document.getElementById('modaleContent').innerHTML = html;
                
             })
