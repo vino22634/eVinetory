@@ -24,4 +24,4 @@
                 <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
                 <span>+</span>
             </div>
-        </div>
+</div>
