@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/bouteilleCellier/delete', [BouteilleCellierController::class,
     'delete'])->name('bouteilleCellier.delete');
 
+     Route::post('/bouteilleCellier/add', [BouteilleCellierController::class,
+     'add'])->name('bouteilleCellier.add');
+
 
     // PROFIL
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

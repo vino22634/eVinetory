@@ -82,12 +82,14 @@ class BouteilleController extends Controller
         }
     }
 
+
+    // generer une vue pour la gestion de l'inventaire d'une bouteille (bouteilleCellier)
     public function ajaxViewfor_ManageCellier(Request $request, $bouteilleId)
     {
         $bouteille = Bouteille::find($bouteilleId);
         $bouteilleCelliers = $bouteille->bouteilleCelliersForUser(auth()->id());
-        $user = auth()->user(); 
-        $celliers = $user->celliers; 
+        $user = auth()->user();
+        $celliers = $user->celliers;
 
         $mesCelliers = [];
 
@@ -102,6 +104,21 @@ class BouteilleController extends Controller
         foreach ($bouteilleCelliers as $bouteilleCellier) {
             $nomCellier = $bouteilleCellier->cellier->name;
             $mesCelliers[$nomCellier]["contenu"][] = $bouteilleCellier;
+        }
+
+        // mettre un temporaty placeholder
+        foreach ($mesCelliers as $nomCellier => $dataCellier) {
+            if (empty($dataCellier['contenu'])) {
+                $idCellierCourant = $dataCellier['instance']->id;
+
+                $tempBouteilleCellier = new \App\Models\BouteilleCellier([
+                    'id' => null,
+                    'id_cellier' => $idCellierCourant,
+                    'id_bouteille' => $bouteille->id, // Vous pouvez mettre null ou un ID de bouteille par défaut
+                    'quantite' => 0
+                ]);
+                $mesCelliers[$nomCellier]["contenu"][] = $tempBouteilleCellier;
+            }
         }
 
         return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
