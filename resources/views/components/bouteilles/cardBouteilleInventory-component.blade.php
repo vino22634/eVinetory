@@ -59,11 +59,12 @@
                 <!-- <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button> -->
                 <input type="number" min="1" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
                     data-id="{{ $bouteilleCellier->id }}"
-                    onchange="bouteilleCellierAmount_change(this, '{{ $bouteilleCellier->id }}')" />
+                    onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
                 <!-- <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button> -->
             </div>
         </div>
-        <img src="/img/icons/delete.svg" alt="supprimer" class="icons">
+        <img src="/img/icons/delete.svg" alt="supprimer" class="icons"
+            onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}')">
     </div>
 </div>
 

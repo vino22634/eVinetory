@@ -39,7 +39,7 @@
                 @endphp
                 <img class="bouteilleIcon icons_action" id='modalreTrigger'
                     src="{{ count($celliersDeBouteille) > 0 ? '/img/icons/bouteilles/cellierON@2x.png' : '/img/icons/bouteilles/cellier@2x.png' }}"
-                    alt="cellier" da3ta-action="toggle" data-action-param='$bouteille->id'
+                    alt="cellier"  data-action-param='$bouteille->id'
                     onclick="manageCellierForBouteille({{ $bouteille->id }})">
             </div>
         </div>

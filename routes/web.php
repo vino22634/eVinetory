@@ -53,8 +53,11 @@ Route::middleware('auth')->group(function () {
 
 
     // BOUTEILLES DANS CELLIERS
-    Route::post('/bouteilleCellier/updateAmount', [BouteilleCellierController::class,
-    'updateAmount'])->name('bouteilleCellier.updateAmount');
+    Route::post('/bouteilleCellier/saveAmount', [BouteilleCellierController::class,
+    'saveAmount'])->name('bouteilleCellier.saveAmount');
+
+    Route::delete('/bouteilleCellier/delete', [BouteilleCellierController::class,
+    'delete'])->name('bouteilleCellier.delete');
 
 
     // PROFIL
