@@ -71,6 +71,7 @@
             <div>
                 <!-- favoris -->
                 <x-svg.heartIcon />
+                {{ $bouteille->userPreferences->favoris ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
                 <!-- achat -->
                 <x-svg.cartIcon />
             </div>
