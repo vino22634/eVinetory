@@ -57,7 +57,8 @@
         <div class="cardBouteilleCellier-quantity" class="icons">
             <div class="number-input">
                 <!-- <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button> -->
-                <input type="number" min="1" id="bouteilleCellierAmount" data-id="{{ $bouteilleCellier->id }}"
+                <input type="number" min="1" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
+                    data-id="{{ $bouteilleCellier->id }}"
                     onchange="bouteilleCellierAmount_change(this, '{{ $bouteilleCellier->id }}')" />
                 <!-- <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button> -->
             </div>
@@ -66,42 +67,3 @@
     </div>
 </div>
 
-<!-- <script>
-    console.log('cardBouteilleInventory-component.js')
-    document.getElementById('bouteilleCellierAmount').addEventListener('change', bouteilleCellierAmount_change);
-
-    function bouteilleCellierAmount_change() {
-        var bouteilleCellierId = this.getAttribute('data-id');
-        var newAmount = this.value;
-
-        sendRequest('{{ route('bouteilleCellier.updateAmount') }}', {
-                id: bouteilleCellierId,
-                amount: newAmount
-            })
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-
-
-    }
-
-
-    function sendRequest(route, data, method = 'POST') {
-        var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-        return fetch(route, {
-                method: method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            });
-    }
-
-</script> -->
