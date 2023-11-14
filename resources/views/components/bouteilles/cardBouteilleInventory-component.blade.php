@@ -2,7 +2,7 @@
     <!-- class commentée car trop en hauteur, inutile -->
     <div class="carrdBouteilleCellier">
         <div class="ctttardBouteilleCellier-details">
-            <div id="bouteille-prix"> Quantité dans le cellier {{ $nomCellier }}</div>
+            <div id="bouteille-prix">Quantité dans le cellier {{ $bouteilleCellier->Cellier->name }}</div>
         </div>
 
         <!-- Quantité -->
