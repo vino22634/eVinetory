@@ -83,11 +83,9 @@
     <!-- Infos cellier -->
     <div class="detailsCellier">
         <h2>Mes réserves</h2>
-        <p>Vous avez xx bouteilles</p>
-        <div class="cellier__detail"></div>
-        {{ $bouteille->bouteilleCelliersUser }}
+        
+        <!-- composant et logique francois -->
     </div>
-
 
 </section>
 
