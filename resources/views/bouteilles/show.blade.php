@@ -23,7 +23,7 @@
     }
 
     .detailsBouteille img {
-        max-width: clamp(200px, 50%, 300px);
+        max-height: clamp(200px, 30vw, 400px);
     }
 
     .detailsBouteille__pastille {
@@ -83,7 +83,9 @@
     
     <!-- Infos cellier -->
     <div class="detailsCellier">
-        <h3>Mes réserves</h3>
+        <h2>Mes réserves</h2>
+        <p>Vous avez xx bouteilles</p>
+        <div class="cellier__detail"></div>
     </div>
 
 
