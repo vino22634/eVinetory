@@ -6,21 +6,20 @@
     <div class='bouteilledescriptions_container' width="100%">
         <div class="titre">{{ $bouteille->nom }}</div>
         <div class="bouteilleIcons-container">
-            
-            @if ($bouteille->pastilleType )
-                <img class="pastilleIcon" src="{{ $bouteille->pastilleType->imageURL }}"
-                    alt="Pastille" 
-                    title="{{ $bouteille->pastilleType->description }}"
-                    >
+
+            @if($bouteille->pastilleType )
+                <img class="pastilleIcon" src="{{ $bouteille->pastilleType->imageURL }}" alt="Pastille"
+                    title="{{ $bouteille->pastilleType->description }}">
             @endif
-                
+
             <div class="description">
-                {{ ($bouteille->type ==1) ? 'Vin rouge' : 'Vin blanc' }}, {{ $bouteille->format }},
+                {{ ($bouteille->type ==1) ? 'Vin rouge' : 'Vin blanc' }},
+                {{ $bouteille->format }},
                 {{ $bouteille->pays }}
             </div>
 
         </div>
- 
+
         <div class="bouteillefooter">
 
             <div class="prix">{{ $bouteille->prix_saq }} $</div>
@@ -29,10 +28,10 @@
                 <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
                     alt="Favoris" data-action="toggle" data-action-param='Favoris'>
-                    
+
                 <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
-                    alt="Liste d'achat"  data-action="toggle" data-action-param='Purchase'>
+                    alt="Liste d'achat" data-action="toggle" data-action-param='Purchase'>
 
                 <!-- récupérer le nombre d'items pour ce user (état ON si  0)-->
                 @php
@@ -48,4 +47,3 @@
 
     </div>
 </div>
-

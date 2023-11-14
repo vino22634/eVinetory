@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
+use App\Http\Controllers\BouteilleCellierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/cellier-edit/{cellier}', [CellierController::class, 'edit'])->name('cellier.edit');
     Route::put('/cellier-edit/{cellier}', [CellierController::class, 'update']);
     Route::delete('/celliers/{cellier}', [CellierController::class, 'destroy']);
+
+
+    // BOUTEILLES DANS CELLIERS
+    Route::post('/bouteilleCellier/updateAmount', [BouteilleCellierController::class,
+    'updateAmount'])->name('bouteilleCellier.updateAmount');
+
 
     // PROFIL
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,6 +1,8 @@
 @extends('layouts/app')
 @section('title', 'Bouteilles')
 @section('content')
+<script src="{{ asset('js/bouteilles.js') }}" defer></script>
+
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">
 <link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
@@ -235,20 +237,7 @@
     }
 
 
-    function manageCellierForBouteille(bouteilleId) {
-        console.log("manageCellierForBouteille", bouteilleId)
-        fetch('/ajax/bouteilles_viewfor_managecellier/' + bouteilleId)
-            .then(response => response.text())
-            .then(html => {
-                console.log("html", html)
-                document.getElementById('modaleContent').innerHTML = html;
-               
-            })
-            .catch(error => console.error('Error:', error));
-
-
-        showModale()
-    }
+    
 </script>
 
 @endsection
