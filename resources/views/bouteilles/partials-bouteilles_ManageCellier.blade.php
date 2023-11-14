@@ -10,8 +10,8 @@
         </ul>
     </div>
 @endforeach
-
+  <div class="cards-container">
  <x-bouteilles.cardBouteilleInventory-componenttest  />
 
-
+ </div>
 

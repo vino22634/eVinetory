@@ -77,6 +77,7 @@
             <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
          <!-- Retour -->
     </div>
+   
 
        <div id='modaleContent'>ee</div>
        
@@ -107,7 +108,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
-
+        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;
