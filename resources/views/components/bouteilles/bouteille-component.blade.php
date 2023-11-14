@@ -4,7 +4,7 @@
         <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="n\a">
     </div>
     <div class='bouteilledescriptions_container' width="100%">
-        <div class="titre">{{ $bouteille->nom }}</div>
+        <a href=" {{ route('bouteilles.show', $bouteille->id) }} " class="titre">{{ $bouteille->nom }}</a>
         <div class="bouteilleIcons-container">
 
             @if($bouteille->pastilleType )

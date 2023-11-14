@@ -42,6 +42,7 @@
 }
 
 .cardBouteilleSearch .titre {
+    color: inherit;
     font-weight: 500;
     font-size: var(--normal-font-size);
 }
