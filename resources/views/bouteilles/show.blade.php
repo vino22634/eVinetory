@@ -46,8 +46,7 @@
         @if(!Str::contains($bouteille->image, 'http') || Str::contains($bouteille->image, 'pastille'))
         <img src="/img/icons/bottle.png" alt="{{ $bouteille->nom }}">
         @else
-        <!-- on récupère l'image source -->
-        <img src="{{ Str::before($bouteille->image, '?') }}" alt="{{ $bouteille->nom }}">
+        <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}">
         @endif
 
         <!-- Infos saq -->
@@ -86,6 +85,7 @@
         <h2>Mes réserves</h2>
         <p>Vous avez xx bouteilles</p>
         <div class="cellier__detail"></div>
+        {{ $bouteille->bouteilleCelliersUser }}
     </div>
 
 
