@@ -1,8 +1,17 @@
 @extends('layouts/app')
 @section('title', 'Bouteilles')
 @section('content')
+
+<script src="{{ asset('js/utils.js') }}" defer></script>
+<script src="{{ asset('js/bouteilles.js') }}" defer></script>
+
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
+<link href="/css/components/cardCellier.css" rel="stylesheet">
+<link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="{{ asset('js/modale.js') }}" defer></script>
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
         .bouteilleSearch__tri {
@@ -52,6 +61,37 @@
     </div>
 </section> 
 
+<!-- Modal confirmation suppression-->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
+    <seceetion>
+    
+    <div class="modale-content-large">
+
+
+   
+    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
+
+    <!-- Détail cellier -->
+    <div class="cellier__detail">
+        <h2>Mon inventaire</h2>
+            
+            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
+            
+            <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
+         <!-- Retour -->
+    </div>
+   
+
+       <div id='modaleContent'>Récupération de l'inventaire...</div>
+       
+   
+        <div class="modaleCTA">
+            <button class="closeButton info">Fermer</button>
+        </div>
+    </div>
+    </seceetion>
+</div>
+
 <script>
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
     favoriteAndPurchaseIcons.forEach(icon => {
@@ -71,7 +111,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
-
+        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;
@@ -131,33 +171,8 @@
 
     });
 
-    function toggleAction(bouteilleId, action) {
-        fetch(`/bouteilles_toggle${action}/${bouteilleId}`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    bouteilleId
-                }),
-            })
-            .then(response => {
-                console.log("response", this)
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`La mise à jour de l'action "${action}" a échoué`);
-                }
-            })
-            .then(data => {
-                //considérer un reset icon en vas d'erreur (data.message.includes('ajoutée'))
-                console.log(`Action "${action}" mise à jour avec succès:`, data.message);
-            })
-            .catch(error => {
-                console.error(`Erreur lors de la requête AJAX pour l'action "${action}":`, error);
-            });
-    }
+   
+
 
     const sort = document.getElementById('tri-component');
     sort.addEventListener('change', function () {
@@ -165,6 +180,36 @@
     });
 
     let searchTimeoutToken;
+
+
+    //fh: pas terminé(cette fonction utilisera sendRequest mais échoue actuellement)
+function searchBouteillesv2() {
+    const query = document.getElementById('searchField').value;
+    const sort = document.getElementById('tri-component').value; // Get the selected sorting value
+
+    // Clear the previous timeout
+    if (searchTimeoutToken) {
+        clearTimeout(searchTimeoutToken);
+    }
+
+    searchTimeoutToken = setTimeout(() => {
+        document.getElementById('loading').style.display = 'block';
+
+        // Use the sendRequest function
+        sendRequest(`/search/bouteilles?query=${query}&sort=${sort}`, {}, 'GET')
+            .then(html => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('bouteilles-container').innerHTML = html;
+                // Update any additional elements as needed
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                document.getElementById('loading').style.display = 'none';
+            });
+    }, 500); // Delay before sending the request
+}
+
+
 
     function searchBouteilles() {
         const query = document.getElementById('searchField').value;
@@ -197,6 +242,8 @@
         }, 500); // délais pour canceller
     }
 
+
+    
 </script>
 
 @endsection

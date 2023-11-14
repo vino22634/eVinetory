@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
+use App\Http\Controllers\BouteilleCellierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
         BouteilleController::class, 'togglePurchase'
     ])->name('bouteilles.togglePurchase');
     Route::get('/ajax/bouteilles', [BouteilleController::class, 'ajaxLoadMoreBouteilles'])->name('bouteilles.ajax');
+    Route::get('/ajax/bouteilles_viewfor_managecellier/{bouteilleId}', [BouteilleController::class,
+    'ajaxViewfor_managecellier'])->name('bouteilles.ajaxViewfor_managecellier');
 
     Route::get('/search/bouteilles', [BouteilleController::class, 'search'])->name('bouteilles.search');
 
@@ -47,6 +50,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/cellier-edit/{cellier}', [CellierController::class, 'edit'])->name('cellier.edit');
     Route::put('/cellier-edit/{cellier}', [CellierController::class, 'update']);
     Route::delete('/celliers/{cellier}', [CellierController::class, 'destroy']);
+
+
+    // BOUTEILLES DANS CELLIERS
+    Route::post('/bouteilleCellier/saveAmount', [BouteilleCellierController::class,
+    'saveAmount'])->name('bouteilleCellier.saveAmount');
+
+    Route::delete('/bouteilleCellier/delete', [BouteilleCellierController::class,
+    'delete'])->name('bouteilleCellier.delete');
+
 
     // PROFIL
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

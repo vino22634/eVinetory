@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bouteille;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
+use App\Models\Cellier;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,8 +22,10 @@ class BouteilleController extends Controller
     public function index()
     {
         $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->paginate(20);
+
+        $celliers = Cellier::all();
         //return $bouteilles;
-        return view('bouteilles.list', ['bouteilles' => $bouteilles]);
+        return view('bouteilles.list', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
 
 
@@ -72,12 +75,38 @@ class BouteilleController extends Controller
     // récupérer les bouteilles en ajax
     public function ajaxLoadMoreBouteilles(Request $request)
     {
-    // Laravel connait la page grace au parametre 'page' de la requete
+        // Laravel connait la page grace au parametre 'page' de la requete
         if ($request->ajax()) {
             $bouteilles = $this->getBouteillesQuery($request)->paginate(20);
             return view('bouteilles.partials-bouteilleslist', compact('bouteilles'))->render();
         }
     }
+
+    public function ajaxViewfor_ManageCellier(Request $request, $bouteilleId)
+    {
+        $bouteille = Bouteille::find($bouteilleId);
+        $bouteilleCelliers = $bouteille->bouteilleCelliersForUser(auth()->id());
+        $user = auth()->user(); 
+        $celliers = $user->celliers; 
+
+        $mesCelliers = [];
+
+        foreach ($celliers as $cellier) {
+            $mesCelliers[$cellier->name] = [
+                "instance" => $cellier,
+                "contenu" => []
+            ];
+        }
+
+
+        foreach ($bouteilleCelliers as $bouteilleCellier) {
+            $nomCellier = $bouteilleCellier->cellier->name;
+            $mesCelliers[$nomCellier]["contenu"][] = $bouteilleCellier;
+        }
+
+        return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
+    }
+
 
 
     public function search(Request $request)
