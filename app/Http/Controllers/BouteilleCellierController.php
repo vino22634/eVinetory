@@ -48,16 +48,22 @@ class BouteilleCellierController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * delete the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function delete(Request $request)
     {
-        //
+        $bouteilleCellierId = $request->input('id');
+        $bouteilleCellier = BouteilleCellier::find($bouteilleCellierId);
+        if ($bouteilleCellier) {
+            $bouteilleCellier->delete();
+            return response()->json(['success' => true, 'message' => 'BouteilleCellier deleted successfully']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'BouteilleCellier not found'], 404);
     }
 
 
-
-    public function updateAmount(Request $request)
+    public function saveAmount(Request $request)
     {
         $bouteilleCellierId = $request->input('id');
         $newAmount = $request->input('amount');

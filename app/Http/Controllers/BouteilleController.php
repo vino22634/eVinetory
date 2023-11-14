@@ -104,14 +104,7 @@ class BouteilleController extends Controller
             $mesCelliers[$nomCellier]["contenu"][] = $bouteilleCellier;
         }
 
-
-
-        //return "hello";
-        // Laravel connait la page grace au parametre 'page' de la requete
-        // if ($request->ajax()) {
-            //$bouteilles = $this->getBouteillesQuery($request)->paginate(20);
-            return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
-        // }
+        return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
     }
 
 
