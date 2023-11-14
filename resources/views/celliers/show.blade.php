@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Détail du cellier')
+@section('title', 'Détail cellier')
 @section('content')
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
@@ -8,13 +8,6 @@
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 <link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
 
-
-<style>
-    .cellier__tri {
-        margin-top: 1rem;
-        margin-left: auto;
-    }
-</style>
 
 <section>
     <h2>Mes celliers</h2>
@@ -59,8 +52,7 @@
         @empty
         <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
         @endforelse
-</div>
-
+    </div>
 </section>
 
 <!-- Modal confirmation suppression-->
