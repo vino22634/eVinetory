@@ -44,7 +44,7 @@
                 <x-svg.cartIcon />
                 <p>Achats</p>
             </a>
-            <a href="" style="pointer-events: none">
+            <a href="{{route('profile.index')}}">
                 <x-svg.profilIcon />
                 <p>Profil</p>
             </a>
