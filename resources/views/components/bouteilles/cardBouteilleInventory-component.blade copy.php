@@ -40,12 +40,6 @@
         border-left: 1px solid #ddd;
     }
 
-    input:invalid {
-    background-color: #f0f0f0;
-    color: #ccc;
-    /* Autres styles */
-    }
-
 </style>
 
 <head>
@@ -56,7 +50,7 @@
     <!-- class commentée car trop en hauteur, inutile -->
     <div class="carrdBouteilleCellier">
         <div class="ctttardBouteilleCellier-details">
-            <div id="bouteille-prix">Quantité dans le cellier: {{ $bouteilleCellier->cellier->name }}</div>
+            <div id="bouteille-prix">Quantité dans le cellier: {{ $bouteilleCellier->Cellier->name }}</div>
         </div>
 
         <!-- Quantité -->
@@ -69,18 +63,8 @@
                 <!-- <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button> -->
             </div>
         </div>
-@if( $bouteilleCellier->id )
         <img src="/img/icons/delete.svg" alt="supprimer" class="icons"
             onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}')">
-
-@else
- <img src="/img/icons/bouteilles/cellier@2x.png" alt="supprimer" class="icons_action"
-     onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}',
-     '{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')" >
-            @endif
     </div>
 </div>
-
-
-
 

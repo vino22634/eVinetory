@@ -7,6 +7,13 @@ use App\Models\BouteilleCellier;
 
 class BouteilleCellierController extends Controller
 {
+
+    protected $fillable = [
+        'id',
+        'quantite',
+        'created_at',
+        'updated_at',
+    ];
     /**
      * Display a listing of the resource.
      */
@@ -47,6 +54,44 @@ class BouteilleCellierController extends Controller
         //
     }
 
+
+    //////////////////////////////////////////
+    // AJAX methods
+
+
+    /**
+     * add the specified resource in storage.
+     */
+    public function add(Request $request)
+    {
+        $idBouteille = $request->input('idBouteille');
+        $idCellier = $request->input('idCellier');
+        $idUser = $request->input('idUser');
+        $quantite = $request->input('qantite', 0); // je met a zero si aucune valeur
+
+
+        // Vérifiez si il y a deja un item dans le cellier
+        $bouteilleCellier = BouteilleCellier::where('id_bouteille', $idBouteille)
+            ->where('id_cellier', $idCellier)
+            ->first();
+
+        if ($bouteilleCellier) {
+            // Si l'association existe, mettez à jour la quantité
+            $bouteilleCellier->quantite += $quantite;
+            $bouteilleCellier->save();
+        } else {
+            // Sinon, créez une nouvelle association
+            $bouteilleCellier = new BouteilleCellier([
+                'id_bouteille' => $idBouteille,
+                'id_cellier' => $idCellier,
+                'id_user'=> $idUser,
+                'quantite' => $quantite
+            ]);
+            $bouteilleCellier->save();
+        }
+
+        return response()->json(['success' => true, 'message' => 'Bouteille ajoutée au cellier avec succès']);
+    }
     /**
      * delete the specified resource in storage.
      */
