@@ -69,9 +69,9 @@
 
             <!-- CTA -->
             <div>
+                <!-- composant et logique francois à ajouter quand il aura fini -->
                 <!-- favoris -->
                 <x-svg.heartIcon />
-                {{ $bouteille->userPreferences->favoris ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
                 <!-- achat -->
                 <x-svg.cartIcon />
             </div>
@@ -85,7 +85,7 @@
     <div class="detailsCellier">
         <h2>Mes réserves</h2>
         
-        <!-- composant et logique francois -->
+        <!-- composant et logique francois à ajouter quand il aura fini -->
     </div>
 
 </section>
