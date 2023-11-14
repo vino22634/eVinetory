@@ -1,8 +1,16 @@
 @extends('layouts/app')
 @section('title', 'Bouteilles')
 @section('content')
+<script src="{{ asset('js/bouteilles.js') }}" defer></script>
+
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
+<link href="/css/components/cardCellier.css" rel="stylesheet">
+<link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
+<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="{{ asset('js/modale.js') }}" defer></script>
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
         .bouteilleSearch__tri {
@@ -52,6 +60,37 @@
     </div>
 </section> 
 
+<!-- Modal confirmation suppression-->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
+    <seceetion>
+    
+    <div class="modale-content-large">
+
+
+   
+    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
+
+    <!-- Détail cellier -->
+    <div class="cellier__detail">
+        <h2>Mon inventaire</h2>
+            
+            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
+            
+            <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
+         <!-- Retour -->
+    </div>
+   
+
+       <div id='modaleContent'>Récupération de l'inventaire...</div>
+       
+   
+        <div class="modaleCTA">
+            <button class="closeButton info">Fermer</button>
+        </div>
+    </div>
+    </seceetion>
+</div>
+
 <script>
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
     favoriteAndPurchaseIcons.forEach(icon => {
@@ -71,7 +110,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
-
+        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;
@@ -197,6 +236,8 @@
         }, 500); // délais pour canceller
     }
 
+
+    
 </script>
 
 @endsection
