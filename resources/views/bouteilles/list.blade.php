@@ -77,7 +77,7 @@
             
             <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
             
-            <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
+            
          <!-- Retour -->
     </div>
    

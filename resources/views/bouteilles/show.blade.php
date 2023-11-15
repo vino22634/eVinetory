@@ -102,6 +102,7 @@
     <!-- Infos cellier -->
     <div class="detailsCellier">
         <h2>Mes réserves</h2>
+
     
         <div class="cards-container">
             @foreach ($bouteilleDansCelliers as $bouteilleDansCellier)
@@ -115,6 +116,7 @@
                 </div>
             @endforeach
         </div>
+
     </div>
 
 </section>

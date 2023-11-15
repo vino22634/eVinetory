@@ -1,4 +1,5 @@
-<strong>Voici l'inventaire dans chacun de vos celliers</strong>
+<strong>Voici l'inventaire dans chacun de vos celliers:</strong>
+
 @foreach($mesCelliers as $nomCellier => $dataCellier)
     <div>
         @forelse($dataCellier['contenu'] as $bouteilleCellier)
