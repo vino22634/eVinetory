@@ -17,21 +17,21 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: center;
     vertical-align: middle;
 }
 
 .modale-small{
     margin-top: 30vh;
-    width: clamp(400px, 40%, 600px);
+    width: clamp(320px, 40%, 600px);
     align-items: center;
     gap: 1rem;
+    text-align: center;
 }
 
 .modale-large {
     margin-top: 10vh;
-    width: clamp(400px, 60%, 800px);
+    width: 320px, 60%, 800px;
     gap: 2rem;
 }
 
