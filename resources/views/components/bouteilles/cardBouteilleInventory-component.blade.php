@@ -16,9 +16,9 @@
 
 <div class="cards-container">
     <!-- class commentée car trop en hauteur, inutile -->
-    <div class="carrdBouteilleCellier">
-        <div class="ctttardBouteilleCellier-details">
-            <div id="bouteille-prix">Quantité dans le cellier: {{ $bouteilleCellier->cellier->name }}</div>
+    <div class="cardBouteilleCellier">
+        <div class="cardBouteilleCellier-details">
+            <div id="bouteille-prix">Cellier: {{ $bouteilleCellier->cellier->name }}</div>
         </div>
 
 
@@ -28,7 +28,7 @@
                 <div class="number-input">
                     <input type="number" min="0" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
                         data-id="{{ $bouteilleCellier->id }}"
-                        onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
+                        onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" /> bouteille(s)
                 </div>
             </div>
             <img src="/img/icons/delete.svg" alt="supprimer" class="icons"
