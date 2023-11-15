@@ -46,17 +46,16 @@
     </div>
 </section> 
 
-<!-- Modale -->
+<!-- Modale Ajout Celliers -->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
     <section>
         <div class="modale-content modale-large">
             <!-- Détail cellier -->
             <div>
                 <h2>Mon inventaire</h2>
-                <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
+                <p>Ajouter cette bouteille dans mes celliers:</p>
             </div>
-   
-            <div id='modaleContent'>Récupération de l'inventaire...</div>
+            <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
             <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
         </div>
     </section>
