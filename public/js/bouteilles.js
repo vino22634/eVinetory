@@ -16,6 +16,27 @@ function manageCellierForBouteille(bouteilleId) {
 }
 
 //*********************** */
+//* BouteilleCellier: Change amount and trigger save function
+//
+function decrementValue(button) {
+    var input = button.parentNode.querySelector('input[type=number]');
+    input.stepDown();
+    triggerSaveAmount(input);
+}
+
+function incrementValue(button) {
+    var input = button.parentNode.querySelector('input[type=number]');
+    input.stepUp();
+    triggerSaveAmount(input);
+}
+
+function triggerSaveAmount(input) {
+    var bottleId = input.getAttribute('data-id');
+    bouteilleCellier_saveAmount(input, bottleId);
+}
+
+
+//*********************** */
 //* BouteilleCellier: Save amount
 // * @param {*} element clicked element
 // * @param {*} bouteilleCellierId Id bouteilleCellier
