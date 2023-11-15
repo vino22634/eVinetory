@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\BouteilleCellier;
 use App\Models\BouteilleType;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
@@ -40,6 +41,12 @@ class Bouteille extends Model
         return $this->belongsTo(PastilleType::class, 'pastille_id');
     }
 
+
+    public function bouteilleCelliers()
+    {
+        return $this->hasMany(BouteilleCellier::class, 'id_bouteille');
+    }
+    
     
     public function bouteilleCelliersForUser($userId)
     {
