@@ -6,8 +6,6 @@
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
-<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
-
 
 <section>
     <h2>Mes celliers</h2>
