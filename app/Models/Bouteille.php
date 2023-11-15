@@ -9,7 +9,6 @@ use App\Models\BouteilleType;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
 
-
 class Bouteille extends Model
 {
     use HasFactory;
