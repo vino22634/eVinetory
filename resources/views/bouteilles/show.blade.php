@@ -6,12 +6,16 @@
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
-    .detailsBouteille {
+    .detailsBouteille, .detailsCellier {
         display: flex;
         justify-content: space-between;
         gap: 1rem;
         padding: 1rem 0;
         flex-wrap: wrap;
+    }
+
+    .detailsCellier {
+        flex-direction: column;
     }
 
     .detailsBouteille__info {
@@ -31,6 +35,20 @@
         align-items: center;
         gap: 0.5rem;
         
+    }
+
+    .cardBouteilleCellier-quantity {
+        display: flex;
+        gap: 1rem;
+        background-color: var(--color-light-pink);
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cardBouteilleCellier-quantity span:nth-child(2) {
+        font-weight: 600;
     }
 
 </style>
@@ -80,13 +98,25 @@
             <a href="{{ $bouteille->url_saq }}" target="_blank" class="link">Lien vers la SAQ</a>
         </div>
     </div>
-    
+
     <!-- Infos cellier -->
     <div class="detailsCellier">
         <h2>Mes réserves</h2>
-        
-        <!-- composant et logique francois à ajouter quand il aura fini -->
-        
+
+    
+        <div class="cards-container">
+            @foreach ($bouteilleDansCelliers as $bouteilleDansCellier)
+                <div>
+                    <p>{{ $bouteilleDansCellier->name }}</p>
+                    <p class="cardBouteilleCellier-quantity">
+                        <span>-</span>
+                        <span>{{ $bouteilleDansCellier->quantite ?? 0 }}</span>
+                        <span>+</span>
+                    </p>
+                </div>
+            @endforeach
+        </div>
+
     </div>
 
 </section>
