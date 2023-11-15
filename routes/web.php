@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
 use App\Http\Controllers\BouteilleCellierController;
+use App\Http\Controllers\ErrorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,11 @@ Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //ERREUR
+     Route::get('/erreur', [ErrorController::class, 'index'])->name('erreur.index');
+     Route::post('/erreur', [ErrorController::class, 'sendEmail']);
+
 });
 
 
