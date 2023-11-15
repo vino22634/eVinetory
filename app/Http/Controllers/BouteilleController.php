@@ -157,6 +157,7 @@ class BouteilleController extends Controller
     */
     public function show(Bouteille $bouteille)
     {
-        return view('bouteilles.show', ['bouteille' => $bouteille]);
+        $bouteilleDansCelliers = $bouteille->bouteilleDansCelliersUser();
+        return view('bouteilles.show', ['bouteille' => $bouteille, 'bouteilleDansCelliers' => $bouteilleDansCelliers]);
     }
 }
