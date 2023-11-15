@@ -46,30 +46,19 @@
     </div>
 </section> 
 
-<!-- Modal confirmation suppression-->
-<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
+<!-- Modale -->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
     <section>
-    
-    <div class="modale-content-large">
+        <div class="modale-content modale-large">
+            <!-- Détail cellier -->
+            <div>
+                <h2>Mon inventaire</h2>
+                <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
+            </div>
    
-    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
-
-    <!-- Détail cellier -->
-    <div class="cellier__detail">
-        <h2>Mon inventaire</h2>
-            
-            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
-         <!-- Retour -->
-    </div>
-   
-
-       <div id='modaleContent'>Récupération de l'inventaire...</div>
-       
-   
-        <div class="modaleCTA">
-            <button class="closeButton info">Fermer</button>
+            <div id='modaleContent'>Récupération de l'inventaire...</div>
+            <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
         </div>
-    </div>
     </section>
 </div>
 
