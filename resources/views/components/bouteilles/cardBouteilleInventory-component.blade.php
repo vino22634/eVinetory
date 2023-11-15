@@ -15,11 +15,8 @@
 
 @if( $bouteilleCellier->id )
     <!-- Quantité -->
-
-
-
     <div class="bouteilleCellier_cta">
-        <img src="/img/icons/delete.svg" alt="supprimer" class="icons_action"
+        <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action"
                 onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}', 
                 '{{ $bouteilleCellier->id_bouteille }}')">
         <div class="number-input">
@@ -33,6 +30,5 @@
     </div>
 
 @else
-    <img src="/img/icons/bouteilles/addToCellier@2x.png" alt="supprimer" class="icons_action" onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}',
-'{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')">
+    <button onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}','{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')">Ajouter au cellier</button>
 @endif

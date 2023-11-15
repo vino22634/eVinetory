@@ -63,18 +63,16 @@ function bouteilleCellier_saveAmount(element, bouteilleCellierId) {
 // * @param {*} bouteilleCellierId Id bouteilleCellier
 //
 function bouteilleCellier_delete(element, bouteilleCellierId, bouteilleId) {
-    if (confirm("Êtes vous certain de vouloir effacer cet inventaire?")) {
-        sendRequest(
-            "/bouteilleCellier/delete",
-            { id: bouteilleCellierId },
-            "DELETE"
-        )
-            .then((data) => {
-                console.log(data);
-                manageCellierForBouteille(bouteilleId);
-            })
-            .catch((error) => console.error("Error:", error));
-    }
+    sendRequest(
+        "/bouteilleCellier/delete",
+        { id: bouteilleCellierId },
+        "DELETE"
+    )
+        .then((data) => {
+            console.log(data);
+            manageCellierForBouteille(bouteilleId);
+        })
+        .catch((error) => console.error("Error:", error));
 }
 
 //*********************** */
@@ -92,23 +90,21 @@ function bouteilleCellier_add(
     idCellier,
     quantite
 ) {
-    if (confirm("Voulez-vous ajouter cette bouteille au cellier?")) {
-        sendRequest(
-            "/bouteilleCellier/add", 
-            {
-                id: bouteilleCellierId, 
-                idBouteille: idBouteille, 
-                idCellier: idCellier, 
-                quantite: quantite, 
-            },
-            "POST" // Utilisez la méthode HTTP appropriée selon votre route Laravel
-        )
-            .then((data) => {
-                console.log(data);
-                manageCellierForBouteille(idBouteille);
-            })
-            .catch((error) => console.error("Erreur:", error));
-    }
+    sendRequest(
+        "/bouteilleCellier/add", 
+        {
+            id: bouteilleCellierId, 
+            idBouteille: idBouteille, 
+            idCellier: idCellier, 
+            quantite: quantite, 
+        },
+        "POST" // Utilisez la méthode HTTP appropriée selon votre route Laravel
+    )
+        .then((data) => {
+            console.log(data);
+            manageCellierForBouteille(idBouteille);
+        })
+        .catch((error) => console.error("Erreur:", error));
 }
 
 function toggleAction(bouteilleId, action) {
