@@ -7,7 +7,6 @@
         background-color: #f0f0f0;
         color: #ccc;
     }
-
 </style>
 
 <head>
@@ -16,11 +15,10 @@
 
 <div class="cards-container">
     <!-- class commentée car trop en hauteur, inutile -->
-    <div class="cardBouteilleCellier">
+    <div class="cardBeouteilleCellier">
         <div class="cardBouteilleCellier-details">
             <div id="bouteille-prix">Cellier: {{ $bouteilleCellier->cellier->name }}</div>
         </div>
-
 
         @if( $bouteilleCellier->id )
             <!-- Quantité -->
@@ -30,13 +28,13 @@
                         data-id="{{ $bouteilleCellier->id }}"
                         onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" /> bouteille(s)
                 </div>
+        
+                <img src="/img/icons/delete.svg" alt="supprimer" class="icons"
+                    onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}', 
+                    '{{ $bouteilleCellier->id_bouteille }}')">
             </div>
-            <img src="/img/icons/delete.svg" alt="supprimer" class="icons"
-                onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}', 
-                '{{ $bouteilleCellier->id_bouteille }}')">
 
         @else
-
             <img src="/img/icons/bouteilles/addToCellier@2x.png" alt="supprimer" class="icons_action" onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}',
      '{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')">
         @endif

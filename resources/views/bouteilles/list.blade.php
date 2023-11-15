@@ -38,9 +38,18 @@
             border: 1px solid #ccc;
             border-radius: 0.5rem;
         }
+
+         .cardInventoryBouteilleCellier {
+            display: flex;
+            flex-direction: column; /* Cela garantit que les enfants s'alignent verticalement */
+
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0;
+            fleex-wrap: wrap;
+         }
 </style>
 <section>
-    
 
     <div class='bouteilleSearch__tri'>
        <div class='cards-container'>
@@ -66,28 +75,20 @@
     <seceetion>
     
     <div class="modale-content-large">
-
-
    
     <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
 
     <!-- Détail cellier -->
     <div class="cellier__detail">
         <h2>Mon inventaire</h2>
-            
             <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
-            
-            
-         <!-- Retour -->
     </div>
-   
 
-       <div id='modaleContent'>Récupération de l'inventaire...</div>
-       
+    <div id='modaleContent'>Récupération de l'inventaire...</div>
    
-        <div class="modaleCTA">
+        <!-- <div class="modaleCTA">
             <button class="closeButton info">Fermer</button>
-        </div>
+        </div> -->
     </div>
     </seceetion>
 </div>
@@ -171,8 +172,6 @@
 
     });
 
-   
-
 
     const sort = document.getElementById('tri-component');
     sort.addEventListener('change', function () {
@@ -181,11 +180,6 @@
 
     let searchTimeoutToken;
 
-
-
-
-    
 </script>
 
 @endsection
-
