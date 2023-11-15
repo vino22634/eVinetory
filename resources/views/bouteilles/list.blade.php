@@ -14,29 +14,19 @@
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
-        .bouteilleSearch__tri {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+.bouteilleSearch__tri {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
-        .bouteilleSearch__tri .cards-container {
-            width:100%;
-            flex:1;
-            flex-basis: 200px;
-            padding:1rem;
-        }
-        
-        .bouteilleSearch__tri input {
-            flex:1;
-            max-height: 10px;
-            font-size: 16px;
-            /* paddwing: 0.5rem; */
-            border: 1px solid #ccc;
-            border-radius: 0.5rem;
-        }
+.bouteilleSearch__tri .cards-container {
+    width:100%;
+    flex:1;
+    flex-basis: 200px;
+}
 </style>
 <section>
     <h2 id="bouteilles_total">Liste des bouteilles</h2>
@@ -61,8 +51,6 @@
     <section>
     
     <div class="modale-content-large">
-
-
    
     <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
 
@@ -71,8 +59,6 @@
         <h2>Mon inventaire</h2>
             
             <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
-            
-            
          <!-- Retour -->
     </div>
    
@@ -163,11 +149,7 @@
                     document.getElementById('loading').style.display = 'none';
                 });
         }
-
     });
-
-   
-
 
     const sort = document.getElementById('tri-component');
     sort.addEventListener('change', function () {
@@ -175,11 +157,6 @@
     });
 
     let searchTimeoutToken;
-
-
-
-
-    
 </script>
 
 @endsection
