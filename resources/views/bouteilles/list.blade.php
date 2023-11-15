@@ -16,19 +16,18 @@
 <style>
         .bouteilleSearch__tri {
             display: flex;
-            margin-top: 1rem;
             justify-content: space-between; 
-            align-items: center;       
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .bouteilleSearch__tri .cards-container {
             width:100%;
             flex:1;
-            flex-wrap: nowrap;
-            margin-right: 1.5rem;
+            flex-basis: 200px;
             padding:1rem;
         }
-
         
         .bouteilleSearch__tri input {
             flex:1;
@@ -40,19 +39,15 @@
         }
 </style>
 <section>
-    
+    <h2 id="bouteilles_total">Liste des bouteilles</h2>
 
+    <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
-       <div class='cards-container'>
-            <input class='cards-container' type="search" id="searchField"
-               placeholder="Recherche...">
-        </div>
-        
-         <x-tri-component />
+        <input class='cards-container' type="search" id="searchField"
+            placeholder="Recherche...">
+        <x-tri-component />
     </div>
-    <h2 id="bouteilles_total">Liste des bouteilles </h2>
 
-    
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container class="cards-container">@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])
     </div>
@@ -63,7 +58,7 @@
 
 <!-- Modal confirmation suppression-->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
-    <seceetion>
+    <section>
     
     <div class="modale-content-large">
 
@@ -89,7 +84,7 @@
             <button class="closeButton info">Fermer</button>
         </div>
     </div>
-    </seceetion>
+    </section>
 </div>
 
 <script>
