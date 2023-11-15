@@ -8,7 +8,7 @@ use App\Models\BouteilleCellier;
 use App\Models\BouteilleType;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
-
+use App\Models\Cellier;
 
 class Bouteille extends Model
 {
@@ -49,10 +49,31 @@ class Bouteille extends Model
     }
     
     
-    public function bouteilleCelliersForUser($userId)
+    public function bouteilleCelliersForUser()
     {
+        $userId = auth()->id();
         return $this->bouteilleCelliers()->whereHas('cellier', function ($query) use ($userId) {
         $query->where('user_id', $userId);
         })->get();
+    }
+
+    
+    /**
+     * Renvoit les celliers de l'utilisateur avec la quantité de bouteilles de la bouteille
+     * Renvoit null si la bouteille n'est pas dans un cellier
+     */
+    public function bouteilleDansCelliersUser()
+    {
+        $bouteilleId = $this->id;
+        $userId = auth()->id();
+
+        return Cellier::select('celliers.id', 'celliers.name', 'bouteille_cellier.quantite', 'bouteille_cellier.id_bouteille')
+            ->leftJoin('bouteille_cellier', function ($join) use ($bouteilleId) {
+                $join->on('celliers.id', '=', 'bouteille_cellier.id_cellier')
+                    ->where('bouteille_cellier.id_bouteille', '=', $bouteilleId);
+            })
+            ->where('celliers.user_id', '=', $userId)
+            ->orderBy('celliers.name')
+            ->get();
     }
 }
