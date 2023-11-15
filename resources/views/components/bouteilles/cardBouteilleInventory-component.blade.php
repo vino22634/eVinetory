@@ -15,7 +15,7 @@
 @if( $bouteilleCellier->id )
     <!-- Quantité -->
     <div class="bouteilleCellier_cta">
-        <input type="number" min="0" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
+        <input type="number" min="0" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount" width="20px"
             data-id="{{ $bouteilleCellier->id }}"
             onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
         <img src="/img/icons/delete.svg" alt="supprimer"

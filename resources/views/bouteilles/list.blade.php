@@ -53,7 +53,7 @@
             <!-- Détail cellier -->
             <div>
                 <h2>Mon inventaire</h2>
-                <p>Ajouter cette bouteille dans mes celliers:</p>
+                <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
             </div>
             <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
             <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
