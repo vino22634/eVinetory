@@ -15,6 +15,8 @@ function manageCellierForBouteille(bouteilleId) {
     showModale();
 }
 
+
+
 //*********************** */
 //* BouteilleCellier: Change amount and trigger save function
 //
