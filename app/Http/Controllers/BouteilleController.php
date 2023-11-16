@@ -160,4 +160,17 @@ class BouteilleController extends Controller
         $bouteilleDansCelliers = $bouteille->bouteilleDansCelliersUser();
         return view('bouteilles.show', ['bouteille' => $bouteille, 'bouteilleDansCelliers' => $bouteilleDansCelliers]);
     }
+
+    /**
+     * Afficher la liste d'achats
+     */
+    public function achats()
+    {
+        // dd(auth()->id());
+        $bouteilles = Bouteille::whereHas('userPreferences', function ($query) {
+            $query->where('listeDachat', 1)->where('user_id', auth()->id());
+        })->with('userPreferences')->with('pastilleType')->paginate(20);
+        $celliers = Cellier::all();
+        return view('bouteilles.achats', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
+    }
 }
