@@ -13,7 +13,7 @@ class CellierController extends Controller
      */
     public function index()
     {
-        $celliers = Cellier::all();
+        $celliers = Cellier::all()->where('user_id', Auth::user()->id);
         return view('celliers.index', ['celliers' => $celliers]);
     }
 
