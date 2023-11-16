@@ -7,4 +7,3 @@
         @endforelse
     </div>
 @endforeach
-
