@@ -17,11 +17,9 @@
                 {{ $bouteille->format }},
                 {{ $bouteille->pays }}
             </div>
-
         </div>
 
         <div class="bouteillefooter">
-
             <div class="prix">{{ $bouteille->prix_saq }} $</div>
             <div class="bouteilleIcons-container">
 
@@ -43,7 +41,5 @@
                     onclick="manageCellierForBouteille({{ $bouteille->id }})">
             </div>
         </div>
-
-
     </div>
 </div>
