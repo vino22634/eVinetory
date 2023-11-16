@@ -26,7 +26,6 @@
                 onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
             <button onclick="incrementValue(this)" class="plus"></button>
         </div>
-        
     </div>
 
 @else

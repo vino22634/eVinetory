@@ -46,6 +46,7 @@
     </div>
 </section> 
 
+
 <!-- Modale Ajout Celliers -->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
     <section>
@@ -59,6 +60,7 @@
             <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
         </div>
     </section>
+
 </div>
 
 <script>
@@ -139,13 +141,14 @@
         }
     });
 
+
     const sort = document.getElementById('tri-component');
     sort.addEventListener('change', function () {
         searchBouteilles();
     });
 
     let searchTimeoutToken;
+
 </script>
 
 @endsection
-
