@@ -1,57 +1,43 @@
 @extends('layouts/app')
 @section('title', 'Bouteilles')
 @section('content')
+
+<script src="{{ asset('js/utils.js') }}" defer></script>
 <script src="{{ asset('js/bouteilles.js') }}" defer></script>
 
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">
 <link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
-<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
-        .bouteilleSearch__tri {
-            display: flex;
-            margin-top: 1rem;
-            justify-content: space-between; 
-            align-items: center;       
-        }
+.bouteilleSearch__tri {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
-        .bouteilleSearch__tri .cards-container {
-            width:100%;
-            flex:1;
-            flex-wrap: nowrap;
-            margin-right: 1.5rem;
-            padding:1rem;
-        }
-
-        
-        .bouteilleSearch__tri input {
-            flex:1;
-            max-height: 10px;
-            font-size: 16px;
-            /* paddwing: 0.5rem; */
-            border: 1px solid #ccc;
-            border-radius: 0.5rem;
-        }
+.bouteilleSearch__tri .cards-container {
+    width:100%;
+    flex:1;
+    flex-basis: 200px;
+}
 </style>
 <section>
-    
+    <h2 id="bouteilles_total">Liste des bouteilles</h2>
 
+    <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
-       <div class='cards-container'>
-            <input class='cards-container' type="search" id="searchField"
-               placeholder="Recherche...">
-        </div>
-        
-         <x-tri-component />
+        <input class='cards-container' type="search" id="searchField"
+            placeholder="Recherche...">
+        <x-tri-component />
     </div>
-    <h2 id="bouteilles_total">Liste des bouteilles </h2>
 
-    
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container class="cards-container">@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])
     </div>
@@ -60,35 +46,21 @@
     </div>
 </section> 
 
-<!-- Modal confirmation suppression-->
-<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
-    <seceetion>
-    
-    <div class="modale-content-large">
 
-
-   
-    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
-
-    <!-- Détail cellier -->
-    <div class="cellier__detail">
-        <h2>Mon inventaire</h2>
-            
-            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
-            
-            <p>Total: 12 bouteilles / {{ count($celliers) }} celliers</p>
-         <!-- Retour -->
-    </div>
-   
-
-       <div id='modaleContent'>Récupération de l'inventaire...</div>
-       
-   
-        <div class="modaleCTA">
-            <button class="closeButton info">Fermer</button>
+<!-- Modale Ajout Celliers -->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
+    <section>
+        <div class="modale-content modale-large">
+            <!-- Détail cellier -->
+            <div>
+                <h2>Mon inventaire</h2>
+                <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
+            </div>
+            <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
+            <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
         </div>
-    </div>
-    </seceetion>
+    </section>
+
 </div>
 
 <script>
@@ -167,36 +139,8 @@
                     document.getElementById('loading').style.display = 'none';
                 });
         }
-
     });
 
-    function toggleAction(bouteilleId, action) {
-        fetch(`/bouteilles_toggle${action}/${bouteilleId}`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    bouteilleId
-                }),
-            })
-            .then(response => {
-                console.log("response", this)
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`La mise à jour de l'action "${action}" a échoué`);
-                }
-            })
-            .then(data => {
-                //considérer un reset icon en vas d'erreur (data.message.includes('ajoutée'))
-                console.log(`Action "${action}" mise à jour avec succès:`, data.message);
-            })
-            .catch(error => {
-                console.error(`Erreur lors de la requête AJAX pour l'action "${action}":`, error);
-            });
-    }
 
     const sort = document.getElementById('tri-component');
     sort.addEventListener('change', function () {
@@ -205,40 +149,6 @@
 
     let searchTimeoutToken;
 
-    function searchBouteilles() {
-        const query = document.getElementById('searchField').value;
-        const sort = document.getElementById('tri-component').value; // Get the selected sorting value
-
-        // j'efface mon timer(UN SEUL TIMER A LA FOIS)
-        if (searchTimeoutToken) {
-            clearTimeout(searchTimeoutToken);
-        }
-
-        searchTimeoutToken = setTimeout(() => {
-            document.getElementById('loading').style.display = 'block';
-            // Include the sort parameter in the fetch URL
-            fetch(`/search/bouteilles?query=${query}&sort=${sort}`, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',  //identifie la requete comme ajax
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                }
-            })
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('loading').style.display ='none'; 
-                document.getElementById('bouteilles-container').innerHTML = html;
-                //document.getElementById('bouteilles_total').innerHTML = " résultats";
-            })
-            .catch(error => {
-                console.error('Erreur:', error);
-                document.getElementById('loading').style.display = 'none';
-            });
-        }, 500); // délais pour canceller
-    }
-
-
-    
 </script>
 
 @endsection
-
