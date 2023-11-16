@@ -2,6 +2,10 @@
 @section('title', 'Détail bouteille')
 @section('content')
 
+<script src="{{ asset('js/utils.js') }}" defer></script>
+<script src="{{ asset('js/bouteilles.js') }}" defer></script>
+<script src="{{ asset('js/bouteilleDetails.js') }}" defer></script>
+
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
@@ -58,13 +62,13 @@
     <a href="{{route('bouteilles.list')}}" class="">← Retour</a>
 
     <!-- Détail bouteille -->
-    <div class="detailsBouteille">
+    <div class="detailsBouteille" id="bouteilleID" data-bouteilleID="{{ $bouteille->id }}">
         <!-- Image -->
         <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
         @if(!Str::contains($bouteille->image, 'http') || Str::contains($bouteille->image, 'pastille'))
-        <img src="/img/icons/bottle.png" alt="{{ $bouteille->nom }}">
+            <img src="/img/icons/bottle.png" alt="{{ $bouteille->nom }}">
         @else
-        <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}">
+            <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}">
         @endif
 
         <!-- Infos saq -->
@@ -72,10 +76,10 @@
             <h2>{{ $bouteille->nom }}</h2>
 
             @if ($bouteille->pastilleType )
-            <div class="detailsBouteille__pastille">
-                <img src="{{ $bouteille->pastilleType->imageURL }}" alt="Pastille">
-                <span>{{ Str::after($bouteille->pastilleType->description, ' : ') }}</span>
-            </div>
+                <div class="detailsBouteille__pastille">
+                    <img src="{{ $bouteille->pastilleType->imageURL }}" alt="Pastille">
+                    <span>{{ Str::after($bouteille->pastilleType->description, ' : ') }}</span>
+                </div>
             @endif
                 
             <div>
@@ -102,23 +106,8 @@
     <!-- Infos cellier -->
     <div class="detailsCellier">
         <h2>Mes réserves</h2>
-
-    
-        <div class="cards-container">
-            @foreach ($bouteilleDansCelliers as $bouteilleDansCellier)
-                <div>
-                    <p>{{ $bouteilleDansCellier->name }}</p>
-                    <p class="cardBouteilleCellier-quantity">
-                        <span>-</span>
-                        <span>{{ $bouteilleDansCellier->quantite ?? 0 }}</span>
-                        <span>+</span>
-                    </p>
-                </div>
-            @endforeach
-        </div>
-
+        <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
     </div>
-
 </section>
-
 @endsection
+
