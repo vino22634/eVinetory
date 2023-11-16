@@ -236,6 +236,28 @@ button, .button {
     background-color: transparent;
 }
 
+.button-small {
+    width: max-content;
+    align-self: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: var(--transition);
+    font-weight: 300;
+    font-size: var(--h4-font-size);
+    text-align: center;
+    color: var(--color-text70);
+}
+
+.regular {
+    border-color: var(--color-black);
+    color: var(--color-black);
+}
+
+.regular:hover {
+    border-color: var(--color-grey);
+}
+
 .info {
     border-color: var(--color-blue);
     color: var(--color-blue);
