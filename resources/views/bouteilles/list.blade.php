@@ -14,54 +14,30 @@
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
-        .bouteilleSearch__tri {
-            display: flex;
-            margin-top: 1rem;
-            justify-content: space-between; 
-            align-items: center;       
-        }
+.bouteilleSearch__tri {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
-        .bouteilleSearch__tri .cards-container {
-            width:100%;
-            flex:1;
-            flex-wrap: nowrap;
-            margin-right: 1.5rem;
-            padding:1rem;
-        }
-
-        
-        .bouteilleSearch__tri input {
-            flex:1;
-            max-height: 10px;
-            font-size: 16px;
-            /* paddwing: 0.5rem; */
-            border: 1px solid #ccc;
-            border-radius: 0.5rem;
-        }
-
-         .cardInventoryBouteilleCellier {
-            display: flex;
-            flex-direction: column; /* Cela garantit que les enfants s'alignent verticalement */
-
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1rem 0;
-            fleex-wrap: wrap;
-         }
+.bouteilleSearch__tri .cards-container {
+    width:100%;
+    flex:1;
+    flex-basis: 200px;
+}
 </style>
 <section>
+    <h2 id="bouteilles_total">Liste des bouteilles</h2>
 
+    <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
-       <div class='cards-container'>
-            <input class='cards-container' type="search" id="searchField"
-               placeholder="Recherche...">
-        </div>
-        
-         <x-tri-component />
+        <input class='cards-container' type="search" id="searchField"
+            placeholder="Recherche...">
+        <x-tri-component />
     </div>
-    <h2 id="bouteilles_total">Liste des bouteilles </h2>
 
-    
     <!-- Liste des bouteilles -->
     <div id=bouteilles-container class="cards-container">@include('bouteilles.partials-bouteilleslist',['bouteilles'=> $bouteilles])
     </div>
@@ -70,27 +46,21 @@
     </div>
 </section> 
 
-<!-- Modal confirmation suppression-->
-<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
-    <seceetion>
-    
-    <div class="modale-content-large">
-   
-    <a href="{{ route('bouteilles.list') }}" class="">← Retour</a>
 
-    <!-- Détail cellier -->
-    <div class="cellier__detail">
-        <h2>Mon inventaire</h2>
-            <p>(Gérer nombre de bouteille de ce type dans votre\vos celliers)</p>
-    </div>
+<!-- Modale Ajout Celliers -->
+<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
+    <section>
+        <div class="modale-content modale-large">
+            <!-- Détail cellier -->
+            <div>
+                <h2>Mon inventaire</h2>
+                <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
+            </div>
+            <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
+            <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
+        </div>
+    </section>
 
-    <div id='modaleContent'>Récupération de l'inventaire...</div>
-   
-        <!-- <div class="modaleCTA">
-            <button class="closeButton info">Fermer</button>
-        </div> -->
-    </div>
-    </seceetion>
 </div>
 
 <script>
@@ -169,7 +139,6 @@
                     document.getElementById('loading').style.display = 'none';
                 });
         }
-
     });
 
 
