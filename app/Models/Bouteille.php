@@ -33,6 +33,7 @@ class Bouteille extends Model
     {
         return $this->hasOne(BouteillePreferences::class)->where('user_id', auth()->id());
     }
+    
 
     /**
      * Renvoit la pastille de la bouteille
