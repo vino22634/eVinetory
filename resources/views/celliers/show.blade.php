@@ -6,8 +6,6 @@
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
-<link href="{{ asset('css/cellier__detail.css') }}" rel="stylesheet">
-
 
 <section>
     <h2>Mes celliers</h2>
@@ -57,7 +55,7 @@
 
 <!-- Modal confirmation suppression-->
 <div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="ModaleSupp" aria-hidden="true">
-    <div class="modale-content">
+    <div class="modale-content modale-small">
         <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
         <div class="modaleCTA">
             <button class="closeButton info">Non</button>

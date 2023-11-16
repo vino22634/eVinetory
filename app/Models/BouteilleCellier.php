@@ -13,6 +13,15 @@ class BouteilleCellier extends Model
 
     protected $table = 'bouteille_cellier';
 
+     protected $fillable = [
+        'id',
+        'quantite',
+           'id_cellier',
+           'id_bouteille',
+        'created_at',
+        'updated_at',
+     ];
+
     public function bouteille()
     {
         return $this->belongsTo(Bouteille::class, 'id_bouteille');
