@@ -29,7 +29,7 @@
 }
 </style>
 <section>
-    <h2 id="bouteilles_total">Liste des bouteilles</h2>
+    <h2 id="bouteilles_total">Liste d'achats</h2>
 
     <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
