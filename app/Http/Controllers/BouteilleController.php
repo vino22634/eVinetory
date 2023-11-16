@@ -28,7 +28,29 @@ class BouteilleController extends Controller
         return view('bouteilles.list', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
 
+    public function favorites()
+    {
+        $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->paginate(20);
 
+        $celliers = Cellier::all();
+
+        $mesFavoris = [];
+        foreach ($bouteilles as $bouteille) {
+
+           $isfav= $this->$bouteille->userPreferences->favoris ?? 'Default Name';
+        //    $name = $this->someObject->name ?? 'Default Name';
+
+           $mesFavoris[] = [
+            "id" => $bouteille->id,
+            "nom" => $bouteille->nom,
+            // Ajoutez d'autres attributs que vous souhaitez inclure
+        ];
+        }
+return   $mesFavoris;
+
+        //return $bouteilles;
+        // return view('bouteilles.list', ['bouteilles' => $mesFavoris, 'celliers' => $celliers]);
+    }
 
     public function toggleFavorite(Request $request, $bouteilleId)
     {
@@ -113,8 +135,6 @@ class BouteilleController extends Controller
             return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
         // }
     }
-
-
 
     public function search(Request $request)
     {
