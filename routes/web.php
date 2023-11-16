@@ -68,9 +68,7 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //ERREUR
-     Route::get('/erreur', [ErrorController::class, 'index'])->name('erreur.index');
-     Route::post('/erreur', [ErrorController::class, 'sendEmail']);
+   
 
 });
 

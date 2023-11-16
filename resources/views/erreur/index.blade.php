@@ -6,7 +6,8 @@
     <!-- Retour -->
     <a href="#retournerversprofil" class="">← Retour</a>
 
-    <h2>Signaler une erreur</h2>
+    <h2>Formulaire de contact</h2>
+    <p>Merci de nous indiquer vos commentaires, suggestions,  demande de renseignements et éventuellement nous signaler une erreur que vous auriez constatée</p>
 
     <!-- Formulaire ajout erreur -->
     <form method="post">
