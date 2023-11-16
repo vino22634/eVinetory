@@ -16,27 +16,6 @@ function manageCellierForBouteille(bouteilleId) {
 }
 
 //*********************** */
-//* BouteilleCellier: Change amount and trigger save function
-//
-function decrementValue(button) {
-    var input = button.parentNode.querySelector('input[type=number]');
-    input.stepDown();
-    triggerSaveAmount(input);
-}
-
-function incrementValue(button) {
-    var input = button.parentNode.querySelector('input[type=number]');
-    input.stepUp();
-    triggerSaveAmount(input);
-}
-
-function triggerSaveAmount(input) {
-    var bottleId = input.getAttribute('data-id');
-    bouteilleCellier_saveAmount(input, bottleId);
-}
-
-
-//*********************** */
 //* BouteilleCellier: Save amount
 // * @param {*} element clicked element
 // * @param {*} bouteilleCellierId Id bouteilleCellier
@@ -63,16 +42,18 @@ function bouteilleCellier_saveAmount(element, bouteilleCellierId) {
 // * @param {*} bouteilleCellierId Id bouteilleCellier
 //
 function bouteilleCellier_delete(element, bouteilleCellierId, bouteilleId) {
-    sendRequest(
-        "/bouteilleCellier/delete",
-        { id: bouteilleCellierId },
-        "DELETE"
-    )
-        .then((data) => {
-            console.log(data);
-            manageCellierForBouteille(bouteilleId);
-        })
-        .catch((error) => console.error("Error:", error));
+    if (confirm("Êtes vous certain de vouloir effacer cet inventaire?")) {
+        sendRequest(
+            "/bouteilleCellier/delete",
+            { id: bouteilleCellierId },
+            "DELETE"
+        )
+            .then((data) => {
+                console.log(data);
+                manageCellierForBouteille(bouteilleId);
+            })
+            .catch((error) => console.error("Error:", error));
+    }
 }
 
 //*********************** */
@@ -90,21 +71,23 @@ function bouteilleCellier_add(
     idCellier,
     quantite
 ) {
-    sendRequest(
-        "/bouteilleCellier/add", 
-        {
-            id: bouteilleCellierId, 
-            idBouteille: idBouteille, 
-            idCellier: idCellier, 
-            quantite: quantite, 
-        },
-        "POST" // Utilisez la méthode HTTP appropriée selon votre route Laravel
-    )
-        .then((data) => {
-            console.log(data);
-            manageCellierForBouteille(idBouteille);
-        })
-        .catch((error) => console.error("Erreur:", error));
+    if (confirm("Voulez-vous ajouter cette bouteille au cellier?")) {
+        sendRequest(
+            "/bouteilleCellier/add", 
+            {
+                id: bouteilleCellierId, 
+                idBouteille: idBouteille, 
+                idCellier: idCellier, 
+                quantite: quantite, 
+            },
+            "POST" // Utilisez la méthode HTTP appropriée selon votre route Laravel
+        )
+            .then((data) => {
+                console.log(data);
+                manageCellierForBouteille(idBouteille);
+            })
+            .catch((error) => console.error("Erreur:", error));
+    }
 }
 
 function toggleAction(bouteilleId, action) {
