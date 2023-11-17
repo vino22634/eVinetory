@@ -37,6 +37,19 @@
         </div>
     </section>
 
+    @if(session('message'))
+    <h6 class="success-message">
+        {{ session('message') }}
+    </h6>
+    @endif
+
+    <!--
+    <div class="login-action">
+        <div>
+            <a href="" class="link">Nous contacter</a>
+        </div>
+    </div>-->
+
 </div>
 
 @endsection
