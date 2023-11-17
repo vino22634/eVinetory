@@ -7,6 +7,7 @@ use App\Models\Bouteille;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
 use App\Models\Cellier;
+use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -140,6 +141,17 @@ class BouteilleController extends Controller
         $ordreSens = $arrayorder[1];
 
         $bouteillesQuery = Bouteille::query();
+
+        // si je suis dans la route achats ou favoris, je veux seulement les bouteilles dans la liste d'achat ou des favoris de l'utilisateur
+        if (Route::currentRouteName() == 'achats') {
+            $bouteillesQuery->whereHas('userPreferences', function ($query) {
+                $query->where('listeDachat', 1)->where('user_id', auth()->id());
+            });
+        } else if (Route::currentRouteName() == 'favoris') {
+            $bouteillesQuery->whereHas('userPreferences', function ($query) {
+                $query->where('favoris', 1)->where('user_id', auth()->id());
+            });
+        }
 
         if ($query) {
             $bouteillesQuery->where('nom', 'LIKE', '%' . $query . '%');

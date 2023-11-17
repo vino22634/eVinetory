@@ -13,7 +13,7 @@ use App\Models\Cellier;
 class Bouteille extends Model
 {
     use HasFactory;
-
+    
     protected $table = 'bouteille';
 
     /**

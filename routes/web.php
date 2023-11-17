@@ -74,9 +74,13 @@ Route::middleware('auth')->group(function () {
 
     // LISTE D'ACHAT
     Route::get('/achats', [BouteilleController::class, 'achats'])->name('bouteilles.achats');
+    Route::get('/search/achats', [BouteilleController::class, 'search'])->name('achats');
+
 
     // LISTE FAVORIS
     Route::get('/favoris', [BouteilleController::class, 'favoris'])->name('bouteilles.favoris');
+    Route::get('/search/favoris', [BouteilleController::class, 'search'])->name('favoris');
+
 
 });
 
