@@ -30,9 +30,7 @@ Route::middleware('auth')->group(function () {
     // BOUTEILLES
     Route::get('/bouteillesraw', [BouteilleController::class, 'indexRaw'])->name('bouteilles.listRaw');
     Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.list');
-
-    //Favoris
-    Route::get('/favoris', [BouteilleController::class, 'favorites'])->name('bouteilles.favoris');    
+ 
     Route::post('/bouteilles_toggleFavoris/{bouteilleId}', [
         BouteilleController::class, 'toggleFavorite'
     ])->name('bouteilles.toggleFavoris');
@@ -76,6 +74,9 @@ Route::middleware('auth')->group(function () {
 
     // LISTE D'ACHAT
     Route::get('/achats', [BouteilleController::class, 'achats'])->name('bouteilles.achats');
+
+    // LISTE FAVORIS
+    Route::get('/favoris', [BouteilleController::class, 'favoris'])->name('bouteilles.favoris');
 
 });
 

@@ -36,7 +36,7 @@
                 <x-svg.cellarIcon />
                 <p>Celliers</p>
             </a>
-            <a href="" style="pointer-events: none">
+            <a href="{{route('bouteilles.favoris')}}" class="{{ request()->is('cellier*') ? 'active':'' }}">
                 <x-svg.heartIcon />
                 <p>Favoris</p>
             </a>
