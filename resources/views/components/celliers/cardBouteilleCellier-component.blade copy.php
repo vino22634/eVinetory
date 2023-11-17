@@ -2,7 +2,6 @@
 
 
 <div class="cardBouteilleCellier">
-
             <!-- Image -->
             <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
             @if(!Str::contains($detailBouteilleCellier->image, 'http') || Str::contains($detailBouteilleCellier->image, 'pastille'))
@@ -19,15 +18,10 @@
             </div>
 
             <!-- Quantité -->
+            <img src="/img/icons/delete.svg" alt="supprimer" class="icons" >
             <div class="cardBouteilleCellier-quantity" class="icons" >
                 <span>-</span>
                 <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
                 <span>+</span>
             </div>
-
-            <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action"
-                onclick="bouteilleCellier_delete(this, '{{ $detailBouteilleCellier->pivot->id }}',
-                '{{ $detailBouteilleCellier->pivot->id_cellier }}')">
-            <!-- <img src="/img/icons/delete.svg" alt="supprimer" class="icons"> -->
-
 </div>

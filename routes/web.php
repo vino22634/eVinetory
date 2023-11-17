@@ -45,14 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/ajax/bouteilles_viewfor_managecellier/{bouteilleId}', [BouteilleController::class,
     'ajaxViewfor_managecellier'])->name('bouteilles.ajaxViewfor_managecellier');
 
-
-    Route::get('/ajax/viewfor_managecellierbycellier/{bouteilleId}', [BouteilleController::class,
-    'ajaxViewfor_managecellier'])->name('bouteilles.ajaxViewwwfor_managecellier');
-
-    //Route::get('/ajax/viewfor_managecellierbycellier/{bouteilleId}', [BouteilleCellierController::class,
-    //  'ajaxViewfor_ManageCellierByCellier'])->name('bouteilleCellier.ajaxviewfor_managecellierbycellier');
-
-
+    Route::get('/ajax/viewfor_managecellierbycellier/{cellierId}', [BouteilleCellierController::class,
+    'ajaxViewfor_ManageCellierByCellier'])->name('celliers.ajaxViewfor_ManageCellierByCellier');
 
     Route::get('/bouteilles/{bouteille}', [BouteilleController::class, 'show'])->name('bouteilles.show');
 

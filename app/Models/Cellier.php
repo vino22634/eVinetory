@@ -31,6 +31,6 @@ class Cellier extends Model
 
     public function detailsBouteillesCellier()
     {
-        return $this->belongsToMany(Bouteille::class, 'bouteille_cellier', 'id_cellier', 'id_bouteille')->withPivot('quantite')->orderBy('nom');
+        return $this->belongsToMany(Bouteille::class, 'bouteille_cellier', 'id_cellier', 'id_bouteille')->withPivot('quantite', 'id')->orderBy('nom');
     }
 }

@@ -5,6 +5,8 @@
 <script src="{{ asset('js/sort.js') }}" defer></script>
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <script src="{{ asset('js/CellierDetail.js') }}" defer></script>
+<script src="{{ asset('js/utils.js') }}" defer></script>
+<!-- <script src="{{ asset('js/bouteilles.js') }}" defer></script> -->
 
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
@@ -46,17 +48,8 @@
     @endif
 
     <!-- Détail bouteilles -->
+    <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
 
-            <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
-
-            
-    <div class="cards-container">
-        @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-            <x-celliers.cardBouteilleCellier-component :detailBouteilleCellier="$detailBouteilleCellier" />
-        @empty
-        <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
-        @endforelse
-    </div>
 </section>
 
 <!-- Modal confirmation suppression-->
