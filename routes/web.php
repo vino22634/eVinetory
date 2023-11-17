@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/bouteilles_togglePurchase/{bouteilleId}', [
         BouteilleController::class, 'togglePurchase'
     ])->name('bouteilles.togglePurchase');
+    
     Route::get('/ajax/bouteilles', [BouteilleController::class, 'ajaxLoadMoreBouteilles'])->name('bouteilles.ajax');
     Route::get('/search/bouteilles', [BouteilleController::class, 'search'])->name('bouteilles.search');
     Route::get('/ajax/bouteilles_viewfor_managecellier/{bouteilleId}', [BouteilleController::class,
