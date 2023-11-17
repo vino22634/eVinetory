@@ -109,22 +109,6 @@ function bouteilleCellier_add(
         .catch((error) => console.error("Erreur:", error));
 }
 
-function toggleAction(bouteilleId, action) {
-    sendRequest(`/bouteilles_toggle${action}/${bouteilleId}`, { bouteilleId })
-        .then((data) => {
-            console.log(
-                `Action "${action}" mise à jour avec succès:`,
-                data.message
-            );
-        })
-        .catch((error) => {
-            console.error(
-                `Erreur lors de la requête AJAX pour l'action "${action}":`,
-                error
-            );
-        });
-}
-
 //fh: pas terminé(cette fonction utilisera sendRequest mais échoue actuellement)
 function searchBouteillesv2() {
     const query = document.getElementById("searchField").value;
