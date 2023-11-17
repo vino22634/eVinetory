@@ -45,7 +45,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.index')->with('Votre profil a été mis à jour avec succès !');
+        return Redirect::route('profile.index')->with('message','Votre profil a été mis à jour avec succès !');
     }
 
     /**
@@ -76,6 +76,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('message','Votre compte a bien été supprimé !');
     }
 }
