@@ -327,14 +327,32 @@ img {
 }
 
 /* Profil */
-.profile_info {
+.profile_info .form-control{
     background-color: var(--color-light-pink);
     padding: 1rem;
     border-radius: 10px;
     margin-top: 1rem;
+    display: flex;
+    text-align: center;
 }
+
+.profile_info .form_element {
+    display: inline;
+}
+
+.profile_info input { 
+    background-color: var(--color-light-pink);
+    border: none;
+    font-size: 16px;
+}
+
+.profile_info {
+    padding-top: 2rem;
+}
+
 .profile_button {
     text-align: center;
+    margin: auto;
 }
 
 /* Vue Desktop */
