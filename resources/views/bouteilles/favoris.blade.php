@@ -1,17 +1,18 @@
 @extends('layouts/app')
-@section('title', 'Bouteilles')
+@section('title', 'Favoris')
 @section('content')
 
 <script src="{{ asset('js/utils.js') }}" defer></script>
 <script src="{{ asset('js/bouteilles.js') }}" defer></script>
+<script src="{{ asset('js/search.js') }}" defer></script>
+<script src="{{ asset('js/modale.js') }}" defer></script>
 
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">
 <link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="{{ asset('js/modale.js') }}" defer></script>
-<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
 .bouteilleSearch__tri {
@@ -140,14 +141,6 @@
                 });
         }
     });
-
-
-    const sort = document.getElementById('tri-component');
-    sort.addEventListener('change', function () {
-        searchBouteilles();
-    });
-
-    let searchTimeoutToken;
 
 </script>
 
