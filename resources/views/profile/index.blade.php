@@ -1,49 +1,55 @@
-@extends('layouts/auth')
-@section('title', 'Profile')
+@extends('layouts/app')
+@section('title', 'Mon Profil')
 @section('content')
-<form method="POST" action="{{ route('profile.update') }}" class="form-control">
-    @method('PUT')
-    @csrf
 
-    <!-- Name -->
-    <div class="form_element">
-        <x-input-label for="name" :value="__('Nom')" />
-        <x-text-input id="name" type="text" name="name" value="{{ auth()->user()->name }}" required autofocus autocomplete="name" />
-        <x-input-error :messages="$errors->get('name')" />
-    </div>
+<div class="profile_info">
+    
+    <h2>Mes informations</h2>
 
-    <!-- Email Address -->
-    <div class="form_element">
-        <x-input-label for="email" :value="__('Courriel')" />
-        <x-text-input id="email" type="email" name="email" value="{{ auth()->user()->email }}" required autocomplete="username" />
-        <x-input-error :messages="$errors->get('email')" />
-    </div>
+    <section class="form-control">
+        @csrf
+    
+        <!-- Name -->
+        <div class="form_element">
+            <x-input-label for="name" :value="__('Nom :')" />
+            <x-text-input id="name" type="text" name="name" value="{{ auth()->user()->name }}" required autofocus autocomplete="name" readonly />
+            <x-input-error :messages="$errors->get('name')" />
+        </div>
 
-    <!-- Password -->
-    <div class="form_element">
-        <x-input-label for="password" :value="__('Mot de passe')" />
+        <!-- Email Address -->
+        <div class="form_element">
+            <x-input-label for="email" :value="__('Courriel :')" />
+            <x-text-input id="email" type="email" name="email" value="{{ auth()->user()->email }}" required autocomplete="username" readonly/>
+            <x-input-error :messages="$errors->get('email')" />
+        </div>
+    </section>
 
-        <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
+    <section>
+        <div class="profile_button">
+            <a href="{{ route('profile.edit') }}"><x-primary-button class="button info">
+                {{ __("Modifier") }}
+            </x-primary-button></a>
 
-        <x-input-error :messages="$errors->get('password')" />
-    </div>
+            <a href="{{ route('profile.delete') }}"><x-primary-button class="button danger">
+                {{ __("Supprimer") }}
+            </x-primary-button></a>
 
-    <!-- Confirm Password -->
-    <div class="form_element">
-        <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')" />
+        </div>
+    </section>
 
-        <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" />
+    @if(session('message'))
+    <h6 class="success-message">
+        {{ session('message') }}
+    </h6>
+    @endif
 
-        <x-input-error :messages="$errors->get('password_confirmation')" />
-    </div>
-    <div>
-        <x-primary-button class="button info">
-            {{ __("Mettre à jour") }}
-        </x-primary-button>
+    <!--
+    <div class="login-action">
+        <div>
+            <a href="" class="link">Nous contacter</a>
+        </div>
+    </div>-->
 
-        <x-primary-button class="button danger">
-            {{ __("Supprimer") }}
-        </x-primary-button>
-    </div>
-</form>
+</div>
+
 @endsection

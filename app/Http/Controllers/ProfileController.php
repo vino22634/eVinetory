@@ -11,12 +11,23 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    /**
+     * Display the user's profile.
+     */
+    public function index(Request $request): View
+    {
+        return view('profile.index', [
+            'user' => $request->user(),
+        ]);
+    }
+
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
     {
-        return view('profile.index', [
+        return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -34,7 +45,17 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.index')->with('Votre profil a été mis à jour avec succès !');
+        return Redirect::route('profile.index')->with('message','Votre profil a été mis à jour avec succès !');
+    }
+
+    /**
+     * Display the user's profile form.
+     */
+    public function deleteForm(Request $request): View
+    {
+        return view('profile.delete', [
+            'user' => $request->user(),
+        ]);
     }
 
     /**
@@ -55,6 +76,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('message','Votre compte a bien été supprimé !');
     }
 }

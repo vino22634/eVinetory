@@ -59,7 +59,10 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::view('profile', 'profile.index')->name('profile.index');
+    Route::get('/profil', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'deleteForm'])->name('profile.delete');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.delete');
 });

@@ -1,17 +1,19 @@
 @extends('layouts/app')
-@section('title', 'Bouteilles')
+@section('title', 'Achats')
 @section('content')
 
 <script src="{{ asset('js/utils.js') }}" defer></script>
 <script src="{{ asset('js/bouteilles.js') }}" defer></script>
+<script src="{{ asset('js/toggleFavCart.js') }}" defer></script>
+<script src="{{ asset('js/search.js') }}" defer></script>
+<script src="{{ asset('js/modale.js') }}" defer></script>
 
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">
 <link href="/css/components/cardBouteilleCellier.css" rel="stylesheet">
+<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="{{ asset('js/modale.js') }}" defer></script>
-<link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
 <style>
     .bouteilleSearch__tri {
@@ -68,23 +70,6 @@
     // close modale
     document.getElementById('closeModale').addEventListener('click', function () {
         document.getElementById('modaleSupp').style.display = "none";
-    });
-
-    const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
-    favoriteAndPurchaseIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            console.log('click')
-            const bouteilleId = this.closest('.cardBouteilleSearch').getAttribute(
-                'data-bouteille-id');
-
-            const action = this.getAttribute('data-action-param');
-            toggleAction(bouteilleId, action);
-            if (this.getAttribute('src') === `/img/icons/bouteilles/${action}@2x.png`) {
-                this.setAttribute('src', `/img/icons/bouteilles/${action}ON@2x.png`);
-            } else {
-                this.setAttribute('src', `/img/icons/bouteilles/${action}@2x.png`);
-            }
-        });
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -146,14 +131,6 @@
                 });
         }
     });
-
-
-    const sort = document.getElementById('tri-component');
-    sort.addEventListener('change', function () {
-        searchBouteilles();
-    });
-
-    let searchTimeoutToken;
 
 </script>
 
