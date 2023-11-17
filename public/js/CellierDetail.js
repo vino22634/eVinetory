@@ -9,11 +9,11 @@ function manageCellierForCelierDetail(bouteilleId) {
     //fetch("/ajax/bouteilles_viewfor_managecellier/" + bouteilleId)
     console.log("manageCellierForBouteille", bouteilleId, "/ajax/bouteilles_viewfor_managecellier/" + bouteilleId);
     fetch("/ajax/bouteilles_viewfor_managecellier/" + bouteilleId)
-            .then((response) => response.text())
-            .then((html) => {
-                document.getElementById("modaleContent").innerHTML = html;
-            })
-            .catch((error) => console.error("Error:", error));
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById("modaleContent").innerHTML = html;
+        })
+        .catch((error) => console.error("Error:", error));
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {

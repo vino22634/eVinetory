@@ -152,6 +152,7 @@ class BouteilleController extends Controller
         return $bouteillesQuery;
     }
 
+
     /**
     * Afficher les détails d'une bouteille
     */
@@ -161,6 +162,7 @@ class BouteilleController extends Controller
         return view('bouteilles.show', ['bouteille' => $bouteille, 'bouteilleDansCelliers' => $bouteilleDansCelliers]);
     }
 
+    
     /**
      * Afficher la liste d'achats
      */
