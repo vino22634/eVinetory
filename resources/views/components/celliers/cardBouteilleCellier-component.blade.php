@@ -1,6 +1,3 @@
-<!-- <link href="/css/components/cardCellier.css" rel="stylesheet"> -->
-
-
 <div class="cardBouteilleCellier">
 
             <!-- Image -->
@@ -28,6 +25,4 @@
             <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action"
                 onclick="bouteilleCellier_delete(this, '{{ $detailBouteilleCellier->pivot->id }}',
                 '{{ $detailBouteilleCellier->pivot->id_cellier }}')">
-            <!-- <img src="/img/icons/delete.svg" alt="supprimer" class="icons"> -->
-
 </div>
