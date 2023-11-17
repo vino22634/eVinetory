@@ -62,7 +62,7 @@
     <a href="{{route('bouteilles.list')}}" class="">← Retour</a>
 
     <!-- Détail bouteille -->
-    <div class="detailsBouteille" id="bouteilleID" data-bouteilleID="{{ $bouteille->id }}">
+    <div class="detailsBouteille" id="bouteilleid" data-bouteilleid="{{ $bouteille->id }}">
         <!-- Image -->
         <!-- si l'image source ne contient pas le mot 'http', on load cette image par défaut : /img/icons/bottle.png -->
         @if(!Str::contains($bouteille->image, 'http') || Str::contains($bouteille->image, 'pastille'))

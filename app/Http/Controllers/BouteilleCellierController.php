@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BouteilleCellier;
+use App\Models\Bouteille;
+use App\Models\Cellier;
+use Illuminate\Support\Facades\Auth;
 
 class BouteilleCellierController extends Controller
 {
@@ -84,7 +87,7 @@ class BouteilleCellierController extends Controller
             $bouteilleCellier = new BouteilleCellier([
                 'id_bouteille' => $idBouteille,
                 'id_cellier' => $idCellier,
-                'id_user'=> $idUser,
+                'id_user' => $idUser,
                 'quantite' => $quantite
             ]);
             $bouteilleCellier->save();
@@ -134,5 +137,14 @@ class BouteilleCellierController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    // Générer une vue pour la gestion de l'inventaire d'une d'un cellier (bouteilleCellier)
+    public function ajaxViewfor_ManageCellierByCellier(Request $request, $cellierId)
+    {
+        $cellier = Cellier::find($cellierId);
+         
+        return view('celliers.partials-celier_ManageInventory', compact('cellier'))->render();
     }
 }

@@ -16,20 +16,21 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <style>
-.bouteilleSearch__tri {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
+    .bouteilleSearch__tri {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 
-.bouteilleSearch__tri .cards-container {
-    width:100%;
-    flex:1;
-    flex-basis: 200px;
-}
+    .bouteilleSearch__tri .cards-container {
+        width:100%;
+        flex:1;
+        flex-basis: 200px;
+    }
 </style>
+
 <section>
     <h2 id="bouteilles_total">Liste d'achats</h2>
 
