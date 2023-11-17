@@ -326,6 +326,17 @@ img {
     border-top: 1px solid var(--color-grey);
 }
 
+/* Profil */
+.profile_info {
+    background-color: var(--color-light-pink);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+.profile_button {
+    text-align: center;
+}
+
 /* Vue Desktop */
 @media (min-width: 768px) {
     .cards-container {
