@@ -57,13 +57,17 @@
                 <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
             </div>
             <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
-            <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
+            <button class="info" id="closeModale">Fermer</button>
         </div>
     </section>
 
 </div>
 
 <script>
+    // close modale
+    document.getElementById('closeModale').addEventListener('click', function () {
+        document.getElementById('modaleSupp').style.display = "none";
+    });
     const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
     favoriteAndPurchaseIcons.forEach(icon => {
         icon.addEventListener('click', function() {
