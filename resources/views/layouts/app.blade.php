@@ -20,12 +20,12 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8THYMHLC94"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
+ 
     function gtag() {
         dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
+ 
     gtag('config', 'G-8THYMHLC94');
 </script>
 
@@ -47,7 +47,7 @@
                 <x-svg.cellarIcon />
                 <p>Celliers</p>
             </a>
-            <a href="" style="pointer-events: none">
+            <a href="{{route('bouteilles.favoris')}}" class="{{ request()->is('favoris*') ? 'active':'' }}">
                 <x-svg.heartIcon />
                 <p>Favoris</p>
             </a>
