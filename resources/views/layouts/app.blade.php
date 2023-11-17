@@ -40,7 +40,7 @@
                 <x-svg.heartIcon />
                 <p>Favoris</p>
             </a>
-            <a href="{{route('bouteilles.achats')}}" class="{{ request()->is('cellier*') ? 'active':'' }}">
+            <a href="{{route('bouteilles.achats')}}" class="{{ request()->is('achats*') ? 'active':'' }}">
                 <x-svg.cartIcon />
                 <p>Achats</p>
             </a>
