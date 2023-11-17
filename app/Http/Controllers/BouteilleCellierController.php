@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BouteilleCellier;
+use App\Models\Bouteille;
 
 class BouteilleCellierController extends Controller
 {
@@ -84,7 +85,7 @@ class BouteilleCellierController extends Controller
             $bouteilleCellier = new BouteilleCellier([
                 'id_bouteille' => $idBouteille,
                 'id_cellier' => $idCellier,
-                'id_user'=> $idUser,
+                'id_user' => $idUser,
                 'quantite' => $quantite
             ]);
             $bouteilleCellier->save();
@@ -134,5 +135,47 @@ class BouteilleCellierController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    // generer une vue pour la gestion de l'inventaire d'une bouteille (bouteilleCellier)
+    public function ajaxViewfor_ManageCellierByCellier(Request $request, $bouteilleId)
+    {
+        $bouteille = Bouteille::find($bouteilleId);
+        $bouteilleCelliers = $bouteille->bouteilleCelliersForUser(auth()->id());
+        $user = auth()->user();
+        $celliers = $user->celliers;
+
+        $mesCelliers = [];
+
+        foreach ($celliers as $cellier) {
+            $mesCelliers[$cellier->name] = [
+                "instance" => $cellier,
+                "contenu" => []
+            ];
+        }
+
+
+        foreach ($bouteilleCelliers as $bouteilleCellier) {
+            $nomCellier = $bouteilleCellier->cellier->name;
+            $mesCelliers[$nomCellier]["contenu"][] = $bouteilleCellier;
+        }
+
+        // mettre un temporaty placeholder
+        foreach ($mesCelliers as $nomCellier => $dataCellier) {
+            if (empty($dataCellier['contenu'])) {
+                $idCellierCourant = $dataCellier['instance']->id;
+
+                $tempBouteilleCellier = new \App\Models\BouteilleCellier([
+                    'id' => null,
+                    'id_cellier' => $idCellierCourant,
+                    'id_bouteille' => $bouteille->id, // Vous pouvez mettre null ou un ID de bouteille par défaut
+                    'quantite' => 0
+                ]);
+                $mesCelliers[$nomCellier]["contenu"][] = $tempBouteilleCellier;
+            }
+        }
+
+        return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
     }
 }
