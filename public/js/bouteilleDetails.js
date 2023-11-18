@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log("Bouteille Detail DOMContentLoaded");
     // récupérer le ID de la bouteille dans le DOM
         var bouteilleId =
-            document.getElementById("bouteilleid").dataset.bouteilleid;
+            document.getElementById("idbouteille").dataset.bouteilleid;
             
         manageCellierForBouteilleDetail(bouteilleId);
 });
