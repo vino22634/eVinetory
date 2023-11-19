@@ -3,11 +3,9 @@
 // * @param {*} bouteilleId
 //
 function manageCellierForBouteille(bouteilleId) {
-    console.log("manageCellierForBouteille", bouteilleId);
     fetch("/ajax/bouteilles_viewfor_managecellier/" + bouteilleId)
         .then((response) => response.text())
         .then((html) => {
-            //console.log("html", html)
             document.getElementById("modaleContent").innerHTML = html;
         })
         .catch((error) => console.error("Error:", error));
@@ -17,47 +15,8 @@ function manageCellierForBouteille(bouteilleId) {
 
 
 
-//*********************** */
-//* BouteilleCellier: Change amount and trigger save function
-//
-function decrementValue(button) {
-    var input = button.parentNode.querySelector('input[type=number]');
-    input.stepDown();
-    triggerSaveAmount(input);
-}
-
-function incrementValue(button) {
-    var input = button.parentNode.querySelector('input[type=number]');
-    input.stepUp();
-    triggerSaveAmount(input);
-}
-
-function triggerSaveAmount(input) {
-    var bottleId = input.getAttribute('data-id');
-    bouteilleCellier_saveAmount(input, bottleId);
-}
 
 
-//*********************** */
-//* BouteilleCellier: Save amount
-// * @param {*} element clicked element
-// * @param {*} bouteilleCellierId Id bouteilleCellier
-//
-function bouteilleCellier_saveAmount(element, bouteilleCellierId) {
-    var newAmount = element.value;
-    console.log(
-        "bouteilleCellier_saveAmount",
-        element,
-        bouteilleCellierId,
-        newAmount
-    );
-    sendRequest("/bouteilleCellier/saveAmount", {
-        id: bouteilleCellierId,
-        amount: newAmount,
-    })
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
-}
 
 //*********************** */
 //* BouteilleCellier: Delete

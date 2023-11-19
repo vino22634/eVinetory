@@ -7,6 +7,7 @@
 <script src="{{ asset('js/toggleFavCart.js') }}" defer></script>
 <script src="{{ asset('js/search.js') }}" defer></script>
 <script src="{{ asset('js/modale.js') }}" defer></script>
+<script src="{{ asset('js/bouteilleCellierOperations.js') }}" defer></script>
 
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">

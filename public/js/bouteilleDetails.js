@@ -3,11 +3,10 @@
 // * @param {*} bouteilleId
 //
 function manageCellierForBouteilleDetail(bouteilleId) {
-    console.log("manageCellierForBouteille", bouteilleId);
     fetch("/ajax/bouteilles_viewfor_managecellier/" + bouteilleId)
         .then((response) => response.text())
         .then((html) => {
-            //console.log("html", html)
+            console.log("manageCellierForBouteilleDetail. Reload", bouteilleId);
             document.getElementById("modaleContent").innerHTML = html;
         })
         .catch((error) => console.error("Error:", error));
@@ -15,7 +14,6 @@ function manageCellierForBouteilleDetail(bouteilleId) {
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log("Bouteille Detail DOMContentLoaded");
     // récupérer le ID de la bouteille dans le DOM
         var bouteilleId =
             document.getElementById("idbouteille").dataset.bouteilleid;
