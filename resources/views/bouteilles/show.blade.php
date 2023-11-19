@@ -5,6 +5,7 @@
 <script src="{{ asset('js/utils.js') }}" defer></script>
 <script src="{{ asset('js/bouteilles.js') }}" defer></script>
 <script src="{{ asset('js/bouteilleDetails.js') }}" defer></script>
+<script src="{{ asset('js/bouteilleCellierOperations.js') }}" defer></script>
 
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">

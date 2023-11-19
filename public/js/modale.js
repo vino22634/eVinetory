@@ -2,7 +2,6 @@ let myModal = document.getElementById('modaleSupp');
 let triggerBttn = document.getElementById("modaleTrigger");
 let closeButton = document.querySelector('.closeButton');
 
-console.log(myModal, 'hello');
 // afficher modale quand on clique sur le lien modaleTrigger
 triggerBttn.addEventListener("click", function() {
     showModale();

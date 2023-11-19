@@ -16,16 +16,10 @@
             </div>
 
             <!-- Quantité -->
-              <div class="number-input  cardBouteilleCellier-quantity">
-
-                <button onclick="decrementValue(this)"></button>
-                <input class="quantity" name="quantity" type="number" min="0"
-                    value="{{ $detailBouteilleCellier->pivot->quantite }}"
-                    id="bouteilleCellierAmount" data-id="{{ $detailBouteilleCellier->pivot->id }}"
-                    onchange="bouteilleCellier_saveAmount(this, '{{ $detailBouteilleCellier->pivot->id }}')" />
-                <button onclick="incrementValue(this)" class="plus"></button>
-                
-               
+            <div class="cardBouteilleCellier-quantity" class="icons" >
+                <span>-</span>
+                <span id="bouteille-quantite">{{ $detailBouteilleCellier->pivot->quantite }}</span>
+                <span>+</span>
             </div>
 
             <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action"
