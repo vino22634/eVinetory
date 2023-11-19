@@ -26,8 +26,10 @@
         <p>{{ucfirst($cellier->description)}}</p>
         @endif
         @if($cellier->bouteillesCellier->count() > 0)
-        <p>Nombre de bouteilles : {{$cellier->bouteillesCellier->sum('quantite')}}</p>
+            <!-- Retiré pour le moment: non lié au ajax
+            <p>Nombre de bouteilles : {{$cellier->bouteillesCellier->sum('quantite')}}</p> -->
         @endif
+        <br>
         <!-- CTA -->
         <div class="cellier__detail-cta">
             <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
