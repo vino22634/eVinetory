@@ -6,7 +6,7 @@
 <script src="{{ asset('js/bouteilles.js') }}" defer></script>
 <script src="{{ asset('js/bouteilleDetails.js') }}" defer></script>
 <script src="{{ asset('js/bouteilleCellierOperations.js') }}" defer></script>
-
+<script src="{{ asset('js/toggleFavCart.js') }}" defer></script>
 <script src="{{ asset('js/modale.js') }}" defer></script>
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
@@ -41,6 +41,14 @@
         gap: 0.5rem;
         
     }
+
+     .detailsBouteille__actionIcons {
+        display: flex;
+        gap: 0.5rem;
+        width: 40px;
+
+
+     }
 
     .cardBouteilleCellier-quantity {
         display: flex;
@@ -91,12 +99,20 @@
             <div>{{ $bouteille->prix_saq }}$</div>
 
             <!-- CTA -->
-            <div>
+            <div class='detailsBouteille__actionIcons' >
                 <!-- composant et logique francois à ajouter quand il aura fini -->
                 <!-- favoris -->
-                <x-svg.heartIcon />
+                <img 
+                    src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
+                    alt="Favoris" onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Favoris')"
+                    style="width: 50px;display: inline-block ">
+                <!-- <x-svg.heartIcon /> -->
+                
                 <!-- achat -->
-                <x-svg.cartIcon />
+                <!-- <x-svg.cartIcon /> -->
+                 <img 
+                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
+                     alt="Liste d'achat" onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Purchase')">
             </div>
 
             <!-- Lien saq -->
