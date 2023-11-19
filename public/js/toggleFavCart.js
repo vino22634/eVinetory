@@ -1,7 +1,6 @@
 const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
 favoriteAndPurchaseIcons.forEach(icon => {
     icon.addEventListener('click', function() {
-        console.log('click')
         const bouteilleId = this.closest('.cardBouteilleSearch').getAttribute(
             'data-bouteille-id');
 

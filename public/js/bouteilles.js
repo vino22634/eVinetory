@@ -3,11 +3,9 @@
 // * @param {*} bouteilleId
 //
 function manageCellierForBouteille(bouteilleId) {
-    console.log("manageCellierForBouteille", bouteilleId);
     fetch("/ajax/bouteilles_viewfor_managecellier/" + bouteilleId)
         .then((response) => response.text())
         .then((html) => {
-            //console.log("html", html)
             document.getElementById("modaleContent").innerHTML = html;
         })
         .catch((error) => console.error("Error:", error));
