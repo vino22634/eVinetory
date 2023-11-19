@@ -47,6 +47,8 @@
     
     <div id="loading" style="display: none;">Chargement ...
     </div>
+    <x-buttonBackToTop />
+
 </section> 
 
 
