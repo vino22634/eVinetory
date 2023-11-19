@@ -364,6 +364,20 @@ img {
     border-radius: 10px;
 }
 
+.error-message {
+    padding: 1rem;
+    background-color: rgb(255, 198, 198);
+    color: var(--color-light-red);
+    font-size: 16px;
+    text-align: justify;
+    border-radius: 10px;
+}
+
+.error-message li {
+    list-style: square;
+    margin-left: 1rem;
+}
+
 /* Vue Desktop */
 @media (min-width: 768px) {
     .cards-container {

@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
 
     /**
-     * Display the user's profile.
+     * Afficher le profil de l'utilisateur.
      */
     public function index(Request $request): View
     {
@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the user's profile form.
+     * Afficher le formulaire avec les informations de l'utilisateur.
      */
     public function edit(Request $request): View
     {
@@ -33,7 +33,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Metttre à jour les informations de profil de l'utilisateur.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -49,7 +49,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the user's profile form.
+     * Afficher le formulaire de suppression de compte.
      */
     public function deleteForm(Request $request): View
     {
@@ -59,9 +59,9 @@ class ProfileController extends Controller
     }
 
     /**
-     * Delete the user's account.
+     * Supprimer le compte utilisateur.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],

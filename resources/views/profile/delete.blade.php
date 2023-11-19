@@ -1,7 +1,10 @@
 @extends('layouts/app')
-@section('title', 'Mon Profil')
+@section('title', 'Supprimer mon Profil')
 @section('content')
 <section>
+
+        <x-auth-validation-errors :errors="$errors"/>
+
         <!-- Retour -->
         <a href="{{route('profile.index')}}" class="">← Retour</a>
         
@@ -19,7 +22,6 @@
 
                 <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
 
-                <x-input-error :messages="$errors->get('password')" />
             </div>
 
             <!-- Confirm Password -->
@@ -28,7 +30,6 @@
 
                 <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" />
 
-                <x-input-error :messages="$errors->get('password_confirmation')" />
             </div>
 
             <x-primary-button class="button danger">
