@@ -1,31 +1,19 @@
-const favoriteAndPurchaseIcons = document.querySelectorAll('[data-action="toggle"');
-favoriteAndPurchaseIcons.forEach(icon => {
-    icon.addEventListener('click', function() {
-        const bouteilleId = this.closest('.cardBouteilleSearch').getAttribute(
-            'data-bouteille-id');
 
-        const action = this.getAttribute('data-action-param');
-        toggleAction(bouteilleId, action);
-        if (this.getAttribute('src') === `/img/icons/bouteilles/${action}@2x.png`) {
-            this.setAttribute('src', `/img/icons/bouteilles/${action}ON@2x.png`);
-        } else {
-            this.setAttribute('src', `/img/icons/bouteilles/${action}@2x.png`);
-        }
-    });
-});
+//*********************** */
+//* toggleBouteillePreferences: Modifier les préférences d'une bouteilleUser et ajuster l'état de l'icone
+// * @param {*} element clicked element
+// * @param {*} bouteilleId
+//*  @param {*} propriété de la bouteille à modifier
 
-function toggleAction(bouteilleId, action) {
+function toggleBouteillePreferences (sender, bouteilleId, action) {
     sendRequest(`/bouteilles_toggle${action}/${bouteilleId}`, { bouteilleId })
-        .then((data) => {
-            console.log(
-                `Action "${action}" mise à jour avec succès:`,
-                data.message
-            );
+        .then(data => {
+            console.log( `Action "${action}" mise à jour avec succès:`, data.message)
+            const currentSrc = sender.getAttribute('src');
+            const baseSrc = `/img/icons/bouteilles/${action}`;
+            sender.setAttribute('src', currentSrc === `${baseSrc}@2x.png` ? `${baseSrc}ON@2x.png` : `${baseSrc}@2x.png`);
         })
-        .catch((error) => {
-            console.error(
-                `Erreur lors de la requête AJAX pour l'action "${action}":`,
-                error
-            );
-        });
+        .catch(error => {
+            console.error( `Erreur lors de la requête AJAX pour l'action "${action}":`, error)
+        })
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="eVinetory, collectionez les saveurs et remplissez votre celliers de vins en ligne dès maintenant. ">
+    <link rel="icon" href="/img/icons/appmetalogo.svg" type="image/svg">
 
     <title>{{ config('app.name') }} - @yield('title')</title>
 

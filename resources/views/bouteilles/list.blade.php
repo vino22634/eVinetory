@@ -47,6 +47,8 @@
     
     <div id="loading" style="display: none;">Chargement ...
     </div>
+    <x-buttonBackToTop />
+
 </section> 
 
 
@@ -73,7 +75,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {
-        console.log("DOM fully loaded and parsed")
+        //console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;

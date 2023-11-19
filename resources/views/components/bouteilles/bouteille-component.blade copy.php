@@ -25,12 +25,11 @@
 
                 <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
-                    alt="Favoris" onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Favoris')">
+                    alt="Favoris" data-action="toggle" data-action-param='Favoris'>
 
                 <img class="toggle-icon icons_action"
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
-                    alt="Liste d'achat" 
-                    onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Purchase')">
+                    alt="Liste d'achat" data-action="toggle" data-action-param='Purchase'>
 
                 <!-- récupérer le nombre d'items pour ce user (état ON si  0)-->
                 @php
