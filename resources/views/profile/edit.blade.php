@@ -26,9 +26,9 @@
             <x-input-label for="email" :value="__('Courriel')" />
             <x-text-input id="email" type="email" name="email" value="{{ auth()->user()->email }}" required autocomplete="username" />
         </div>
-        
+
         <div class="profile_button">
-            <x-primary-button class="button info">
+            <x-primary-button class="button warning">
                 {{ __("Mettre à jour") }}
             </x-primary-button> 
         </div>
