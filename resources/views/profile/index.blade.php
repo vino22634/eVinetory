@@ -43,14 +43,10 @@
     </h6>
     @endif
 
-    <!--
     <div class="login-action">
         <div>
             <a href="" class="link">Nous contacter</a>
         </div>
-    </div>-->
-    
-    <div class="login_action">
         <div>
             <a href="{{ route('logout') }}" class="link">Se déconnecter</a>
         </div>
