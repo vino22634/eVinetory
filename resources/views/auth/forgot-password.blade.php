@@ -10,7 +10,7 @@
         @csrf
 
         <p>
-        {{ __("Vous avez oublié votre mot de passe? Pas de problème. Indiquez-nous juste votre adresse courriel et nous vous enverrons un lien pour réinitialiser votre mot de passe et vous permettre d'en choisir un nouveau.") }}
+        {{ __("Vous avez oublié votre mot de passe ou vous souhaitez le modifier? Pas de problème. Indiquez-nous juste votre adresse courriel et nous vous enverrons un lien pour réinitialiser votre mot de passe et vous permettre d'en choisir un nouveau.") }}
         </p>
 
         <!-- Email Address -->
