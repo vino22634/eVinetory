@@ -55,7 +55,6 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    // remplacer par post lorsque page profile montée
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
