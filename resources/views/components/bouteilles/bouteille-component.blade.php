@@ -1,7 +1,7 @@
 <div class="cardBouteilleSearch" data-bouteille-id="{{ $bouteille->id }}">
 
     <div class='bouteilleImg_container'>
-        <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="n\a">
+        <img class="bouteilleImg" src=" {{ $bouteille->image }}" alt="n\a" width='64px' height='96px'>
     </div>
     <div class='bouteilledescriptions_container' width="100%">
         <a href=" {{ route('bouteilles.show', $bouteille->id) }} " class="titre">{{ $bouteille->nom }}</a>
@@ -9,7 +9,7 @@
 
             @if($bouteille->pastilleType )
                 <img class="pastilleIcon" src="{{ $bouteille->pastilleType->imageURL }}" alt="Pastille"
-                    title="{{ $bouteille->pastilleType->description }}">
+                    title="{{ $bouteille->pastilleType->description }}" width='16px' height='16px'>
             @endif
 
             <div class="description">
