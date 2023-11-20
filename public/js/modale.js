@@ -3,15 +3,18 @@ let triggerBttn = document.getElementById("modaleTrigger");
 let closeButton = document.querySelector('.closeButton');
 
 // afficher modale quand on clique sur le lien modaleTrigger
-triggerBttn.addEventListener("click", function() {
-    showModale();
-});
+if (triggerBttn) {
+    triggerBttn.addEventListener("click", function () {
+        showModale();
+    });
+}
 
 // fermer la modale quand on clique sur Non
-closeButton.addEventListener("click", function() {
-    hideModale();
-});
-
+if (closeButton) {
+    closeButton.addEventListener("click", function () {
+        hideModale();
+    });
+}
 // au chargement de la page la modale est à display none
 window.addEventListener("load", function () {
     hideModale();
