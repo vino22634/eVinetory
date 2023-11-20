@@ -40,7 +40,10 @@ class SAQ extends Modele
 	public function getProduits($nombre = 24, $page = 1)
 	{
 		$s = curl_init();
-		$url = "https://www.saq.com/fr/produits/vin/vin-rouge?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc";
+		//$url = "https://www.saq.com/fr/produits/vin/vin-rouge?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc";
+		
+		$url = "https://www.saq.com/fr/produits/vin/vin-blanc?p=" . $page . "&product_list_limit=" . $nombre ."&product_list_order=name_asc";
+
 		//var_dump($url);
 		// TODO: fh: considérer ce url qui récupere tout les types
 		//curl_setopt($s, CURLOPT_URL, "http://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?searchType=&orderBy=&categoryIdentifier=06&showOnly=product&langId=-2&beginIndex=".$debut."&tri=&metaData=YWRpX2YxOjA8TVRAU1A%2BYWRpX2Y5OjE%3D&pageSize=". $nombre ."&catalogId=50000&searchTerm=*&sensTri=&pageView=&facet=&categoryId=39919&storeId=20002");
