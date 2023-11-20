@@ -288,6 +288,11 @@ button, .button {
     color: var(--color-white);
 }
   
+.warning:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+}
+  
 /* IMAGE */
 img {
     display: block;

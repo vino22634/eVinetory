@@ -27,7 +27,7 @@
 
         <section>
             <div class="profile_button">
-                <a href="{{ route('profile.edit') }}"><x-primary-button class="button info">
+                <a href="{{ route('profile.edit') }}"><x-primary-button class="button warning">
                     {{ __("Modifier") }}
                 </x-primary-button></a>
 
@@ -51,7 +51,7 @@
         </div>
         <footer>
             <div>
-                <a href="{{ route('logout') }}" class="link">Se déconnecter</a>
+                <a href="{{ route('logout') }}" class="link"><x-primary-button class="button info">Se déconnecter</x-primary-button></a>
             </div><br>
             <div>
                 <a href="" class="link">Nous contacter</a>
