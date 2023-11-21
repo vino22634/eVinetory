@@ -16,15 +16,18 @@
             </div>
 
             <!-- Quantité -->
-            <div class="number-input  cardBouteilleCellier-quantity">
-                <button onclick="decrementValue(this)" aria-label="diminuer quantité"></button>
-                <input id="bouteille-quantite" class="quantity" name="quantity" type="number" min="0" readonly
-                    value="{{ $detailBouteilleCellier->pivot->quantite }}" aria-label="Quantité"
-                    id="bouteilleCellierAmount" data-id="{{ $detailBouteilleCellier->pivot->id }}"
-                    onchange="bouteilleCellier_saveAmount(this, '{{ $detailBouteilleCellier->pivot->id }}')" />
-                <button onclick="incrementValue(this)" class="plus" aria-label="augmenter quantité"></button>
+            <div class="cardBouteilleCellier-cta">
+                <div class="number-input  cardBouteilleCellier-quantity">
+                    <button onclick="decrementValue(this)" aria-label="diminuer quantité"></button>
+                    <input id="bouteille-quantite" class="quantity" name="quantity" type="number" min="0" readonly
+                        value="{{ $detailBouteilleCellier->pivot->quantite }}" aria-label="Quantité"
+                        id="bouteilleCellierAmount" data-id="{{ $detailBouteilleCellier->pivot->id }}"
+                        onchange="bouteilleCellier_saveAmount(this, '{{ $detailBouteilleCellier->pivot->id }}')" />
+                    <button onclick="incrementValue(this)" class="plus" aria-label="augmenter quantité"></button>
+                </div>
+                <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action icon_delete"
+                    onclick="bouteilleCellier_delete(this, '{{ $detailBouteilleCellier->pivot->id }}',
+                    '{{ $detailBouteilleCellier->pivot->id_cellier }}')">
             </div>
-            <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action icon_delete"
-                onclick="bouteilleCellier_delete(this, '{{ $detailBouteilleCellier->pivot->id }}',
-                '{{ $detailBouteilleCellier->pivot->id_cellier }}')">
+
 </div>
