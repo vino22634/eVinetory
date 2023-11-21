@@ -20,7 +20,10 @@
 
     <div class="profil__detail-cta">
         <a href="{{ route('logout') }}" class="button">Se déconnecter</a>
-        <a href="{{ route('erreur.index') }}" class="button">Nous contacter</a>
+        <!-- <a href="{{ route('erreur.index') }}" class="button">Nous contacter</a> -->
+        <a href="mailto:evinetory@gmail.com" class="button">Nous contacter</a>
+    </div>
+
     </div>
 
 </section>
