@@ -114,11 +114,14 @@
                         //  Plus rien à charger, on désactive le scroll infini
                         window.removeEventListener('scroll', scrollLazyLoading)
                     } else {
-                        document.getElementById('bouteilles-container').insertAdjacentHTML('beforeend',
-                            html); // Ajouter le contenu à la page
-                           
-                        //TOdO FH:  get also number of results updated
-
+                        if (html.includes('Aucune bouteille trouvée')) {
+                            document.getElementById('bouteilles-container').innerHTML = html;
+                        }else{
+                            document.getElementById('bouteilles-container').insertAdjacentHTML('beforeend',html); 
+                        }
+                    }
+                    if (html.includes('Aucune bouteille trouvée')) {
+                        window.removeEventListener('scroll', scrollLazyLoading)
                     }
                 })
                 .catch(error => {
