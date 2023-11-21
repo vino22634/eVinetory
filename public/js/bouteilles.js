@@ -67,33 +67,3 @@ function bouteilleCellier_add(
         })
         .catch((error) => console.error("Erreur:", error));
 }
-
-//fh: pas terminé(cette fonction utilisera sendRequest mais échoue actuellement)
-function searchBouteillesv2() {
-    const query = document.getElementById("searchField").value;
-    const sort = document.getElementById("tri-component").value; // Get the selected sorting value
-
-    // Clear the previous timeout
-    if (searchTimeoutToken) {
-        clearTimeout(searchTimeoutToken);
-    }
-
-    searchTimeoutToken = setTimeout(() => {
-        document.getElementById("loading").style.display = "block";
-
-        // Use the sendRequest function
-        sendRequest(`/search/bouteilles?query=${query}&sort=${sort}`, {}, "GET")
-            .then((html) => {
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("bouteilles-container").innerHTML =
-                    html;
-                // Update any additional elements as needed
-            })
-            .catch((error) => {
-                console.error("Erreur:", error);
-                document.getElementById("loading").style.display = "none";
-            });
-    }, 500); // Delay before sending the request
-}
-
-
