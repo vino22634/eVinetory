@@ -21,7 +21,7 @@
 
         <!-- Logo haut -->
         <div class="login_logo_form">
-            <img src="/img/logo.webp" alt="Logo eVinetory">
+            <img src="/img/logo.webp" alt="Logo eVinetory" width='80px' height='80px'>
             <h1>eVinetory</h1>
             <h2>Collectionnez les saveurs</h2>
         </div>
