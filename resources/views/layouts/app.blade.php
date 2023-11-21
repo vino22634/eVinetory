@@ -56,7 +56,7 @@
                 <x-svg.cartIcon />
                 <p>Achats</p>
             </a>
-            <a href="{{route('profile.index')}}">
+            <a href="{{route('profile.index')}}" class="{{ request()->is('profil*') ? 'active':'' }}">
                 <x-svg.profilIcon />
                 <p>Profil</p>
             </a>
