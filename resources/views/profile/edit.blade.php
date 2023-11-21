@@ -11,7 +11,7 @@
 
     <h2>Modifier mes informations</h2>
 
-    <form method="POST" action="{{ route('profile.update') }}" class="form-control">
+    <form method="POST" action="{{ route('profile.update') }}">
         @method('PUT')
         @csrf
 
@@ -27,11 +27,9 @@
             <x-text-input id="email" type="email" name="email" value="{{ auth()->user()->email }}" required autocomplete="username" />
         </div>
 
-        <div class="profile_button">
-            <x-primary-button class="button warning">
-                {{ __("Mettre à jour") }}
-            </x-primary-button> 
-        </div>
+        <x-primary-button class="button info center">
+            {{ __("Mettre à jour") }}
+        </x-primary-button> 
     </form>
 </section>
 @endsection
