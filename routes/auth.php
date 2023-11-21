@@ -32,10 +32,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
-// pour error page
-    Route::get('contact', [ErrorController::class, 'index'])
-        ->name('erreur.index');
-    Route::post('/contact', [ErrorController::class, 'sendEmail'])->name('erreur.send');
+
 });
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -69,4 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('profile', [ProfileController::class, 'deleteForm'])->name('profile.delete');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.delete');
+    // pour error page
+    Route::get('contact', [ErrorController::class, 'index'])->name('erreur.index');
+    Route::post('/contact', [ErrorController::class, 'sendEmail'])->name('erreur.send');
 });

@@ -34,10 +34,10 @@ class ErrorController extends Controller
             Mail::to('evinetory@gmail.com')->send(new ContactFormEmail($subject, $body));
 
             // Redirection avec un message de succès
-            return redirect()->route('erreur.index')->with('success', 'Courriel envoyé avec succès! Merci!');
+            return redirect()->route('profile.index')->with('message', 'Courriel envoyé avec succès! Merci!');
         } catch (\Exception $e) {
             // En cas d'erreur lors de l'envoi de l'e-mail
-            return redirect()->route('erreur.index')->with('error', 'Une erreur s\'est produite lors de l\'envoi du courriel.');
+            return redirect()->route('profile.index')->with('message', 'Une erreur s\'est produite lors de l\'envoi du courriel.');
         }
     }
 }

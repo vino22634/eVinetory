@@ -20,7 +20,7 @@
 
     <div class="profil__detail-cta">
         <a href="{{ route('logout') }}" class="button">Se déconnecter</a>
-        <a href="" class="button">Nous contacter</a>
+        <a href="{{ route('erreur.index') }}" class="button">Nous contacter</a>
     </div>
 
 </section>
