@@ -37,7 +37,7 @@
     <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
         <input class='cards-container' type="search" id="searchField"
-            placeholder="Recherche...">
+            placeholder="Recherche..." aria-label="Recherche">
         <x-tri-component />
     </div>
 
@@ -51,7 +51,7 @@
 
 
 <!-- Modale Ajout Celliers -->
-<div class="modale" id="modaleSupp" tabindex="-1" aria-labelledby="Modale" aria-hidden="true">
+<div class="modale" id="modaleSupp" tabindex="-1" aria-label="Modale" aria-hidden="true">
     <section>
         <div class="modale-content modale-large">
             <!-- Détail cellier -->
