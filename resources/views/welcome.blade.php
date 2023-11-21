@@ -3,18 +3,15 @@
 @section('content')
     
 <div class="login_action">
-    <img src="/img/icons/menu_bottles.svg" alt="Icône cellier">
+    <img src="/img/icons/menu_bottles.svg" alt="Icône cellier" class="logo">
     <h3>Remplissez votre cellier dès maintenant !</h3>
     <a href="{{ route('login') }}" class="button info">Se connecter</a>
     <div>
         <p>Pas encore inscrit ?</p>
-
-       
-        <!-- <a href="mailto:evinetory@gmail.com?subject=Signaler%20une%20erreur&body=Merci%20pour%20vos%20services.%20Je%20souhaite%20vous%20signaler%20une%20erreur%20concernant:%" class="link">Signaler une erreur</a> <br><br><br> -->
-
-        <a href="{{ route('erreur.index') }}">Contactez-nous</a>
         <a href="{{ route('register') }}" class="link underline">S'enregistrer</a>
-
+    </div>
+    <div class="login_mailto">
+        <a href="mailto:evinetory@gmail.com" class="link"><img src="/img/icons/icon-mail.png" alt="envoi mail" title="Nous contacter" class="mail-icon">Contactez-nous</a>
     </div>
 </div>
 

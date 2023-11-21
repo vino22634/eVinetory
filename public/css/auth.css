@@ -24,20 +24,35 @@
 }
 
 .login_action {
-    padding: 3rem 5rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
     position: relative
 }
 
-.login_action img {
+.logo {
     width: 50px;
     position: absolute;
     top: -5px;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.login_mailto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.mail-icon {
+    width: 1.3rem;
+    display: inline;
+    margin-right: 0.3rem;
+    position: relative;
+    top: 3px;
 }
 
 /* FORM AUTH */
