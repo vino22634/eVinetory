@@ -7,6 +7,7 @@
 <script src="{{ asset('js/toggleFavCart.js') }}" defer></script>
 <script src="{{ asset('js/search.js') }}" defer></script>
 <script src="{{ asset('js/modale.js') }}" defer></script>
+<script src="{{ asset('js/bouteilleCellierOperations.js') }}" defer></script>
 
 <link href="/css/components/cardBouteilleSearch.css" rel="stylesheet">
 <link href="/css/components/cardCellier.css" rel="stylesheet">
@@ -59,14 +60,13 @@
                 <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
             </div>
             <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
-            <a href="{{ route('bouteilles.list') }}" class="button info">Fermer</a>
+            <button class="" id="closeModale">Fermer</button>
         </div>
     </section>
 
 </div>
 
 <script>
-
     document.addEventListener('DOMContentLoaded', (event) => {
         console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
