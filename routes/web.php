@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
 use App\Http\Controllers\BouteilleCellierController;
+use App\Http\Controllers\ErrorController;
 
 
 
@@ -81,6 +82,9 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+<<<<<<< HEAD
+   
+=======
     // LISTE D'ACHAT
     Route::get('/achats', [BouteilleController::class, 'achats'])->name('bouteilles.achats');
     Route::get('/search/achats', [BouteilleController::class, 'search'])->name('achats');
@@ -90,6 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/favoris', [BouteilleController::class, 'favoris'])->name('bouteilles.favoris');
     Route::get('/search/favoris', [BouteilleController::class, 'search'])->name('favoris');
 
+>>>>>>> 3b3d6b9b6655f3335c3472ebf677311baa687c21
 
 });
 
