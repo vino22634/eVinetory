@@ -24,9 +24,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-        ->name('password.request');
-
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
         ->name('password.email');
 
@@ -40,6 +37,9 @@ Route::middleware('guest')->group(function () {
         ->name('erreur.index');
     Route::post('/contact', [ErrorController::class, 'sendEmail'])->name('erreur.send');
 });
+
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+    ->name('password.request');
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
@@ -60,11 +60,13 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    // remplacer par post lorsque page profile montée
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::view('profile', 'profile.index')->name('profile.index');
+    Route::get('/profil', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'deleteForm'])->name('profile.delete');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.delete');
 });

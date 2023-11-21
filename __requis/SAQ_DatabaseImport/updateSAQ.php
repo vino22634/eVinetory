@@ -11,7 +11,9 @@
 	require("config.php");
 	$page = 1;
 	$nombreProduit = 96; //48 ou 96	
-	$maxpage = 57;
+	//$maxpage = 57; // nombre pour vins rouges
+	$maxpage = 34; // nombre pour vins blanc
+
 	//$maxpage = 1;
 	
 	$saq = new SAQ();

@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Bouteilles')
+@section('title', 'Achats')
 @section('content')
 
 <script src="{{ asset('js/utils.js') }}" defer></script>
@@ -17,22 +17,23 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <style>
-.bouteilleSearch__tri {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
+    .bouteilleSearch__tri {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 
-.bouteilleSearch__tri .cards-container {
-    width:100%;
-    flex:1;
-    flex-basis: 200px;
-}
+    .bouteilleSearch__tri .cards-container {
+        width:100%;
+        flex:1;
+        flex-basis: 200px;
+    }
 </style>
+
 <section>
-    <h2 id="bouteilles_total">Liste des bouteilles</h2>
+    <h2 id="bouteilles_total">Liste d'achats</h2>
 
     <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
@@ -47,8 +48,6 @@
     
     <div id="loading" style="display: none;">Chargement ...
     </div>
-    <x-buttonBackToTop />
-
 </section> 
 
 
@@ -70,7 +69,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        //console.log("DOM fully loaded and parsed")
+        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;

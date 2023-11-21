@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="eVinetory, collectionez les saveurs et remplissez votre celliers de vins en ligne dès maintenant. ">
+    <link rel="icon" href="/img/icons/appmetalogo.svg" type="image/svg">
 
     <title>{{ config('app.name') }} - @yield('title')</title>
 
@@ -20,12 +21,12 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8THYMHLC94"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
+ 
     function gtag() {
         dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
+ 
     gtag('config', 'G-8THYMHLC94');
 </script>
 
@@ -47,15 +48,15 @@
                 <x-svg.cellarIcon />
                 <p>Celliers</p>
             </a>
-            <a href="" style="pointer-events: none">
+            <a href="{{route('bouteilles.favoris')}}" class="{{ request()->is('favoris*') ? 'active':'' }}">
                 <x-svg.heartIcon />
                 <p>Favoris</p>
             </a>
-            <a href="" style="pointer-events: none">
+            <a href="{{route('bouteilles.achats')}}" class="{{ request()->is('achats*') ? 'active':'' }}">
                 <x-svg.cartIcon />
                 <p>Achats</p>
             </a>
-            <a href="{{route('profile.index')}}">
+            <a href="{{route('profile.index')}}" class="{{ request()->is('profil*') ? 'active':'' }}">
                 <x-svg.profilIcon />
                 <p>Profil</p>
             </a>

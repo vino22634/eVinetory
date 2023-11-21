@@ -7,6 +7,7 @@ use App\Models\Bouteille;
 use App\Models\BouteillePreferences;
 use App\Models\PastilleType;
 use App\Models\Cellier;
+use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,6 @@ class BouteilleController extends Controller
         //return $bouteilles;
         return view('bouteilles.list', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
-
 
 
     public function toggleFavorite(Request $request, $bouteilleId)
@@ -124,8 +124,6 @@ class BouteilleController extends Controller
         return view('bouteilles.partials-bouteilles_ManageCellier', compact('mesCelliers'))->render();
     }
 
-
-
     public function search(Request $request)
     {
         $bouteilles = $this->getBouteillesQuery($request)->paginate(20);
@@ -144,6 +142,17 @@ class BouteilleController extends Controller
 
         $bouteillesQuery = Bouteille::query();
 
+        // si je suis dans la route achats ou favoris, je veux seulement les bouteilles dans la liste d'achat ou des favoris de l'utilisateur
+        if (Route::currentRouteName() == 'achats') {
+            $bouteillesQuery->whereHas('userPreferences', function ($query) {
+                $query->where('listeDachat', 1)->where('user_id', auth()->id());
+            });
+        } else if (Route::currentRouteName() == 'favoris') {
+            $bouteillesQuery->whereHas('userPreferences', function ($query) {
+                $query->where('favoris', 1)->where('user_id', auth()->id());
+            });
+        }
+
         if ($query) {
             $bouteillesQuery->where('nom', 'LIKE', '%' . $query . '%');
         }
@@ -152,6 +161,7 @@ class BouteilleController extends Controller
         return $bouteillesQuery;
     }
 
+
     /**
     * Afficher les détails d'une bouteille
     */
@@ -159,5 +169,32 @@ class BouteilleController extends Controller
     {
         $bouteilleDansCelliers = $bouteille->bouteilleDansCelliersUser();
         return view('bouteilles.show', ['bouteille' => $bouteille, 'bouteilleDansCelliers' => $bouteilleDansCelliers]);
+    }
+
+    
+    /**
+     * Afficher la liste d'achats
+     */
+    public function achats()
+    {
+        // dd(auth()->id());
+        $bouteilles = Bouteille::whereHas('userPreferences', function ($query) {
+            $query->where('listeDachat', 1)->where('user_id', auth()->id());
+        })->with('userPreferences')->with('pastilleType')->paginate(20);
+        $celliers = Cellier::all();
+        return view('bouteilles.achats', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
+    }
+
+        /**
+     * Afficher la liste des favoris
+     */
+    public function favoris()
+    {
+        // dd(auth()->id());
+        $bouteilles = Bouteille::whereHas('userPreferences', function ($query) {
+            $query->where('favoris', 1)->where('user_id', auth()->id());
+        })->with('userPreferences')->with('pastilleType')->paginate(20);
+        $celliers = Cellier::all();
+        return view('bouteilles.favoris', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
 }

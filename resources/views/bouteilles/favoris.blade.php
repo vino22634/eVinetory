@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Bouteilles')
+@section('title', 'Favoris')
 @section('content')
 
 <script src="{{ asset('js/utils.js') }}" defer></script>
@@ -32,7 +32,7 @@
 }
 </style>
 <section>
-    <h2 id="bouteilles_total">Liste des bouteilles</h2>
+    <h2 id="bouteilles_total">Mes favoris</h2>
 
     <!-- Recherche et tri -->
     <div class='bouteilleSearch__tri'>
@@ -47,8 +47,6 @@
     
     <div id="loading" style="display: none;">Chargement ...
     </div>
-    <x-buttonBackToTop />
-
 </section> 
 
 
@@ -70,7 +68,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        //console.log("DOM fully loaded and parsed")
+        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
 
         let currentPage = 1;

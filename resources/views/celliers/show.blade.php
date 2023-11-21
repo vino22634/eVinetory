@@ -4,6 +4,13 @@
 
 <script src="{{ asset('js/sort.js') }}" defer></script>
 <script src="{{ asset('js/modale.js') }}" defer></script>
+<script src="{{ asset('js/CellierDetail.js') }}" defer></script>
+<script src="{{ asset('js/utils.js') }}" defer></script>
+<script src="{{ asset('js/bouteilleCellierOperations.js') }}" defer></script>
+
+
+<!-- <script src="{{ asset('js/bouteilles.js') }}" defer></script> -->
+
 <link href="{{ asset('css/components/cardBouteilleCellier.css') }}" rel="stylesheet">
 <link href="{{ asset('css/components/modale.css') }}" rel="stylesheet">
 
@@ -13,18 +20,15 @@
     <a href="{{route('celliers.index')}}" class="">← Retour</a>
 
     <!-- Détail cellier -->
-    <div class="cellier__detail">
+    <div class="cellier__detail" id="cellierID" data-cellierid="{{ $cellier->id }}">
         <h2>{{ucfirst($cellier->name)}}</h2>
         @if($cellier->description)
         <p>{{ucfirst($cellier->description)}}</p>
         @endif
-        @if($cellier->bouteillesCellier->count() > 0)
-        <p>Nombre de bouteilles : {{$cellier->bouteillesCellier->sum('quantite')}}</p>
-        @endif
         <!-- CTA -->
         <div class="cellier__detail-cta">
-            <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
-            <a href="#" id="modaleTrigger" class="">Supprimer le cellier</a>
+            <a href="{{route('cellier.edit', $cellier->id)}}" class="blue link">Modifier le cellier</a>
+            <a href="#" id="modaleTrigger" class="red link">Supprimer le cellier</a>
         </div>
     </div>
 
@@ -44,13 +48,8 @@
     @endif
 
     <!-- Détail bouteilles -->
-    <div class="cards-container">
-        @forelse($cellier->detailsBouteillesCellier as $detailBouteilleCellier)
-            <x-celliers.cardBouteilleCellier-component :detailBouteilleCellier="$detailBouteilleCellier" />
-        @empty
-        <li>Vous n'avez pas encore de bouteilles dans ce cellier</li>
-        @endforelse
-    </div>
+    <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
+
 </section>
 
 <!-- Modal confirmation suppression-->
@@ -58,7 +57,7 @@
     <div class="modale-content modale-small">
         <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
         <div class="modaleCTA">
-            <button class="closeButton info">Non</button>
+            <button class="" id="closeModale">Non</button>
             <!-- Form -->
             <form method="post">
                 @method('DELETE')
