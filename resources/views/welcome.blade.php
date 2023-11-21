@@ -8,7 +8,7 @@
     <a href="{{ route('login') }}" class="button info">Se connecter</a>
     <div>
         <p>Pas encore inscrit ?</p>
-        <a href="{{ route('register') }}" class="link">S'enregistrer</a>
+        <a href="{{ route('register') }}" class="link underline">S'enregistrer</a>
     </div>
 </div>
 
