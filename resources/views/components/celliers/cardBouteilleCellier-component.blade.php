@@ -16,10 +16,9 @@
             </div>
 
             <!-- Quantité -->
-              <div class="number-input  cardBouteilleCellier-quantity">
-
+              <div class="number-input cardBouteilleCellier-quantity">
                 <button onclick="decrementValue(this)" aria-label="diminuer quantité"></button>
-                <input id="bouteille-quantite" class="quantity" name="quantity" type="number" min="0"
+                <input id="bouteille-quantite" class="quantity" name="quantity" type="number" min="0" readonly
                     value="{{ $detailBouteilleCellier->pivot->quantite }}" aria-label="Quantité"
                     id="bouteilleCellierAmount" data-id="{{ $detailBouteilleCellier->pivot->id }}"
                     onchange="bouteilleCellier_saveAmount(this, '{{ $detailBouteilleCellier->pivot->id }}')" />
