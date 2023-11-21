@@ -372,13 +372,14 @@ img {
     align-items: center;
     gap: 0.5rem;
     color: black;
+    text-align: center;
+
 }
 
 .cellier__detail-cta {
     display: flex;
     flex: 1;
     gap: 1rem;
-    justify-content: space-between;
 }
 
 .cellier__tri {
