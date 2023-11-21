@@ -77,7 +77,7 @@
         @if(!Str::contains($bouteille->image, 'http') || Str::contains($bouteille->image, 'pastille'))
             <img src="/img/icons/bottle.png" alt="{{ $bouteille->nom }}">
         @else
-            <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}">
+            <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}" width="241px" height='361px'>
         @endif
 
         <!-- Infos saq -->
@@ -105,14 +105,16 @@
                 <img 
                     src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->favoris) ? '/img/icons/bouteilles/FavorisON@2x.png' : '/img/icons/bouteilles/Favoris@2x.png' }}"
                     alt="Favoris" onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Favoris')"
-                    style="width: 50px;display: inline-block ">
+                    style="width: 50px;display: inline-block "
+                     width="40px" height='40px'>
                 <!-- <x-svg.heartIcon /> -->
                 
                 <!-- achat -->
                 <!-- <x-svg.cartIcon /> -->
                  <img 
                      src="{{ ($bouteille->userPreferences && $bouteille->userPreferences->listeDachat) ? '/img/icons/bouteilles/PurchaseON@2x.png' : '/img/icons/bouteilles/Purchase@2x.png' }}"
-                     alt="Liste d'achat" onclick="toggleBouteillePreferences(this, {{ $bouteille->id }}, 'Purchase')">
+                      width="40px" height='40px' alt="Liste d'achat" onclick="toggleBouteillePreferences(this,
+                     {{ $bouteille->id }}, 'Purchase')">
             </div>
 
             <!-- Lien saq -->
