@@ -25,15 +25,10 @@
         @if($cellier->description)
         <p>{{ucfirst($cellier->description)}}</p>
         @endif
-        @if($cellier->bouteillesCellier->count() > 0)
-            <!-- Retiré pour le moment: non lié au ajax
-            <p>Nombre de bouteilles : {{$cellier->bouteillesCellier->sum('quantite')}}</p> -->
-        @endif
-        <br>
         <!-- CTA -->
         <div class="cellier__detail-cta">
-            <a href="{{route('cellier.edit', $cellier->id)}}" class="">Modifier le cellier</a>
-            <a href="#" id="modaleTrigger" class="">Supprimer le cellier</a>
+            <a href="{{route('cellier.edit', $cellier->id)}}" class="blue link">Modifier le cellier</a>
+            <a href="#" id="modaleTrigger" class="red link">Supprimer le cellier</a>
         </div>
     </div>
 
@@ -62,7 +57,7 @@
     <div class="modale-content modale-small">
         <h3>Voulez-vous vraiment supprimer votre cellier ?</h3>
         <div class="modaleCTA">
-            <button class="closeButton info">Non</button>
+            <button class="" id="closeModale">Non</button>
             <!-- Form -->
             <form method="post">
                 @method('DELETE')
