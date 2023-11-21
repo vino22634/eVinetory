@@ -1,7 +1,7 @@
 <div id="backToTopButton" style="display: none;">↑</div>
 
 <style>
-    #backToTopButton {
+    /* #backToTopButton {
         position: fixed;
         bottom: 80px;
         right: 0px;
@@ -11,7 +11,32 @@
         cursor: pointer;
         padding: 14px 8px;
         border-radius: 5px 0px 0px 5px;
+    } */
+
+    #backToTopButton {
+        position: fixed;
+        bottom: 80px;
+        right: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, .5);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        cursor: pointer;
+        padding: 14px;
+        border-radius: 5px 0px 0px 5px;
+        font-size: 1.5rem;
+        color: var(--color-text70);
     }
+
+    @media (min-width: 700px) {
+        #backToTopButton {
+            bottom: 7rem;
+        }
+        #backToTopButton::before {
+            content: "Haut ";
+            color: var(--color-text70);
+        }
+}
 </style>
 
 <script>
