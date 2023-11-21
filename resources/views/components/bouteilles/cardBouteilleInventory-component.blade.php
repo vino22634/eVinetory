@@ -18,18 +18,21 @@
     <div class="bouteilleCellier_cta">
         
         <div class="number-input cardBouteilleCellier-quantity">
-            <button onclick="decrementValue(this)"></button>
-            <input class="quantity" name="quantity" type="number" min="0" readonly value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
+            <button onclick="decrementValue(this)" aria-label="diminuer quantité"></button>
+            <input class="quantity" name="quantity" type="number" min="0" readonly
+                value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount" aria-label="Quantité"
+                aria-label="Quantité"
                 data-id="{{ $bouteilleCellier->id }}"
                 onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
-            <button onclick="incrementValue(this)" class="plus" aria-label="Diminuer quantité"></button>
+            <button onclick="incrementValue(this)" class="plus" aria-label="augmenter quantité"
+                aria-label="augmenter quantité"></button>
         </div>
         <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action" onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}', 
                 '{{ $bouteilleCellier->id_bouteille }}')">
     </div>
 
 @else
-    <button class="button-small button info" aria-label="augmenter quantité"
+    <button class="button-small button info" 
         onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}','{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')">Ajouter
         au cellier</button>
 @endif

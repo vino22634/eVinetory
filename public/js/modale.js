@@ -12,12 +12,16 @@ if (triggerBttn) {
 // fermer la modale quand on clique sur Fermer
 if (closeModale) {
     closeModale.addEventListener("click", function () {
-        hideModale();
+         if (myModal) {
+             hideModale();
+         }
     });
 }
 // au chargement de la page la modale est à display none
 window.addEventListener("load", function () {
-    hideModale();
+    if (myModal) {
+        hideModale();
+    }
 });
 
 function showModale() {
