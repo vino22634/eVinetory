@@ -35,10 +35,10 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
-
+// pour error page
     Route::get('contact', [ErrorController::class, 'index'])
         ->name('erreur.index');
-    Route::post('/contact', [ErrorController::class, 'sendEmail']);
+    Route::post('/contact', [ErrorController::class, 'sendEmail'])->name('erreur.send');
 });
 
 Route::middleware('auth')->group(function () {
