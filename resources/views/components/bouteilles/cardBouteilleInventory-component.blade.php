@@ -22,14 +22,14 @@
             <input class="quantity" name="quantity" type="number" min="0" value="{{ $bouteilleCellier->quantite }}" id="bouteilleCellierAmount"
                 data-id="{{ $bouteilleCellier->id }}"
                 onchange="bouteilleCellier_saveAmount(this, '{{ $bouteilleCellier->id }}')" />
-            <button onclick="incrementValue(this)" class="plus"></button>
+            <button onclick="incrementValue(this)" class="plus" aria-label="Diminuer quantité"></button>
         </div>
         <img src="/img/icons/delete.svg" alt="supprimer" title="Supprimer du cellier" class="icons_action" onclick="bouteilleCellier_delete(this, '{{ $bouteilleCellier->id }}', 
                 '{{ $bouteilleCellier->id_bouteille }}')">
     </div>
 
 @else
-    <button class="button-small button ajout"
+    <button class="button-small button ajout" aria-label="augmenter quantité"
         onclick="bouteilleCellier_add(this, '{{ $bouteilleCellier->id }}', '{{ $bouteilleCellier->id_bouteille }}','{{ $bouteilleCellier->cellier->id }}', '{{ $bouteilleCellier->quantite }}')">Ajouter
         au cellier</button>
 @endif
