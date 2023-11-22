@@ -1,24 +1,12 @@
 <div id="backToTopButton" style="display: none;">↑</div>
 
 <style>
-    /* #backToTopButton {
-        position: fixed;
-        bottom: 80px;
-        right: 0px;
-        background-color: rgba(0, 0, 0, 0.3);
-        color: var(--color-white);
-        border: none;
-        cursor: pointer;
-        padding: 14px 8px;
-        border-radius: 5px 0px 0px 5px;
-    } */
-
     #backToTopButton {
         position: fixed;
         bottom: 80px;
         right: 0px;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        background-color: rgba(255, 255, 255, .5);
+        background-color: #e3e3e3cc;
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         cursor: pointer;
