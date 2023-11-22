@@ -6,8 +6,8 @@
         <select name="tri" id="tri-component">
             <option value="nom__asc">Nom</option>
             <option value="nom__desc">Nom (Desc)</option>
-            <option value="type__asc">Provenance</option>
-            <option value="type__desc">Provenance (Desc)</option>
+            <option value="pays__asc">Provenance</option>
+            <option value="pays__desc">Provenance (Desc)</option>
             <option value="prix_saq__asc">Prix</option>
             <option value="prix_saq__desc">Prix (Desc)</option>
 
