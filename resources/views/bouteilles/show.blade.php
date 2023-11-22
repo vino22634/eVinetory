@@ -13,7 +13,7 @@
 <style>
     .detailsBouteille, .detailsCellier {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         gap: 1rem;
         padding: 1rem 0;
         flex-wrap: wrap;
@@ -77,7 +77,7 @@
         @if(!Str::contains($bouteille->image, 'http') || Str::contains($bouteille->image, 'pastille'))
             <img src="/img/icons/bottle.png" alt="{{ $bouteille->nom }}">
         @else
-            <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}" width="241px" height='361px'>
+            <img src="{{ Str::before($bouteille->image, '?') }}?width=367&height=550" alt="{{ $bouteille->nom }}">
         @endif
 
         <!-- Infos saq -->
