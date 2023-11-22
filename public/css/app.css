@@ -407,10 +407,19 @@ img {
 
 .profil__detail-cta {
     display: flex;
+    flex-direction: column;
     flex: 1;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    text-align: center;
+}
+
+.mail-icon {
+    width: 1.3rem;
+    display: inline;
+    margin-right: 0.3rem;
+    position: relative;
+    top: 3px;
 }
 
 .success-message {

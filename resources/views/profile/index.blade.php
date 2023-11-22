@@ -20,8 +20,10 @@
 
     <div class="profil__detail-cta">
         <a href="{{ route('logout') }}" class="button">Se déconnecter</a>
-        <!-- <a href="{{ route('erreur.index') }}" class="button">Nous contacter</a> -->
-        <a href="mailto:evinetory@gmail.com" class="button">Nous contacter</a>
+        <!-- <a href="mailto:evinetory@gmail.com" class="button">Nous contacter</a> -->
+        <!-- <div class="login_mailto"> -->
+            <a href="mailto:evinetory@gmail.com" class="link"><img src="/img/icons/icon-mail.png" alt="envoi mail" title="Nous contacter" class="mail-icon">Contactez-nous</a>
+        <!-- </div> -->
     </div>
 
     </div>
