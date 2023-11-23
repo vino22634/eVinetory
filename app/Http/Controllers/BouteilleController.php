@@ -22,7 +22,7 @@ class BouteilleController extends Controller
 
     public function index()
     {
-        $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->paginate(20);
+        $bouteilles = Bouteille::with('userPreferences')->with('pastilleType')->orderBy('nom', 'asc')->paginate(20);
 
         $celliers = Cellier::all();
         //return $bouteilles;
@@ -180,7 +180,7 @@ class BouteilleController extends Controller
         // dd(auth()->id());
         $bouteilles = Bouteille::whereHas('userPreferences', function ($query) {
             $query->where('listeDachat', 1)->where('user_id', auth()->id());
-        })->with('userPreferences')->with('pastilleType')->paginate(20);
+        })->with('userPreferences')->with('pastilleType')->orderBy('nom', 'asc')->paginate(20);
         $celliers = Cellier::all();
         return view('bouteilles.achats', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
@@ -193,7 +193,7 @@ class BouteilleController extends Controller
         // dd(auth()->id());
         $bouteilles = Bouteille::whereHas('userPreferences', function ($query) {
             $query->where('favoris', 1)->where('user_id', auth()->id());
-        })->with('userPreferences')->with('pastilleType')->paginate(20);
+        })->with('userPreferences')->with('pastilleType')->orderBy('nom', 'asc')->paginate(20);
         $celliers = Cellier::all();
         return view('bouteilles.favoris', ['bouteilles' => $bouteilles, 'celliers' => $celliers]);
     }
