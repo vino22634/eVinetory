@@ -1,3 +1,6 @@
+
+
+
 //*********************** */
 //* Get the inventory of Bouteilles as a view
 // * @param {*} bouteilleId
@@ -12,11 +15,6 @@ function manageCellierForBouteille(bouteilleId) {
 
     showModale();
 }
-
-
-
-
-
 
 //*********************** */
 //* BouteilleCellier: Delete
@@ -52,12 +50,12 @@ function bouteilleCellier_add(
     quantite
 ) {
     sendRequest(
-        "/bouteilleCellier/add", 
+        "/bouteilleCellier/add",
         {
-            id: bouteilleCellierId, 
-            idBouteille: idBouteille, 
-            idCellier: idCellier, 
-            quantite: quantite, 
+            id: bouteilleCellierId,
+            idBouteille: idBouteille,
+            idCellier: idCellier,
+            quantite: quantite,
         },
         "POST" // Utilisez la méthode HTTP appropriée selon votre route Laravel
     )
@@ -66,4 +64,17 @@ function bouteilleCellier_add(
             manageCellierForBouteille(idBouteille);
         })
         .catch((error) => console.error("Erreur:", error));
+}
+
+
+
+
+
+function searchClick(event) {
+    if (event.target.type === "search") {
+        // Ajout d'un timeout pour que le champ soit bien vidé avant de lancer la recherche
+        setTimeout(function () {
+            searchBouteilles();
+        }, 0);
+    }
 }
