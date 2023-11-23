@@ -57,11 +57,10 @@
     <section>
         <div class="modale-content modale-large">
             <!-- Détail cellier -->
-            <div>
-                <h2>Mon inventaire</h2>
-                <p>Consulter et ajuster le nombre de bouteilles présentes dans vos cellier:</p>
-            </div>
+            <h2>Mon inventaire</h2>
+            <p>Consulter et ajuster le nombre de bouteilles présentes dans vos celliers.</p>
             <div id='modaleContent' class="cards-container">Récupération de l'inventaire...</div>
+            <a href="{{route('cellier.create')}}" class="button info">Créer un nouveau cellier</a>
             <button class="" id="closeModale">Fermer</button>
         </div>
     </section>

@@ -5,8 +5,7 @@
         position: fixed;
         bottom: 80px;
         right: 0px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        background-color: #e3e3e3cc;
+        background-color: rgba(0, 0, 0, 0.1);
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         cursor: pointer;
