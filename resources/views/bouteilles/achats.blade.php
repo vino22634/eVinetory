@@ -68,16 +68,17 @@
 </div>
 
 <script>
+    let isLoading = false;
     document.addEventListener('DOMContentLoaded', (event) => {
-        console.log("DOM fully loaded and parsed")
         let lastPage = {{$bouteilles->lastPage()}};
-
         let currentPage = 1;
-        let isLoading = false;
-
         function scrollLazyLoading() {
-            let offsetFooter=200;
-            if (((window.innerHeight + window.scrollY) + offsetFooter >= document.body.scrollHeight) && !isLoading) {
+            let offsetFooter = 200;
+            if (
+                window.innerHeight + window.scrollY + offsetFooter >=
+                    document.body.scrollHeight &&
+                !isLoading
+            ) {
                 // stop a la dernière page
                 if (currentPage < lastPage) {
                     currentPage++;
@@ -88,46 +89,50 @@
         }
 
         window.addEventListener('scroll', scrollLazyLoading);
-
         let filterInput = document.getElementById('searchField');
         filterInput.addEventListener('keyup', searchBouteilles);
+        filterInput.addEventListener('click', searchClick);
+        
 
         function loadMoreBouteilles(page) {
-            console.log("loadMoreBouteilles", page, "called")
-            const query = document.getElementById('searchField').value;
-            const sort = document.getElementById('tri-component').value; 
-            document.getElementById('loading').style.display = 'block';
-             fetch(`/ajax/bouteilles?page=${page}&query=${query}&sort=${sort}`, {
+            //console.log("loadMoreBouteilles", page, "called");
+            const query = document.getElementById("searchField").value;
+            const sort = document.getElementById("tri-component").value;
+            document.getElementById("loading").style.display = "block";
+            fetch(`/ajax/bouteilles?page=${page}&query=${query}&sort=${sort}`, {
                 headers: {
-                'X-Requested-With': 'XMLHttpRequest' // optionnel mais selon stackoverflow améliore la réactivité(car spécifie  au serveur que c'est une requête ajax)
-                }
-             })
+                    "X-Requested-With": "XMLHttpRequest", // optionnel mais selon stackoverflow améliore la réactivité(car spécifie  au serveur que c'est une requête ajax)
+                },
+            })
+            .then((response) => response.text())
+            .then((html) => {
+                isLoading = false;
+                //console.log("loadMoreBouteilles", page, "received");
 
-                .then(response => response.text())
-                .then(html => {
-                    isLoading = false;
-                    console.log("loadMoreBouteilles", page, "received")
-
-                    document.getElementById('loading').style.display = 'none';
-                    if (html.trim().length == 0) {
-                        //  Plus rien à charger, on désactive le scroll infini
-                        window.removeEventListener('scroll', scrollLazyLoading)
+                document.getElementById("loading").style.display = "none";
+                if (html.trim().length == 0) {
+                    //  Plus rien à charger, on désactive le scroll infini
+                    window.removeEventListener("scroll", scrollLazyLoading);
+                } else {
+                    if (html.includes("Aucune bouteille trouvée")) {
+                        //document.getElementById('bouteilles-container').innerHTML = html;
                     } else {
-                        document.getElementById('bouteilles-container').insertAdjacentHTML('beforeend',
-                            html); // Ajouter le contenu à la page
-                           
-                        //TOdO FH:  get also number of results updated
-
+                        document
+                            .getElementById("bouteilles-container")
+                            .insertAdjacentHTML("beforeend", html);
                     }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    isLoading = false;
-                    document.getElementById('loading').style.display = 'none';
-                });
+                }
+                if (html.includes("Aucune bouteille trouvée")) {
+                    window.removeEventListener("scroll", scrollLazyLoading);
+                }
+            })
+            .catch((error) => {
+                console.error("Erreur:", error);
+                isLoading = false;
+                document.getElementById("loading").style.display = "none";
+            });                     
         }
     });
-
 </script>
 
 @endsection
