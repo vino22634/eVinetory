@@ -69,12 +69,3 @@ function bouteilleCellier_add(
 
 
 
-
-function searchClick(event) {
-    if (event.target.type === "search") {
-        // Ajout d'un timeout pour que le champ soit bien vidé avant de lancer la recherche
-        setTimeout(function () {
-            searchBouteilles();
-        }, 0);
-    }
-}
