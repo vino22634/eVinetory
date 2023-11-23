@@ -5,23 +5,17 @@
         position: fixed;
         bottom: 80px;
         right: 0px;
-        background-color: rgba(0, 0, 0, 0.1);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
+        background-color: rgba(0, 0, 0, 0.3);
+        color: var(--color-white);
+        border: none;
         cursor: pointer;
-        padding: 14px;
+        padding: 14px 8px;
         border-radius: 5px 0px 0px 5px;
-        font-size: 1.5rem;
-        color: var(--color-text70);
     }
 
     @media (min-width: 700px) {
         #backToTopButton {
             bottom: 7rem;
-        }
-        #backToTopButton::before {
-            content: "Haut ";
-            color: var(--color-text70);
         }
 }
 </style>
